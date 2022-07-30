@@ -2,10 +2,10 @@ run: main
 		./main
 
 main:	*.o
-		g++ -std=c++98 -o main *.o
+		g++ -o main *.o
 
 *.o:	*.cpp
-		g++ -std=c++98 -c -w *.cpp
+		g++ -c -w *.cpp
 		
 c:
 		rm *.o main 

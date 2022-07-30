@@ -17,12 +17,12 @@
                \textbf{e}: Stack, since no dynamic memory has been allocated to the variable.\\
                \textbf{f}: Stack, since no dynamic memory has been allocated to the variable.\\
                \textbf{g}: Stack, since no dynamic memory has been allocated to the variable.\\
-                \textbf{h}: Stack, since no dynamic memory has been allocated to the variable.\\
-                \textbf{c[10]}: Stack, since no dynamic memory has been allocated to the variable.\\
-    \item[1.2] This would not work since NULL is not a valid value for an \textit{int} variable so the value zero will be stored there instead.\\
-    \item[1.3] \textbf{void* f = (void*) 0xacfe2675;}\\ This line might not work since whatever value was stored at the memory address "0xacfe2675" cannot necessarily be cast to \textit{void*} which might lead to an error.\\
-                \textbf{c[10] = *\&*e;}\\ This line might not work since a \textit{char} array is being given the value of an \textit{int} pointer which does not have the same size.\\
-                \textbf{const int* e = (const int*) 522;}\\ This line might not work since e is a pointer pointing to a memory address of a literal, but this literal is not stored there in a variable so following this pointer will lead to a segmentation fault.\\ 
+               \textbf{h}: Stack, since no dynamic memory has been allocated to the variable.\\
+               \textbf{c[10]}: Stack, since no dynamic memory has been allocated to the variable.
+    \item[1.2] This would not work since NULL is not a valid value for an \textit{int} variable so the value zero will be stored there instead.
+    \item[1.3] \textbf{void* f = (void*) 0xacfe2675;}\\ This line might not work since whatever value was stored at the memory address "0xacfe2675" cannot necessarily be cast to \textit{void*} which might lead to an error.\\~\\
+                \textbf{c[10] = *\&*e;}\\ This line might not work since a \textit{char} array is being given the value of an \textit{int} pointer which does not have the same size.\\~\\
+                \textbf{const int* e = (const int*) 522;}\\ This line might not work since e is a pointer pointing to a memory address of a literal, but this literal is not stored there in a variable so following this pointer will lead to a segmentation fault.
 \end{itemize}
 
 \section*{Task 2}
@@ -53,7 +53,7 @@
 \begin{itemize}
     \item[4.1] \textbf{cout$<<$*ptr\_a$<<$"\_"$<<$*ptr\_b$<<$"\textbackslash n";} \\
                 This line will output "15\_15" since the value ptr\_a points to is set to
-                15 and ptr\_b is set to ptr\_a, which means that both values point to 15.
+                15 and ptr\_b is set to ptr\_a, which means that both pointers point to the value 15.
     \item[4.2] \textbf{cout$<<$*ptr\_a$<<$"\_"$<<$*ptr\_b$<<$"\textbackslash n";} \\
                 This line will output "15\_4" since ptr\_a still points to 15 while 
                 ptr\_b is set to point to a new value of 4.
@@ -69,11 +69,22 @@
                 This line will output the address of ptr\_a followed by "\_15" since
                 ptr\_c is set to the address of ptr\_a which in turn points to the value 15.
 \end{itemize}
+
 \section*{Task 5}
 \begin{itemize}
     \item[5.2] My machine has a limited amount of memory which causes the program to run into 
-    a segmentation fault when trying to compute such a large number, even though the implementation
+    a segmentation fault after a certain amount of time when trying to compute such a large number,
+     even though the implementation
      works for lesser values of m and n.\\
-    \includegraphics[width=0.25\textwidth]{../img/Task5_2.png}
+    \includegraphics[width=0.6\textwidth]{../img/Task5_2.png}
+\end{itemize}
+
+\section*{Task 6}
+\begin{itemize}
+    \item[6.1] The \textbf{AuditableSnapshot} class is equivalent to the Memento interface. 
+    \item[6.2] The \textbf{Snapshot} class is equivalent to the ConcreteMemento class. 
+    \item[6.3] The \textbf{Product} class is equivalent to the Originator class.
+    \item[6.4] The \textbf{UserManager} class is equivalent to the Caretaker class.
+    \item[6.7] \includegraphics[width=0.7\textwidth]{../img/Task6_7.png}   
 \end{itemize}
 \end{document}
