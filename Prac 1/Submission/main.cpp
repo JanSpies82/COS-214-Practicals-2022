@@ -1,6 +1,9 @@
 #include <iostream>
 #include <sstream>
 #include <ctime>
+#include <cstdlib>
+#include "User.h"
+#include "UserManager.h"
 using namespace std;
 
 // Task 4.2
@@ -56,8 +59,6 @@ string recursFunc(int input, int original, bool asc)
     ss << input;
     ss >> s;
     ss.clear();
-
-    // cout<<"input: "<<input<<" original: "<<original<<" asc: "<<asc<<endl;
 
     if (input <= 0)
         return s + ", " + recursFunc(input + 7, original, true);
@@ -130,7 +131,27 @@ int main()
     cout << recursFunc(14, 14, false) << endl;
 
     // Test for Task 5.2
-    // cout << "The value of A(4, 2) = " << endl;
-    // cout << Ack(4,2) << endl;
+    cout << "The value of A(4, 2) = " << endl;
+    cout << Ack(4, 2) << endl;
+
+    // Test for Task 6
+    std::srand(static_cast<unsigned int>(std::time(NULL)));
+    User *user = new User("username", "mysecretpassword");
+    UserManager *userManager = new UserManager(user);
+    userManager->Backup();
+    user->SetPassword("pa$$w0rd");
+    userManager->Backup();
+    user->SetPassword("5t@rw@r5");
+    userManager->Backup();
+    user->SetPassword("bigB@ng");
+    std::cout << "\n";
+    userManager->ShowHistory();
+    std::cout << "\nClient: Now, let's rollback!\n\n";
+    userManager->Undo();
+    std::cout << "\nClient: Once more!\n\n";
+    userManager->Undo();
+    delete user;
+    delete userManager;
+
     return 0;
 }

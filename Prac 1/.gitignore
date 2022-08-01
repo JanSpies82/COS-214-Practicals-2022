@@ -6,6 +6,8 @@
 *.o
 *.obj
 main
+valg.txt
 *.vpp.bak*
 *.vpp.lck
 /.vscode
+.vscode

@@ -23,8 +23,6 @@ void Run() {
   delete user;
   delete userManager;
 
-  // Snapshot *snapshot = new Snapshot("username", "date", "state");
-  // delete snapshot;
 }
 
 int main() {

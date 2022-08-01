@@ -7,15 +7,8 @@ main:	*.o
 *.o:	*.cpp
 		g++ -c -w *.cpp
 		
-c:
-		rm *.o main 
-
-cl:
-		rm *.aux *.fdb_latexmk *.fls *.log *.synctex.gz
-		rm __latexindent_temp.tex
-		tm -R .vscode
-		rm -R .history
-		
+clean:
+		rm *.o main 		
 
 tar:
 		tar -cvz *.h *.cpp makefile -f u21434159.tar.gz
