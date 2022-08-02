@@ -6,8 +6,7 @@
 class Enemy
 {
 public:
-    Enemy();
-    ~Enemy();
+    Enemy(std::string name, int HP, int damage, std::string attackMove, std::string defendMove);
     void attack(Enemy* z);
     virtual bool hitSquadMember(Enemy* z);
     virtual void celebrate();

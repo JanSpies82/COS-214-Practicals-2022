@@ -1,5 +1,12 @@
 #include "Enemy.h"
 
+Enemy::Enemy(std::string name, int HP, int damage, std::string attackMove, std::string defendMove){
+    this->name = name;
+    this->HP = HP;
+    this->damage = damage;
+    this->attackMove = attackMove;
+    this->defendMove = defendMove;
+}
 void Enemy::attack(Enemy *z)
 {
     while (z->HP > 0 && z->die == false)
