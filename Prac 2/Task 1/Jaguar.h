@@ -4,6 +4,7 @@
 class Jaguar : public Enemy
 {
 public:
+    Jaguar(std::string name, int HP, int damage, std::string attackMove, std::string defendMove);
     bool hitSquadMember(SquadMember *z);
     void celebrate();
     bool getHit(SquadMember *z);
