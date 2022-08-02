@@ -18,7 +18,7 @@ void Enemy::attack(Enemy *z)
 
 int Enemy::takeDamage(int dmg){
     this->HP -= dmg;
-    return (this->HP <= 0);
+    return this->HP;
 }
 
 std::string Enemy::getName(){
