@@ -1,5 +1,6 @@
 #ifndef GORILLA_H
 #define GORILLA_H
+#include "Enemy.h"
 class Gorilla : public Enemy
 {
 public:
