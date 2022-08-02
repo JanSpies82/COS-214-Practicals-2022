@@ -8,10 +8,10 @@ class Enemy
 {
 public:
     Enemy(std::string name, int HP, int damage, std::string attackMove, std::string defendMove);
-    void attack(Enemy* z);
-    virtual bool hitSquadMember(Enemy* z);
+    void attack(SquadMember* z);
+    virtual bool hitSquadMember(SquadMember* z);
     virtual void celebrate();
-    virtual bool getHit(Enemy* z);
+    virtual bool getHit(SquadMember* z);
     virtual void die(); 
     int takeDamage(int dmg);
     std::string getName();

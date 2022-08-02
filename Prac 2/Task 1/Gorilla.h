@@ -4,9 +4,9 @@
 class Gorilla : public Enemy
 {
 public:
-    bool hitSquadMember(Enemy *z);
+    bool hitSquadMember(SquadMember *z);
     void celebrate();
-    bool getHit(Enemy *z);
+    bool getHit(SquadMember *z);
     void die();
 };
 #endif // GORILLA_H

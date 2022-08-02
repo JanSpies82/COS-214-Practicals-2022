@@ -7,7 +7,7 @@ Enemy::Enemy(std::string name, int HP, int damage, std::string attackMove, std::
     this->attackMove = attackMove;
     this->defendMove = defendMove;
 }
-void Enemy::attack(Enemy *z)
+void Enemy::attack(SquadMember *z)
 {
     while (z->HP > 0 && z->die == false)
     {
