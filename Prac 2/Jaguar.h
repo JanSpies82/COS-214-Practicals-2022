@@ -1,5 +1,6 @@
 #ifndef JAGUAR_H
 #define JAGUAR_H
+#include "Enemy.h"
 class Jaguar : public Enemy
 {
 public:
