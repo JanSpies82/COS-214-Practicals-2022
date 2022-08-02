@@ -5,7 +5,7 @@ class EnemyFactory {
 public:
     EnemyFactory();
     virtual ~EnemyFactory();
-    virtual Enemy* createEnemy(std::string name) = 0;
+    virtual Enemy* createEnemy(std::string attack, std::string defense) = 0;
 protected:
     std::string getName();
 }
