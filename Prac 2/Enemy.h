@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>
 #include "SquadMember.h"
+//TODO add subclass constructors and main
 class Enemy
 {
 public:
