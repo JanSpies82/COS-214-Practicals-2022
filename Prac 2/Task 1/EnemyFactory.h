@@ -8,5 +8,5 @@ public:
     virtual Enemy* createEnemy(std::string attack, std::string defense) = 0;
 protected:
     std::string getName();
-}
+};
 #endif

@@ -6,7 +6,7 @@ bool Snake::hitSquadMember(SquadMember *z){
     return (z->takeDamage(damage) <= 0);
 };
 void Snake::celebrate(){
-    cout<<"Player tried strongly till the end.\n"
+    cout<<"Player tried strongly till the end.\n";
 };
 bool Snake::getHit(SquadMember *z){
     cout<<"Slithers rapidly searching for safety and employs " << defendMove <<".\n";

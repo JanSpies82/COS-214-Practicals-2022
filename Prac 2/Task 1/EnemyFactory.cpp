@@ -1,6 +1,7 @@
-#include "EnemyFactory.cpp"
+#include "EnemyFactory.h"
 using namespace std; 
 
-EnemyFactory::getName(){
+std::string EnemyFactory::getName(){
     //TODO random name generator
+    return "";
 }

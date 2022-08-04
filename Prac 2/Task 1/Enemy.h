@@ -8,11 +8,12 @@ class Enemy
 {
 public:
     Enemy(std::string name, int HP, int damage, std::string attackMove, std::string defendMove);
+    // virtual ~Enemy();
     void attack(SquadMember* z);
-    virtual bool hitSquadMember(SquadMember* z);
-    virtual void celebrate();
-    virtual bool getHit(SquadMember* z);
-    virtual void die(); 
+    virtual bool hitSquadMember(SquadMember* z)=0;
+    virtual void celebrate()=0;
+    virtual bool getHit(SquadMember* z)=0;
+    virtual void die()=0; 
     int takeDamage(int dmg);
     std::string getName();
     int getHP();
@@ -20,7 +21,6 @@ public:
     std::string getAttackMove();
     std::string getDefendMove();
 
-private:
     int HP;
     int damage;
     std::string attackMove;

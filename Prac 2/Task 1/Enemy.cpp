@@ -7,13 +7,13 @@ Enemy::Enemy(std::string name, int HP, int damage, std::string attackMove, std::
     this->attackMove = attackMove;
     this->defendMove = defendMove;
 }
+
 void Enemy::attack(SquadMember *z)
 {
-    while (z->HP > 0 && z->die == false)
+    while (z->getHP() > 0 && z->isDead() == false)
     {
         if (hitSquadMember(z))
         {
-            z->die();
             celebrate();
         }
         else if (getHit(z))
