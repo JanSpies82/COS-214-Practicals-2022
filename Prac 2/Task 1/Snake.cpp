@@ -1,6 +1,8 @@
 #include "Snake.h"
 using namespace std;
 
+Snake::Snake(string name, int HP, int damage, string attackMove, string defendMove): Enemy(name, HP, damage, attackMove, defendMove){};
+
 bool Snake::hitSquadMember(SquadMember *z){
     cout<<"Snake wraps around " << z->getName() << " and uses " << attackMove << ".\n";
     return (z->takeDamage(damage) <= 0);

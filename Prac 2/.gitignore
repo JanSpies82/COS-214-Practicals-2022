@@ -2,3 +2,5 @@
 *.obj
 valg.txt
 main
+*.vpp.bak*
+*.vpp.lck*
