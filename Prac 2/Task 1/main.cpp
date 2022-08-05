@@ -14,6 +14,16 @@ void testEnemies()
     Enemy *snake = new Snake("snek", 100, 20, "bite", "block");
     Enemy *gorilla = new Gorilla("gorilla", 100, 20, "punch", "block");
 
+    // cannibal->celebrate();
+    // jaguar->celebrate();
+    // snake->celebrate();
+    // gorilla->celebrate();
+
+    // cannibal->die();
+    // jaguar->die();
+    // snake->die();
+    // gorilla->die();
+
     delete cannibal;
     delete jaguar;
     delete snake;
