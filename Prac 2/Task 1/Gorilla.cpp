@@ -3,6 +3,8 @@ using namespace std;
 
 Gorilla::Gorilla(std::string name, int HP, int damage, std::string attackMove, std::string defendMove) : Enemy(name, HP, damage, attackMove, defendMove){};
 
+Gorilla::~Gorilla(){};
+
 bool Gorilla::hitSquadMember(SquadMember *z)
 {
     cout << "Gorilla slams his fists on the ground, growls and hits " << z->getName() << " with " << attackMove << ".\n";

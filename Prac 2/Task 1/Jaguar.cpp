@@ -3,6 +3,8 @@ using namespace std;
 
 Jaguar::Jaguar(std::string name, int HP, int damage, std::string attackMove, std::string defendMove) : Enemy(name, HP, damage, attackMove, defendMove){};
 
+Jaguar::~Jaguar(){};
+
 bool Jaguar::hitSquadMember(SquadMember *z)
 {
     cout << "Jaguar leaps toward the " << z->getName() << " and deliver\'s a forceful " << attackMove << ".\n";

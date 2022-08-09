@@ -3,12 +3,11 @@
 #include <string>
 #include <iostream>
 #include "SquadMember.h"
-//TODO add subclass constructors and main
 class Enemy
 {
 public:
     Enemy(std::string name, int HP, int damage, std::string attackMove, std::string defendMove);
-    // virtual ~Enemy();
+    virtual ~Enemy();
     void attack(SquadMember* z);
     virtual bool hitSquadMember(SquadMember* z)=0;
     virtual void celebrate()=0;

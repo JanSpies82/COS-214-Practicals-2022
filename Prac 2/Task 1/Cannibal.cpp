@@ -4,6 +4,9 @@ using namespace std;
 Cannibal::Cannibal(string name, int HP, int damage, string attackMove, string defendMove): Enemy(name, HP, damage, attackMove, defendMove){
 };
 
+Cannibal::~Cannibal(){
+};
+
 bool Cannibal::hitSquadMember(SquadMember *z){
     cout<<"Cannibal rushes towards " << z->getName() << " with a " << attackMove <<".\n";
     return (z->takeDamage(damage) <= 0);
