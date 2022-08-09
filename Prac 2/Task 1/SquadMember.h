@@ -5,6 +5,7 @@
 class SquadMember {
 public: 
     SquadMember();
+    SquadMember(std::string name);
     std::string getName();
     int getHP();
     int getDamage();
@@ -20,5 +21,7 @@ private:
     int HP;
     int damage;
     bool dead;
+    const static std::string names[];
+    std::string generateName();
 };
 #endif
