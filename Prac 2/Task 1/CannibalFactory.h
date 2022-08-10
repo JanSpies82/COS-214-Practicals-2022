@@ -4,6 +4,7 @@
 class CannibalFactory : public EnemyFactory {
 public:
     CannibalFactory();
-    Enemy* createEnemy(std::string attack, std::string defense)
-}
+    ~CannibalFactory();
+    Enemy* createEnemy(std::string attack, std::string defense);
+};
 #endif

@@ -1,9 +1,13 @@
 #include <iostream>
 #include <string>
+#include "SquadMember.h"
+
 #include "Cannibal.h"
 #include "Jaguar.h"
 #include "Snake.h"
 #include "Gorilla.h"
+
+#include "CannibalFactory.h"
 
 using namespace std;
 
@@ -61,16 +65,26 @@ void testSquadMembers()
         cout << "s3's damage or HP is not copied correctly" << endl;
     }
 
-    cout<<"Name of s3: "<<s3->getName()<<endl;
+    cout << "Name of s3: " << s3->getName() << endl;
 
     delete s1;
     delete s2;
     delete s3;
 };
 
+void testFactories()
+{
+    EnemyFactory *cf = new CannibalFactory();
+
+    cf->createEnemy("Fists", "Shield");
+
+    delete cf;
+}
+
 int main()
 {
     // testEnemies();
-    testSquadMembers();
+    // testSquadMembers();
+    testFactories();
     return 0;
 }
