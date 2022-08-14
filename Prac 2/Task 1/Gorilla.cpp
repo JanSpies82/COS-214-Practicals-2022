@@ -7,6 +7,8 @@ Gorilla::~Gorilla(){};
 
 bool Gorilla::hitSquadMember(SquadMember *z)
 {
+    if (z == NULL)
+        return true;
     cout << "Gorilla slams his fists on the ground, growls and hits " << z->getName() << " with " << attackMove << ".\n";
     return (z->takeDamage(damage) <= 0);
 };
@@ -16,6 +18,8 @@ void Gorilla::celebrate()
 };
 bool Gorilla::getHit(SquadMember *z)
 {
+    if (z == NULL)
+        return true;
     cout << "Roars and hits his chest in anger.\n";
     return (takeDamage(z->getDamage()) <= 0);
 };

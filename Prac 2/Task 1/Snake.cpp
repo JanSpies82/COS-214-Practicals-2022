@@ -7,6 +7,8 @@ Snake::~Snake(){};
 
 bool Snake::hitSquadMember(SquadMember *z)
 {
+    if (z == NULL)
+        return true;
     cout << "Snake wraps around " << z->getName() << " and uses " << attackMove << ".\n";
     return (z->takeDamage(damage) <= 0);
 };
@@ -16,6 +18,8 @@ void Snake::celebrate()
 };
 bool Snake::getHit(SquadMember *z)
 {
+    if (z == NULL)
+        return true;
     cout << "Slithers rapidly searching for safety and employs " << defendMove << ".\n";
     return (takeDamage(z->getDamage()) <= 0);
 };

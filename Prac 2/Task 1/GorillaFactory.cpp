@@ -8,7 +8,7 @@ GorillaFactory::~GorillaFactory()
 {
 }
 
-Enemy *GorillaFactory::createEnemy(std::string attack, std::string defense)
+Enemy *GorillaFactory::createEnemy(std::string attack = "Fists", std::string defense = "Block")
 {
     Enemy *enemy = new Gorilla(getName(), getUniform(4, 12), 1, attack, defense);
     return enemy;

@@ -7,6 +7,8 @@ Cannibal::~Cannibal(){};
 
 bool Cannibal::hitSquadMember(SquadMember *z)
 {
+    if (z == NULL)
+        return true;
     cout << "Cannibal rushes towards " << z->getName() << " with a " << attackMove << ".\n";
     return (z->takeDamage(damage) <= 0);
 };
@@ -16,6 +18,8 @@ void Cannibal::celebrate()
 };
 bool Cannibal::getHit(SquadMember *z)
 {
+    if (z == NULL)
+        return true;
     cout << "The other villagers come runing deploying " << defendMove << ".\n";
     return (takeDamage(z->getDamage()) <= 0);
 };

@@ -30,16 +30,18 @@ int SquadMember::getDamage()
 };
 void SquadMember::setHP(int hp)
 {
-    HP = hp;
+    if (hp >= 0)
+        HP = hp;
 };
 void SquadMember::setDamage(int dmg)
 {
-    damage = dmg;
+    if (dmg >= 0)
+        damage = dmg;
 };
 int SquadMember::takeDamage(int dmg)
 {
     HP -= dmg;
-    if (HP < 0)
+    if (HP <= 0)
     {
         die();
     }
