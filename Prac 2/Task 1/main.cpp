@@ -23,29 +23,32 @@ const std::string reset = "\x1B[0m";
 
 void testEnemies()
 {
+    cout << cyan << "Testing enemies..." << reset << endl;
     Enemy *cannibal = new Cannibal("Manny", 100, 20, "club", "shield");
     Enemy *jaguar = new Jaguar("Jaguar", 100, 20, "punch", "block");
     Enemy *snake = new Snake("snek", 100, 20, "bite", "block");
     Enemy *gorilla = new Gorilla("gorilla", 100, 20, "punch", "block");
 
-    // cannibal->celebrate();
-    // jaguar->celebrate();
-    // snake->celebrate();
-    // gorilla->celebrate();
+    cannibal->celebrate();
+    jaguar->celebrate();
+    snake->celebrate();
+    gorilla->celebrate();
 
-    // cannibal->die();
-    // jaguar->die();
-    // snake->die();
-    // gorilla->die();
+    cannibal->die();
+    jaguar->die();
+    snake->die();
+    gorilla->die();
 
     delete cannibal;
     delete jaguar;
     delete snake;
     delete gorilla;
+    cout << endl;
 }
 
 void testSquadMembers()
 {
+    cout << cyan << "Testing squad members..." << reset << endl;
     SquadMember *s1 = new SquadMember();
     SquadMember *s2 = new SquadMember("Manny");
 
@@ -80,10 +83,13 @@ void testSquadMembers()
     delete s1;
     delete s2;
     delete s3;
+
+    cout << endl;
 };
 
 void testFactories()
 {
+    cout << cyan << "Testing factories..." << reset << endl;
     EnemyFactory *cf = new CannibalFactory();
     EnemyFactory *jf = new JaguarFactory();
     EnemyFactory *gf = new GorillaFactory();
@@ -131,10 +137,12 @@ void testFactories()
     delete j;
     delete g;
     delete s;
+    cout << endl;
 }
 
 void testAttack()
 {
+    cout << cyan << "Testing attack..." << reset << endl;
     Enemy *c = new Cannibal("Cannibal", 10, 2, "club", "shield");
     Enemy *j = new Jaguar("Jaguar", 10, 2, "punch", "block");
     Enemy *g = new Gorilla("Gorilla", 10, 2, "punch", "block");
@@ -149,7 +157,7 @@ void testAttack()
     g->attack(s1);
     s->attack(s1);
 
-    cout<<"Squad Member HP: "<<s1->getHP()<<endl;
+    cout << "Squad Member HP: " << s1->getHP() << endl;
     // cout<<"Enemy HP: "<<c->getHP()<<endl;
 
     delete c;
@@ -158,13 +166,19 @@ void testAttack()
     delete s;
 
     delete s1;
+    cout << endl;
+}
+
+void runTests()
+{
+    testEnemies();
+    testSquadMembers();
+    testFactories();
+    testAttack();
 }
 
 int main()
 {
-    // testEnemies();
-    // testSquadMembers();
-    // testFactories();
-    // testAttack();
+    runTests();
     return 0;
 }
