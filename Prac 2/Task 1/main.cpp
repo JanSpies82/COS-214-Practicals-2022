@@ -8,8 +8,18 @@
 #include "Gorilla.h"
 
 #include "CannibalFactory.h"
+#include "JaguarFactory.h"
+#include "SnakeFactory.h"
+#include "GorillaFactory.h"
 
 using namespace std;
+
+const std::string red = "\x1B[31m";
+const std::string green = "\x1B[32m";
+const std::string yellow = "\x1B[33m";
+const std::string blue = "\x1B[34m";
+const std::string cyan = "\x1B[36m";
+const std::string reset = "\x1B[0m";
 
 void testEnemies()
 {
@@ -75,16 +85,80 @@ void testSquadMembers()
 void testFactories()
 {
     EnemyFactory *cf = new CannibalFactory();
+    EnemyFactory *jf = new JaguarFactory();
+    EnemyFactory *gf = new GorillaFactory();
+    EnemyFactory *sf = new SnakeFactory();
 
-    cf->createEnemy("Fists", "Shield");
+    Enemy *c = cf->createEnemy("Fists", "Shield");
+    Enemy *j = jf->createEnemy("Claws", "Dodge");
+    Enemy *g = gf->createEnemy("Stick", "Duck");
+    Enemy *s = sf->createEnemy("Bite", "Scurry");
+
+    cout << yellow << "Cannibal:" << reset << endl;
+    cout << "Name: " << c->getName() << endl;
+    cout << "HP: " << c->getHP() << endl;
+    cout << "Damage: " << c->getDamage() << endl;
+    cout << "Attack: " << c->getAttackMove() << endl;
+    cout << "Defense: " << c->getDefendMove() << endl;
+
+    cout << yellow << "Jaguar:" << reset << endl;
+    cout << "Name: " << j->getName() << endl;
+    cout << "HP: " << j->getHP() << endl;
+    cout << "Damage: " << j->getDamage() << endl;
+    cout << "Attack: " << j->getAttackMove() << endl;
+    cout << "Defense: " << j->getDefendMove() << endl;
+
+    cout << yellow << "Gorilla:" << reset << endl;
+    cout << "Name: " << g->getName() << endl;
+    cout << "HP: " << g->getHP() << endl;
+    cout << "Damage: " << g->getDamage() << endl;
+    cout << "Attack: " << g->getAttackMove() << endl;
+    cout << "Defense: " << g->getDefendMove() << endl;
+
+    cout << yellow << "Snake:" << reset << endl;
+    cout << "Name: " << s->getName() << endl;
+    cout << "HP: " << s->getHP() << endl;
+    cout << "Damage: " << s->getDamage() << endl;
+    cout << "Attack: " << s->getAttackMove() << endl;
+    cout << "Defense: " << s->getDefendMove() << endl;
 
     delete cf;
+    delete jf;
+    delete gf;
+    delete sf;
+
+    delete c;
+    delete j;
+    delete g;
+    delete s;
+}
+
+void testAttack(){
+    Enemy *c = new Cannibal("Cannibal", 100, 20, "club", "shield");
+    Enemy *j = new Jaguar("Jaguar", 100, 20, "punch", "block");
+    Enemy *g = new Gorilla("Gorilla", 100, 20, "punch", "block");
+    Enemy *s = new Snake("Snake", 100, 20, "bite", "block");
+
+    SquadMember *s1 = new SquadMember("Manny");
+
+    c->attack(s1);
+    j->attack(s1);
+    g->attack(s1);
+    s->attack(s1);
+
+    delete c;
+    delete j;
+    delete g;
+    delete s;
+
+    delete s1;
 }
 
 int main()
 {
     // testEnemies();
     // testSquadMembers();
-    testFactories();
+    // testFactories();
+    testAttack();
     return 0;
 }
