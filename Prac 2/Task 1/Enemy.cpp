@@ -58,3 +58,13 @@ std::string Enemy::getDefendMove()
 {
     return defendMove;
 };
+
+std::string Enemy::getType()
+{
+    return type;
+};
+
+void Enemy::setType(std::string t)
+{
+    type = t;
+};

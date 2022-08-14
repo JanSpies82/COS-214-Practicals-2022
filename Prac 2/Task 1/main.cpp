@@ -165,6 +165,6 @@ int main()
     // testEnemies();
     // testSquadMembers();
     // testFactories();
-    testAttack();
+    // testAttack();
     return 0;
 }
