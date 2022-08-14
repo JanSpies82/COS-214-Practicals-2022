@@ -22,4 +22,5 @@ bool Snake::getHit(SquadMember *z)
 void Snake::die()
 {
     cout << "Hisses and curls up as he is defeated.\n";
+    HP = 0;
 };

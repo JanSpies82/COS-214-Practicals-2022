@@ -133,18 +133,24 @@ void testFactories()
     delete s;
 }
 
-void testAttack(){
-    Enemy *c = new Cannibal("Cannibal", 100, 20, "club", "shield");
-    Enemy *j = new Jaguar("Jaguar", 100, 20, "punch", "block");
-    Enemy *g = new Gorilla("Gorilla", 100, 20, "punch", "block");
-    Enemy *s = new Snake("Snake", 100, 20, "bite", "block");
+void testAttack()
+{
+    Enemy *c = new Cannibal("Cannibal", 10, 2, "club", "shield");
+    Enemy *j = new Jaguar("Jaguar", 10, 2, "punch", "block");
+    Enemy *g = new Gorilla("Gorilla", 10, 2, "punch", "block");
+    Enemy *s = new Snake("Snake", 10, 2, "bite", "block");
 
     SquadMember *s1 = new SquadMember("Manny");
+    s1->setDamage(5);
+    s1->setHP(50);
 
     c->attack(s1);
     j->attack(s1);
     g->attack(s1);
     s->attack(s1);
+
+    cout<<"Squad Member HP: "<<s1->getHP()<<endl;
+    // cout<<"Enemy HP: "<<c->getHP()<<endl;
 
     delete c;
     delete j;

@@ -22,4 +22,5 @@ bool Gorilla::getHit(SquadMember *z)
 void Gorilla::die()
 {
     cout << "The earth shakes as the gorilla falls to the ground.\n";
+    HP = 0;
 };

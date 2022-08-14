@@ -7,7 +7,7 @@ Jaguar::~Jaguar(){};
 
 bool Jaguar::hitSquadMember(SquadMember *z)
 {
-    cout << "Jaguar leaps toward the " << z->getName() << " and deliver\'s a forceful " << attackMove << ".\n";
+    cout << "Jaguar leaps toward the " << z->getName() << " and delivers a forceful " << attackMove << ".\n";
     return (z->takeDamage(damage) <= 0);
 };
 void Jaguar::celebrate()
@@ -22,4 +22,5 @@ bool Jaguar::getHit(SquadMember *z)
 void Jaguar::die()
 {
     cout << "Gives one last growl before falling over.\n";
+    HP = 0;
 };

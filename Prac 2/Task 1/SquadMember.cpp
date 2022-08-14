@@ -39,6 +39,10 @@ void SquadMember::setDamage(int dmg)
 int SquadMember::takeDamage(int dmg)
 {
     HP -= dmg;
+    if (HP < 0)
+    {
+        die();
+    }
     return HP;
 }
 bool SquadMember::isDead()

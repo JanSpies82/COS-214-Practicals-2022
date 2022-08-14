@@ -1,7 +1,6 @@
 #ifndef SQUADMEMBER_H
 #define SQUADMEMBER_H
 #include <string>
-//TODO how name?
 class SquadMember {
 public: 
     SquadMember();

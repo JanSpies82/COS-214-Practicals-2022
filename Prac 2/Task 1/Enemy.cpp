@@ -22,6 +22,7 @@ void Enemy::attack(SquadMember *z)
         else if (getHit(z))
         {
             die();
+            return;
         }
     }
 }
