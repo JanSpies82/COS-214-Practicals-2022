@@ -1,6 +1,7 @@
 #ifndef SQUADMEMBER_H
 #define SQUADMEMBER_H
 #include <string>
+#include <iostream>
 class SquadMember {
 public: 
     SquadMember();
@@ -13,6 +14,7 @@ public:
     int takeDamage(int dmg);
     bool isDead();
     void die();
+    void print();
     SquadMember* clone();
 
 private:

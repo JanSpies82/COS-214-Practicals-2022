@@ -1,16 +1,17 @@
 #include <iostream>
 #include <string>
-#include "SquadMember.h"
+#include "Game.h"
+// #include "SquadMember.h"
 
-#include "Cannibal.h"
-#include "Jaguar.h"
-#include "Snake.h"
-#include "Gorilla.h"
+// #include "Cannibal.h"
+// #include "Jaguar.h"
+// #include "Snake.h"
+// #include "Gorilla.h"
 
-#include "CannibalFactory.h"
-#include "JaguarFactory.h"
-#include "SnakeFactory.h"
-#include "GorillaFactory.h"
+// #include "CannibalFactory.h"
+// #include "JaguarFactory.h"
+// #include "SnakeFactory.h"
+// #include "GorillaFactory.h"
 
 using namespace std;
 
@@ -177,8 +178,20 @@ void runTests()
     testAttack();
 }
 
+void printHeading()
+{
+    cout << "▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄\n";
+    cout << "█░▄▄▀█░▄▀█▀███▀█░▄▄█░▄▄▀█▄░▄█░██░█░▄▄▀█░▄▄███▄░▄█░▄▄█░██░▄▄▀█░▄▄▀█░▄▀█\n";
+    cout << "█░▀▀░█░█░██░▀░██░▄▄█░██░██░██░██░█░▀▀▄█░▄▄████░██▄▄▀█░██░▀▀░█░██░█░█░█\n";
+    cout << "█░██░█▄▄████▄███▄▄▄█▄██▄██▄███▄▄▄█▄█▄▄█▄▄▄███▀░▀█▄▄▄█▄▄█▄██▄█▄██▄█▄▄██\n";
+    cout << "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀\n";
+}
+
 int main()
 {
-    runTests();
+    Game *game = new Game();
+    game->newGame();
+
+    delete game;
     return 0;
 }

@@ -61,6 +61,11 @@ string SquadMember::generateName()
     int index = rand() % 5;
     return names[index];
 };
+void SquadMember::print()
+{
+    cout << name << ": " << HP << " HP, " << damage << " damage" << endl;
+};
+
 SquadMember *SquadMember::clone()
 {
     SquadMember *newMember = new SquadMember();
