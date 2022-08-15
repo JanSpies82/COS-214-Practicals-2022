@@ -27,4 +27,5 @@ Move *MoveHistory::getMove()
         moves->pop_back();
         return m;
     }
+    return NULL;
 };

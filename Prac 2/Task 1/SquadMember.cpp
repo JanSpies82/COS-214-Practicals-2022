@@ -30,8 +30,8 @@ int SquadMember::getDamage()
 };
 void SquadMember::setHP(int hp)
 {
-    if (hp >= 0)
-        HP = hp;
+    HP = hp;
+    dead = (HP <= 0);
 };
 void SquadMember::setDamage(int dmg)
 {
@@ -67,7 +67,7 @@ void SquadMember::print()
     if (!isDead())
         cout << setw(10) << left << name << ": " << setw(2) << left << HP << " HP, " << setw(2) << left << damage << " damage" << endl;
     else
-        cout << setw(10) <<left << name << ": DEAD" << endl;
+        cout << setw(10) << left << name << ": DEAD" << endl;
 };
 
 SquadMember *SquadMember::clone()

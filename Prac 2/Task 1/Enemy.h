@@ -20,6 +20,10 @@ public:
     std::string getAttackMove();
     std::string getDefendMove();
     std::string getType();
+    void setHP(int HP);
+    void setDamage(int damage);
+    void setAttackMove(std::string attackMove);
+    void setDefendMove(std::string defendMove);
     void setType(std::string t);
     virtual Enemy *clone() = 0;
 

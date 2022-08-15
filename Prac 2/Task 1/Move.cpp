@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-Move::Move(SquadMember **sq, Enemy *e)
+Move::Move(SquadMember **sq, Enemy *e, int score)
 {
     squad = new SquadMember *[2];
     for (int i = 0; i < 2; i++)
@@ -12,19 +12,20 @@ Move::Move(SquadMember **sq, Enemy *e)
         squad[i]->setDamage(sq[i]->getDamage());
     }
     enemy = e->clone();
+    this->score = score;
 };
 
 Move::~Move()
 {
     delete enemy;
-    cout << "Deleted enemy\n";
+    // cout << "Deleted enemy\n";
     for (int i = 0; i < 2; i++)
     {
         delete squad[i];
-        cout << "Deleted squadmember\n";
+        // cout << "Deleted squadmember\n";
     }
     delete[] squad;
-    cout << "Deleted squad\n";
+    // cout << "Deleted squad\n";
 };
 SquadMember **Move::getSquadMembers()
 {
@@ -33,4 +34,8 @@ SquadMember **Move::getSquadMembers()
 Enemy *Move::getEnemy()
 {
     return enemy;
+};
+int Move::getScore()
+{
+    return score;
 };

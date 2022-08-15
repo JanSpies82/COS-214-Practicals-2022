@@ -68,3 +68,23 @@ void Enemy::setType(std::string t)
 {
     type = t;
 };
+
+void Enemy::setDamage(int damage)
+{
+    this->damage = damage;
+};
+
+void Enemy::setHP(int HP)
+{
+    this->HP = HP;
+};
+
+void Enemy::setAttackMove(std::string attackMove)
+{
+    this->attackMove = attackMove;
+};
+
+void Enemy::setDefendMove(std::string defendMove)
+{
+    this->defendMove = defendMove;
+};

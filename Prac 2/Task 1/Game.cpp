@@ -13,8 +13,6 @@ Game::Game()
 
     squadMembers = new SquadMember *[2];
 
-    moveHistory = new MoveHistory();
-
     currentEnemy = NULL;
     score = 0;
     active = true;
@@ -80,6 +78,7 @@ void Game::takeTurn()
     }
 
     srand(time(0));
+    moveHistory = new MoveHistory();
     Enemy *e = enemyFactories[rand() % 4]->getEnemy();
     currentEnemy = e;
     int fullHP = e->getHP();
@@ -98,18 +97,50 @@ void Game::takeTurn()
                 if (!squadMembers[y]->isDead())
                     cout << "[" << y << "] " << squadMembers[y]->getName() << endl;
             }
+            cout << "[3] Undo previous move\n";
 
             cout << "Your choice: ";
             in = "";
             cin >> in;
-            valid = (validInp(in) && !squadMembers[stoi(in)]->isDead());
-            if (!valid)
+            if (!(validInp(in)))
                 cout << "INVALID INPUT!\nPlease try again\n\n";
-            else
+            else if (in == "3")
             {
-                Move *m = new Move(squadMembers, currentEnemy);
-                moveHistory->addMove(m);
+                // cout << "1\n";
+                Move *m = moveHistory->getMove();
+                // cout << "2\n";
+                if (m != NULL)
+                {
+                    for (int q = 0; q < 2; q++)
+                    {
+                        // cout << "3\n";
+                        squadMembers[q]->setHP(m->getSquadMembers()[q]->getHP());
+                        squadMembers[q]->setDamage(m->getSquadMembers()[q]->getDamage());
+                    }
+                    // cout << "4\n";
+                    currentEnemy->setDamage(m->getEnemy()->getDamage());
+                    currentEnemy->setHP(m->getEnemy()->getHP());
+
+                    score = m->getScore();
+
+                    cout << "You undid your last move.\n";
+                    delete m;
+                    valid = false;
+                }
+                else
+                {
+                    cout << "No moves to undo!\n";
+                    valid = false;
+                }
             }
+            else if (!squadMembers[stoi(in)]->isDead())
+            {
+                Move *m = new Move(squadMembers, currentEnemy, score);
+                moveHistory->addMove(m);
+                valid = true;
+            }
+            else
+                cout << "INVALID INPUT!\nPlease try again\n\n";
 
         } while (!valid);
 
@@ -135,6 +166,7 @@ void Game::takeTurn()
 
     score += fullHP;
     delete currentEnemy;
+    delete moveHistory;
     e = NULL;
     currentEnemy = NULL;
 }
