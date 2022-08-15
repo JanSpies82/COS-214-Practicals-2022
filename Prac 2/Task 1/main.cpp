@@ -194,12 +194,14 @@ int main()
         game->gameOver();
         string input;
         cout << "Play again? (y/n): ";
-        
+
         cin >> input;
         if (input == "n")
             wantsToPlay = false;
     }
 
     delete game;
+
+    // runTests();
     return 0;
 }
