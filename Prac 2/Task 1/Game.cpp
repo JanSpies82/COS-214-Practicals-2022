@@ -12,6 +12,10 @@ Game::Game()
     enemyFactories[3] = new GorillaFactory();
 
     squadMembers = new SquadMember *[2];
+
+    currentEnemy = NULL;
+    score = 0;
+    active = true;
 }
 
 Game::~Game()
@@ -30,8 +34,6 @@ Game::~Game()
 
 void Game::newGame()
 {
-    score = 0;
-    active = true;
     system("clear");
     cout << title << endl;
     cout << "Welcome to the Jungle!" << endl;
@@ -74,6 +76,7 @@ void Game::takeTurn()
 
     srand(time(0));
     Enemy *e = enemyFactories[rand() % 4]->getEnemy();
+    currentEnemy = e;
     int fullHP = e->getHP();
     cout << "You find a " << e->getType() << " named " << e->getName() << endl;
     cout << "Their stats are: " << e->getHP() << " HP and " << e->getDamage() << " damage!" << endl;
@@ -120,7 +123,9 @@ void Game::takeTurn()
     cin.get();
 
     score += fullHP;
-    delete e;
+    delete currentEnemy;
+    e = NULL;
+    currentEnemy = NULL;
 }
 
 bool Game::alive()
