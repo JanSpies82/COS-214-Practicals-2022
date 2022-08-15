@@ -187,7 +187,6 @@ int main()
     while (wantsToPlay)
     {
         game->newGame();
-
         while (game->alive())
         {
             game->takeTurn();

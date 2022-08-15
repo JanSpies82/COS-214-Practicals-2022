@@ -4,12 +4,16 @@
 #include <string>
 #include <iomanip>
 #include "SquadMember.h"
+
 #include "CannibalFactory.h"
 #include "JaguarFactory.h"
 #include "SnakeFactory.h"
 #include "GorillaFactory.h"
+
 #include "Move.h"
 #include "MoveHistory.h"
+#include "CheckPoint.h"
+#include "Backup.h"
 
 
 class Game
@@ -32,5 +36,6 @@ private:
     int score;
     bool active;
     MoveHistory *moveHistory;
+    Backup *backup;
 };
 #endif // GAME_H

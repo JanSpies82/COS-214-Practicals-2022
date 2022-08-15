@@ -13,6 +13,8 @@ Game::Game()
 
     squadMembers = new SquadMember *[2];
 
+    backup = new Backup();
+
     currentEnemy = NULL;
     score = 0;
     active = true;
@@ -22,17 +24,26 @@ Game::~Game()
 {
     for (int i = 0; i < 4; i++)
     {
+        cout << "Del factory " << i << endl;
         delete enemyFactories[i];
     }
+    cout << "Del factories" << endl;
     delete[] enemyFactories;
     for (int i = 0; i < 2; i++)
     {
+        cout << "Del squad " << i << endl;
         delete squadMembers[i];
     }
+    cout << "Del squad" << endl;
     delete[] squadMembers;
 
+    cout << "Del moves" << endl;
     delete moveHistory;
+    cout << "Del current enemy" << endl;
     delete currentEnemy;
+    cout << "Del backup" << endl;
+    delete backup;
+    cout << "end" << endl;
 }
 
 void Game::newGame()
@@ -40,12 +51,44 @@ void Game::newGame()
     system("clear");
     active = true;
     cout << title << endl;
-    cout << "Welcome to the Jungle!" << endl;
+    cout << "Welcome to the Island!" << endl;
+    cout << "Would you like to start a new game or restore a previous game? (n/r): ";
+    string in;
+    cin >> in;
+    while (in != "n" && in != "r")
+    {
+        cout << "Invalid input. Please enter n or r: ";
+        cin >> in;
+    }
+    if (in == "r")
+    {
+        CheckPoint *c = backup->getCheckPoint();
+        if (c == NULL)
+            cout << "No previous game to restore. Starting new game." << endl;
+        else
+        {
+            cout << "Restoring checkpoint with score " << c->getScore() << ". " << endl;
+            for (int i = 0; i < 2; i++)
+            {
+                delete squadMembers[i];
+                squadMembers[i] = new SquadMember(c->getSquadMembers()[i]->getName());
+                squadMembers[i]->setHP(c->getSquadMembers()[i]->getHP());
+                squadMembers[i]->setDamage(c->getSquadMembers()[i]->getDamage());
+            }
+            score = c->getScore();
+
+            delete c;
+            cout << "(Press Enter to continue)" << endl;
+            cin.ignore();
+            cin.get();
+            return;
+        }
+    }
     string name;
     cout << "Please enter your name: ";
     cin >> name;
     squadMembers[0] = new SquadMember(name);
-    squadMembers[0]->setHP(5);
+    squadMembers[0]->setHP(15);
     squadMembers[0]->setDamage(5);
 
     squadMembers[1] = squadMembers[0]->clone();
@@ -68,7 +111,7 @@ void Game::takeTurn()
     addHead();
     cout << "You delve deeper into the island.\n";
     cout << "There are two paths, left and right. Which one do you choose?\n";
-    cout << "[1] Left \n[2] Right \n[9] Quit \nEnter choice: ";
+    cout << "[1] Left \n[2] Right \n[3] Load Previous Checkpoint\n[9] Quit \nEnter choice: ";
     int choice = 0;
     cin >> choice;
 
@@ -76,6 +119,41 @@ void Game::takeTurn()
     {
         active = false;
         cout << "\nPlayer has quit the game.\n";
+        return;
+    }
+    else if (choice == 3)
+    {
+        CheckPoint *chk = backup->getCheckPoint();
+        if (chk == NULL)
+        {
+            cout << "No previous saved checkpoints" << endl;
+            CheckPoint *c = new CheckPoint(squadMembers, score);
+            backup->addCheckpoint(c);
+        }
+        else
+        {
+            cout << "Restoring checkpoint with score " << chk->getScore() << ". " << endl;
+            for (int i = 0; i < 2; i++)
+            {
+                delete squadMembers[i];
+                squadMembers[i] = new SquadMember(chk->getSquadMembers()[i]->getName());
+                squadMembers[i]->setHP(chk->getSquadMembers()[i]->getHP());
+                squadMembers[i]->setDamage(chk->getSquadMembers()[i]->getDamage());
+            }
+            score = chk->getScore();
+
+            delete chk;
+            cout << "(Press Enter to continue)" << endl;
+            cin.ignore();
+            cin.get();
+        }
+    }
+    else if (choice != 1 && choice != 2)
+    {
+        cout << "Invalid input. Please enter 1, 2, 3 or 9.\n";
+        cout << "(Press Enter to continue)" << endl;
+        cin.ignore();
+        cin.get();
         return;
     }
 
@@ -100,6 +178,7 @@ void Game::takeTurn()
                     cout << "[" << y << "] " << squadMembers[y]->getName() << endl;
             }
             cout << "[3] Undo previous move\n";
+            cout << "[4] Quit and save\n";
 
             cout << "Your choice: ";
             in = "";
@@ -108,18 +187,14 @@ void Game::takeTurn()
                 cout << "INVALID INPUT!\nPlease try again\n\n";
             else if (in == "3")
             {
-                // cout << "1\n";
                 Move *m = moveHistory->getMove();
-                // cout << "2\n";
                 if (m != NULL)
                 {
                     for (int q = 0; q < 2; q++)
                     {
-                        // cout << "3\n";
                         squadMembers[q]->setHP(m->getSquadMembers()[q]->getHP());
                         squadMembers[q]->setDamage(m->getSquadMembers()[q]->getDamage());
                     }
-                    // cout << "4\n";
                     currentEnemy->setDamage(m->getEnemy()->getDamage());
                     currentEnemy->setHP(m->getEnemy()->getHP());
 
@@ -135,6 +210,15 @@ void Game::takeTurn()
                     valid = false;
                 }
             }
+            else if (in == "4")
+            {
+                cout << "You have quit the game.\n";
+                CheckPoint *c = new CheckPoint(squadMembers, score);
+                backup->addCheckpoint(c);
+                active = false;
+                valid = true;
+                return;
+            }
             else if (!squadMembers[stoi(in)]->isDead())
             {
                 Move *m = new Move(squadMembers, currentEnemy, score);
@@ -145,7 +229,7 @@ void Game::takeTurn()
                 cout << "INVALID INPUT!\nPlease try again\n\n";
 
         } while (!valid);
-
+        cout << endl;
         e->attack(squadMembers[stoi(in)]);
 
         if (squadMembers[stoi(in)]->isDead())
@@ -165,11 +249,15 @@ void Game::takeTurn()
         return;
     }
 
+    score += fullHP;
+
+    CheckPoint *c = new CheckPoint(squadMembers, score);
+    backup->addCheckpoint(c);
+    cout << "Checkpoint saved.\n";
     cout << "Press Enter to continue" << endl;
     cin.ignore();
     cin.get();
 
-    score += fullHP;
     delete currentEnemy;
     delete moveHistory;
     e = NULL;
@@ -197,8 +285,6 @@ void Game::addHead()
 
 void Game::gameOver()
 {
-    // system("clear");
-    // cout << title;
     cout << "  ___                                             \n";
     cout << " / __| __ _  _ __   ___        ___ __ __ ___  _ _ \n";
     cout << "| (_ |/ _` || \'  \\ / -_)      / _ \\\\ V // -_)| \'_|\n";
