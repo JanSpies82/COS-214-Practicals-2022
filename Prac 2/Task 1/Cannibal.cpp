@@ -29,3 +29,10 @@ void Cannibal::die()
     cout << "Screams with his last breath \"I am your father\".\n";
     HP = 0;
 };
+
+Enemy *Cannibal::clone()
+{
+    Enemy *e = new Cannibal(name, HP, damage, attackMove, defendMove);
+    e->setType(type);
+    return e;
+}

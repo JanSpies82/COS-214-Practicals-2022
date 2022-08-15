@@ -29,3 +29,9 @@ void Snake::die()
     cout << "Hisses and curls up as he is defeated.\n";
     HP = 0;
 };
+Enemy *Snake::clone()
+{
+    Enemy *e = new Snake(name, HP, damage, attackMove, defendMove);
+    e->setType(type);
+    return e;
+}

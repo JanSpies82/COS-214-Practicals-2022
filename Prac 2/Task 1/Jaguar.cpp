@@ -29,3 +29,9 @@ void Jaguar::die()
     cout << "Gives one last growl before falling over.\n";
     HP = 0;
 };
+Enemy *Jaguar::clone()
+{
+    Enemy *e = new Jaguar(name, HP, damage, attackMove, defendMove);
+    e->setType(type);
+    return e;
+}

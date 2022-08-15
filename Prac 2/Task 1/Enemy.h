@@ -21,7 +21,9 @@ public:
     std::string getDefendMove();
     std::string getType();
     void setType(std::string t);
+    virtual Enemy *clone() = 0;
 
+protected:
     int HP;
     int damage;
     std::string attackMove;

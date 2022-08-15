@@ -29,3 +29,9 @@ void Gorilla::die()
     cout << "The earth shakes as the gorilla falls to the ground.\n";
     HP = 0;
 };
+Enemy *Gorilla::clone()
+{
+    Enemy *e = new Gorilla(name, HP, damage, attackMove, defendMove);
+    e->setType(type);
+    return e;
+}

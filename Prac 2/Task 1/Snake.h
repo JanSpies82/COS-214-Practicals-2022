@@ -10,5 +10,6 @@ public:
     void celebrate();
     bool getHit(SquadMember *z);
     void die();
+    Enemy* clone();
 };
 #endif // SNAKE_H

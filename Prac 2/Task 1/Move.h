@@ -1,13 +1,18 @@
 #ifndef MOVE_H
 #define MOVE_H
-#include "Game.h"
+#include "Enemy.h"
+#include "SquadMember.h"
 class Move
 {
-private:
-    Move(int choice);
+public:
+    Move(SquadMember **sq, Enemy *e);
     ~Move();
-    int getMove();
-    int choice;
+
+private:
+    SquadMember **getSquadMembers();
+    Enemy *getEnemy();
+    SquadMember **squad;
+    Enemy *enemy;
     friend class Game;
 };
 #endif // MOVE_H

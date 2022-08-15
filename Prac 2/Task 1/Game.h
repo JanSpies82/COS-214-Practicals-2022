@@ -8,7 +8,9 @@
 #include "JaguarFactory.h"
 #include "SnakeFactory.h"
 #include "GorillaFactory.h"
+#include "Move.h"
 #include "MoveHistory.h"
+
 
 class Game
 {
@@ -23,11 +25,12 @@ public:
 private:
     EnemyFactory **enemyFactories;
     SquadMember **squadMembers;
-    Enemy* currentEnemy;
+    Enemy *currentEnemy;
     const static std::string title;
     void addHead();
     bool validInp(std::string in);
     int score;
     bool active;
+    MoveHistory *moveHistory;
 };
 #endif // GAME_H

@@ -13,6 +13,8 @@ Game::Game()
 
     squadMembers = new SquadMember *[2];
 
+    moveHistory = new MoveHistory();
+
     currentEnemy = NULL;
     score = 0;
     active = true;
@@ -30,6 +32,9 @@ Game::~Game()
         delete squadMembers[i];
     }
     delete[] squadMembers;
+
+    delete moveHistory;
+    delete currentEnemy;
 }
 
 void Game::newGame()
@@ -100,6 +105,12 @@ void Game::takeTurn()
             valid = (validInp(in) && !squadMembers[stoi(in)]->isDead());
             if (!valid)
                 cout << "INVALID INPUT!\nPlease try again\n\n";
+            else
+            {
+                Move *m = new Move(squadMembers, currentEnemy);
+                moveHistory->addMove(m);
+            }
+
         } while (!valid);
 
         e->attack(squadMembers[stoi(in)]);

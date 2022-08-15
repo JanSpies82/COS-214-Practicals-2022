@@ -14,9 +14,17 @@ MoveHistory::~MoveHistory()
     }
     delete moves;
 };
-void MoveHistory::addMove(Move* move){
+void MoveHistory::addMove(Move *move)
+{
     moves->push_back(move);
 };
-Move *MoveHistory::getMove(){
-    return moves->at(moves->size()-1);
+
+Move *MoveHistory::getMove()
+{
+    if (moves->size() > 0)
+    {
+        Move *m = moves->back();
+        moves->pop_back();
+        return m;
+    }
 };

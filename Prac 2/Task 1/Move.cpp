@@ -1,12 +1,36 @@
 #include "Move.h"
+#include <iostream>
 using namespace std;
 
-Move::Move(int choice)
+Move::Move(SquadMember **sq, Enemy *e)
 {
-    this->choice = choice;
+    squad = new SquadMember *[2];
+    for (int i = 0; i < 2; i++)
+    {
+        squad[i] = new SquadMember(sq[i]->getName());
+        squad[i]->setHP(sq[i]->getHP());
+        squad[i]->setDamage(sq[i]->getDamage());
+    }
+    enemy = e->clone();
 };
-Move::~Move(){};
-int Move::getMove()
+
+Move::~Move()
 {
-    return choice;
+    delete enemy;
+    cout << "Deleted enemy\n";
+    for (int i = 0; i < 2; i++)
+    {
+        delete squad[i];
+        cout << "Deleted squadmember\n";
+    }
+    delete[] squad;
+    cout << "Deleted squad\n";
+};
+SquadMember **Move::getSquadMembers()
+{
+    return squad;
+};
+Enemy *Move::getEnemy()
+{
+    return enemy;
 };
