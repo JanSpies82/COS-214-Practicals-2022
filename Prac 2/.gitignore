@@ -4,3 +4,8 @@ valg.txt
 main
 *.vpp.bak*
 *.vpp.lck*
+*.aux
+*.log
+*.fdb_latexmk
+*.fls
+*.synctex.gz
