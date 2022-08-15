@@ -31,6 +31,7 @@ Game::~Game()
 void Game::newGame()
 {
     score = 0;
+    active = true;
     system("clear");
     cout << title << endl;
     cout << "Welcome to the Jungle!" << endl;
@@ -43,6 +44,18 @@ void Game::newGame()
 
     squadMembers[1] = squadMembers[0]->clone();
     squadMembers[2] = squadMembers[0]->clone();
+
+    cout << setw(38) << left << "Your squad consists of:" << endl;
+    for (int t = 0; t < 3; t++)
+    {
+        cout << "\t";
+        squadMembers[t]->print();
+    }
+    cout << endl;
+    cout << "You are about to embark on a dangerous journey. Are you ready?" << endl;
+    cout << "(Press Enter to continue)" << endl;
+    cin.ignore();
+    cin.get();
 }
 
 void Game::takeTurn()
@@ -56,6 +69,8 @@ void Game::takeTurn()
 
     if (choice == 9)
     {
+        gameOver();
+        return;
     }
 
     cout << "You have chosen " << choice << endl;
@@ -63,13 +78,14 @@ void Game::takeTurn()
 
 bool Game::alive()
 {
+    return active;
 }
 
 void Game::addHead()
 {
     system("clear");
     cout << title;
-    cout << setw(30) << left << "Your squad:"
+    cout << setw(38) << left << "Your squad:"
          << "SCORE: " << score << endl;
     for (int t = 0; t < 3; t++)
     {
@@ -83,4 +99,10 @@ void Game::gameOver()
 {
     system("clear");
     cout << title;
+    cout << "  ___                                             \n";
+    cout << " / __| __ _  _ __   ___        ___ __ __ ___  _ _ \n";
+    cout << "| (_ |/ _` || \'  \\ / -_)      / _ \\\\ V // -_)| \'_|\n";
+    cout << " \\___|\\__/_||_|_|_|\\___|      \\___/ \\_/ \\___||_|  \n";
+    cout << "FINAL SCORE : " << score << endl;
+    active = false;
 }

@@ -25,5 +25,6 @@ private:
     const static std::string title;
     void addHead();
     int score;
+    bool active;
 };
 #endif // GAME_H

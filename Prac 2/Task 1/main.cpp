@@ -192,10 +192,12 @@ int main()
     Game *game = new Game();
     game->newGame();
 
-    for (int t = 0; t < 2; t++)
+    while (game->alive())
     {
         game->takeTurn();
     }
+
+    game->gameOver();
 
     delete game;
     return 0;
