@@ -181,14 +181,25 @@ void runTests()
 int main()
 {
     Game *game = new Game();
-    game->newGame();
 
-    while (game->alive())
+    bool wantsToPlay = true;
+
+    while (wantsToPlay)
     {
-        game->takeTurn();
-    }
+        game->newGame();
 
-    game->gameOver();
+        while (game->alive())
+        {
+            game->takeTurn();
+        }
+        game->gameOver();
+        string input;
+        cout << "Play again? (y/n): ";
+        
+        cin >> input;
+        if (input == "n")
+            wantsToPlay = false;
+    }
 
     delete game;
     return 0;

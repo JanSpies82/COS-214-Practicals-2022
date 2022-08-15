@@ -38,6 +38,7 @@ Game::~Game()
 void Game::newGame()
 {
     system("clear");
+    active = true;
     cout << title << endl;
     cout << "Welcome to the Jungle!" << endl;
     string name;
@@ -73,7 +74,8 @@ void Game::takeTurn()
 
     if (choice == 9)
     {
-        gameOver("Player has quit the game.");
+        active = false;
+        cout << "\nPlayer has quit the game.\n";
         return;
     }
 
@@ -158,7 +160,10 @@ void Game::takeTurn()
         }
     }
     if (!alive())
+    {
+        cout << "\nAll squad members have been killed!\n";
         return;
+    }
 
     cout << "Press Enter to continue" << endl;
     cin.ignore();
@@ -173,7 +178,7 @@ void Game::takeTurn()
 
 bool Game::alive()
 {
-    return !squadMembers[0]->isDead() || !squadMembers[1]->isDead();
+    return (!squadMembers[0]->isDead() || !squadMembers[1]->isDead()) && active;
 }
 
 void Game::addHead()
@@ -190,7 +195,7 @@ void Game::addHead()
     cout << endl;
 }
 
-void Game::gameOver(string message)
+void Game::gameOver()
 {
     // system("clear");
     // cout << title;
@@ -198,7 +203,6 @@ void Game::gameOver(string message)
     cout << " / __| __ _  _ __   ___        ___ __ __ ___  _ _ \n";
     cout << "| (_ |/ _` || \'  \\ / -_)      / _ \\\\ V // -_)| \'_|\n";
     cout << " \\___|\\__/_||_|_|_|\\___|      \\___/ \\_/ \\___||_|  \n";
-    cout << message << endl;
     cout << "FINAL SCORE : " << score << endl;
     active = false;
 }

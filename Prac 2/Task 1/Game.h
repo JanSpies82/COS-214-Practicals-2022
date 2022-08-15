@@ -20,7 +20,7 @@ public:
     void newGame();
     void takeTurn();
     bool alive();
-    void gameOver(std::string message = "All squadmembers have died!");
+    void gameOver();
 
 private:
     EnemyFactory **enemyFactories;
