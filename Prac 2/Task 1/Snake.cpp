@@ -20,6 +20,7 @@ bool Snake::getHit(SquadMember *z)
 {
     if (z == NULL)
         return true;
+    cout << z->getName() << " attacks " << name << endl;
     cout << "Slithers rapidly searching for safety and employs " << defendMove << ".\n";
     return (takeDamage(z->getDamage()) <= 0);
 };

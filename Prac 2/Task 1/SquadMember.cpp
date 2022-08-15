@@ -58,6 +58,7 @@ void SquadMember::die()
 };
 string SquadMember::generateName()
 {
+    srand(time(0));
     int index = rand() % 5;
     return names[index];
 };
@@ -66,7 +67,7 @@ void SquadMember::print()
     if (!isDead())
         cout << setw(10) << left << name << ": " << setw(2) << left << HP << " HP, " << setw(2) << left << damage << " damage" << endl;
     else
-        cout << name << ": DEAD" << endl;
+        cout << setw(10) <<left << name << ": DEAD" << endl;
 };
 
 SquadMember *SquadMember::clone()

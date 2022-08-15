@@ -17,13 +17,14 @@ public:
     void newGame();
     void takeTurn();
     bool alive();
-    void gameOver();
+    void gameOver(std::string message = "All squadmembers have died!");
 
 private:
     EnemyFactory **enemyFactories;
     SquadMember **squadMembers;
     const static std::string title;
     void addHead();
+    bool validInp(std::string in);
     int score;
     bool active;
 };

@@ -1,7 +1,7 @@
 #include "EnemyFactory.h"
 using namespace std;
 
-const string EnemyFactory::names[] = {"Skelator", "Mr Burns", "Gargamel", "Dr Doom", "Shredder", "Megatron", "Plankton"};
+const string EnemyFactory::names[] = {"Mr Burns", "Skelator", "Gargamel", "Dr Doom", "Shredder", "Megatron", "Plankton"};
 const string EnemyFactory::attackMoves[] = {"Punch", "Hit", "Strangle", "Bite", "Throw"};
 const string EnemyFactory::defenceMoves[] = {"Hide", "Block", "Shield", "Jump", "Crouch"};
 
@@ -31,10 +31,12 @@ int EnemyFactory::getUniform(int min, int max)
 
 std::string EnemyFactory::getName()
 {
-    return names[rand() % 7];
+    srand(time(0));
+    return names[rand() % names->size()];
 }
 
 Enemy *EnemyFactory::getEnemy()
 {
+    srand(time(0));
     return createEnemy(attackMoves[rand() % attackMoves->size()], defenceMoves[rand() % defenceMoves->size()]);
 }

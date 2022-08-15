@@ -20,6 +20,7 @@ bool Gorilla::getHit(SquadMember *z)
 {
     if (z == NULL)
         return true;
+    cout << z->getName() << " attacks " << name << endl;
     cout << "Roars and hits his chest in anger.\n";
     return (takeDamage(z->getDamage()) <= 0);
 };

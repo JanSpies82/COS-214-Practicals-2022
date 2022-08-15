@@ -20,6 +20,7 @@ bool Cannibal::getHit(SquadMember *z)
 {
     if (z == NULL)
         return true;
+    cout << z->getName() << " attacks " << name << endl;
     cout << "The other villagers come runing deploying " << defendMove << ".\n";
     return (takeDamage(z->getDamage()) <= 0);
 };

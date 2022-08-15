@@ -11,7 +11,7 @@ Game::Game()
     enemyFactories[2] = new SnakeFactory();
     enemyFactories[3] = new GorillaFactory();
 
-    squadMembers = new SquadMember *[3];
+    squadMembers = new SquadMember *[2];
 }
 
 Game::~Game()
@@ -21,7 +21,7 @@ Game::~Game()
         delete enemyFactories[i];
     }
     delete[] enemyFactories;
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < 2; i++)
     {
         delete squadMembers[i];
     }
@@ -39,14 +39,13 @@ void Game::newGame()
     cout << "Please enter your name: ";
     cin >> name;
     squadMembers[0] = new SquadMember(name);
-    squadMembers[0]->setHP(25);
+    squadMembers[0]->setHP(5);
     squadMembers[0]->setDamage(5);
 
     squadMembers[1] = squadMembers[0]->clone();
-    squadMembers[2] = squadMembers[0]->clone();
 
     cout << setw(38) << left << "Your squad consists of:" << endl;
-    for (int t = 0; t < 3; t++)
+    for (int t = 0; t < 2; t++)
     {
         cout << "\t";
         squadMembers[t]->print();
@@ -61,7 +60,7 @@ void Game::newGame()
 void Game::takeTurn()
 {
     addHead();
-    cout << "You delve deeper into the jungle.\n";
+    cout << "You delve deeper into the island.\n";
     cout << "There are two paths, left and right. Which one do you choose?\n";
     cout << "[1] Left \n[2] Right \n[9] Quit \nEnter choice: ";
     int choice = 0;
@@ -69,21 +68,64 @@ void Game::takeTurn()
 
     if (choice == 9)
     {
-        gameOver();
+        gameOver("Player has quit the game.");
         return;
     }
 
-    Enemy *e = enemyFactories[rand() % 5]->getEnemy();
+    srand(time(0));
+    Enemy *e = enemyFactories[rand() % 4]->getEnemy();
+    int fullHP = e->getHP();
+    cout << "You find a " << e->getType() << " named " << e->getName() << endl;
+    cout << "Their stats are: " << e->getHP() << " HP and " << e->getDamage() << " damage!" << endl;
+    bool valid = false;
+    string in;
 
-    cout << "Created " << e->getType() << endl;
+    while (e->getHP() > 0 && alive())
+    {
+        do
+        {
+            cout << "Choose which squadmember should face this foe!\n";
+            for (int y = 0; y < 2; y++)
+            {
+                if (!squadMembers[y]->isDead())
+                    cout << "[" << y << "] " << squadMembers[y]->getName() << endl;
+            }
 
+            cout << "Your choice: ";
+            in = "";
+            cin >> in;
+            valid = (validInp(in) && !squadMembers[stoi(in)]->isDead());
+            if (!valid)
+                cout << "INVALID INPUT!\nPlease try again\n\n";
+        } while (!valid);
+
+        e->attack(squadMembers[stoi(in)]);
+
+        if (squadMembers[stoi(in)]->isDead())
+        {
+            cout << squadMembers[stoi(in)]->getName() << " has fallen!" << endl;
+            cout << e->getName() << " still has " << e->getHP() << " HP!" << endl;
+        }
+        else
+        {
+            cout << squadMembers[stoi(in)]->getName() << " lives to fight another day and gained " << fullHP << " points!" << endl
+                 << endl;
+        }
+    }
+    if (!alive())
+        return;
+
+    cout << "Press Enter to continue" << endl;
     cin.ignore();
     cin.get();
+
+    score += fullHP;
+    delete e;
 }
 
 bool Game::alive()
 {
-    return active;
+    return !squadMembers[0]->isDead() || !squadMembers[1]->isDead();
 }
 
 void Game::addHead()
@@ -92,7 +134,7 @@ void Game::addHead()
     cout << title;
     cout << setw(38) << left << "Your squad:"
          << "SCORE: " << score << endl;
-    for (int t = 0; t < 3; t++)
+    for (int t = 0; t < 2; t++)
     {
         cout << "\t";
         squadMembers[t]->print();
@@ -100,14 +142,20 @@ void Game::addHead()
     cout << endl;
 }
 
-void Game::gameOver()
+void Game::gameOver(string message)
 {
-    system("clear");
-    cout << title;
+    // system("clear");
+    // cout << title;
     cout << "  ___                                             \n";
     cout << " / __| __ _  _ __   ___        ___ __ __ ___  _ _ \n";
     cout << "| (_ |/ _` || \'  \\ / -_)      / _ \\\\ V // -_)| \'_|\n";
     cout << " \\___|\\__/_||_|_|_|\\___|      \\___/ \\_/ \\___||_|  \n";
+    cout << message << endl;
     cout << "FINAL SCORE : " << score << endl;
     active = false;
+}
+
+bool Game::validInp(string in)
+{
+    return in.find_first_not_of("0123456789") == string::npos;
 }
