@@ -2,8 +2,10 @@
 #define SQUADMEMBER_H
 #include <string>
 #include <iostream>
-class SquadMember {
-public: 
+#include <iomanip>
+class SquadMember
+{
+public:
     SquadMember();
     SquadMember(std::string name);
     std::string getName();
@@ -15,7 +17,7 @@ public:
     bool isDead();
     void die();
     void print();
-    SquadMember* clone();
+    SquadMember *clone();
 
 private:
     std::string name;

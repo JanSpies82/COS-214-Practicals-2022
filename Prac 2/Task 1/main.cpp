@@ -192,6 +192,11 @@ int main()
     Game *game = new Game();
     game->newGame();
 
+    for (int t = 0; t < 2; t++)
+    {
+        game->takeTurn();
+    }
+
     delete game;
     return 0;
 }

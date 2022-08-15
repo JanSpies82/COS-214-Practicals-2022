@@ -30,6 +30,7 @@ Game::~Game()
 
 void Game::newGame()
 {
+    score = 0;
     system("clear");
     cout << title << endl;
     cout << "Welcome to the Jungle!" << endl;
@@ -42,15 +43,44 @@ void Game::newGame()
 
     squadMembers[1] = squadMembers[0]->clone();
     squadMembers[2] = squadMembers[0]->clone();
+}
 
-    cout << "Your squad consists of: " << endl;
+void Game::takeTurn()
+{
+    addHead();
+    cout << "You delve deeper into the jungle.\n";
+    cout << "There are two paths, left and right. Which one do you choose?\n";
+    cout << "[1] Left \n[2] Right \n[9] Quit \nEnter choice: ";
+    int choice = 0;
+    cin >> choice;
+
+    if (choice == 9)
+    {
+    }
+
+    cout << "You have chosen " << choice << endl;
+}
+
+bool Game::alive()
+{
+}
+
+void Game::addHead()
+{
+    system("clear");
+    cout << title;
+    cout << setw(30) << left << "Your squad:"
+         << "SCORE: " << score << endl;
     for (int t = 0; t < 3; t++)
     {
+        cout << "\t";
         squadMembers[t]->print();
     }
     cout << endl;
 }
 
-void Game::run()
+void Game::gameOver()
 {
+    system("clear");
+    cout << title;
 }

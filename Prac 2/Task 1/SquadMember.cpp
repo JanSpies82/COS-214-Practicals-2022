@@ -63,7 +63,10 @@ string SquadMember::generateName()
 };
 void SquadMember::print()
 {
-    cout << name << ": " << HP << " HP, " << damage << " damage" << endl;
+    if (!isDead())
+        cout << setw(10) << left << name << ": " << setw(2) << left << HP << " HP, " << setw(2) << left << damage << " damage" << endl;
+    else
+        cout << name << ": DEAD" << endl;
 };
 
 SquadMember *SquadMember::clone()
