@@ -73,7 +73,12 @@ void Game::takeTurn()
         return;
     }
 
-    cout << "You have chosen " << choice << endl;
+    Enemy *e = enemyFactories[rand() % 5]->getEnemy();
+
+    cout << "Created " << e->getType() << endl;
+
+    cin.ignore();
+    cin.get();
 }
 
 bool Game::alive()

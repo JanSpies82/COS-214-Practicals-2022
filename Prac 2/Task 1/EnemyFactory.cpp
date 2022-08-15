@@ -2,6 +2,8 @@
 using namespace std;
 
 const string EnemyFactory::names[] = {"Skelator", "Mr Burns", "Gargamel", "Dr Doom", "Shredder", "Megatron", "Plankton"};
+const string EnemyFactory::attackMoves[] = {"Punch", "Hit", "Strangle", "Bite", "Throw"};
+const string EnemyFactory::defenceMoves[] = {"Hide", "Block", "Shield", "Jump", "Crouch"};
 
 EnemyFactory::EnemyFactory()
 {
@@ -30,4 +32,9 @@ int EnemyFactory::getUniform(int min, int max)
 std::string EnemyFactory::getName()
 {
     return names[rand() % 7];
+}
+
+Enemy *EnemyFactory::getEnemy()
+{
+    return createEnemy(attackMoves[rand() % attackMoves->size()], defenceMoves[rand() % defenceMoves->size()]);
 }
