@@ -180,28 +180,28 @@ void runTests()
 
 int main()
 {
-    Game *game = new Game();
+    // Game *game = new Game();
 
-    bool wantsToPlay = true;
+    // bool wantsToPlay = true;
 
-    while (wantsToPlay)
-    {
-        game->newGame();
-        while (game->alive())
-        {
-            game->takeTurn();
-        }
-        game->gameOver();
-        string input;
-        cout << "Play again? (y/n): ";
+    // while (wantsToPlay)
+    // {
+    //     game->newGame();
+    //     while (game->alive())
+    //     {
+    //         game->takeTurn();
+    //     }
+    //     game->gameOver();
+    //     string input;
+    //     cout << "Play again? (y/n): ";
 
-        cin >> input;
-        if (input == "n")
-            wantsToPlay = false;
-    }
+    //     cin >> input;
+    //     if (input == "n")
+    //         wantsToPlay = false;
+    // }
 
-    delete game;
+    // delete game;
 
-    // runTests();
+    runTests();
     return 0;
 }
