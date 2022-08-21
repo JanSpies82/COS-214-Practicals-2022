@@ -1,23 +1,23 @@
-#include <exception>
+#ifndef CONFECTIONARY_H
+#define CONFECTIONARY_H
+#include <iostream>
 #include <string>
-using namespace std;
-
-#ifndef __Confectionary_h__
-#define __Confectionary_h__
-
-class Confectionary;
-
-__abstract class Confectionary
+class Confectionary
 {
-	private: string manufacturer;
-	private: double price;
-	private: string type;
-	private: int id;
-	private: int counter;
+public:
+	Confectionary(std::string manufacturer, double price, std::string type);
+	std::string getDescription();
+	double getPrice();
+	std::string getManufacturer();
+	std::string getType();
+	int getId();
 
-	public: Confectionary(string manufacturer, double price, string type);
-
-	public: string getDescription();
+private:
+	std::string manufacturer;
+	double price;
+	std::string type;
+	int id;
+	static int counter;
 };
 
 #endif

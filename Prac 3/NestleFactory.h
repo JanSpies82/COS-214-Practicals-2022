@@ -1,20 +1,12 @@
-#include <exception>
-using namespace std;
-
-#ifndef __NestleFactory_h__
-#define __NestleFactory_h__
+#ifndef NESTLEFACTORY_H
+#define NESTLEFACTORY_H
 
 #include "ConfectionaryFactory.h"
-
-// class ConfectionaryFactory;
-class NestleFactory;
-
-class NestleFactory: public ConfectionaryFactory
+class NestleFactory : public ConfectionaryFactory
 {
-
-	public: Confectionary* createChocolate();
-
-	public: Confectionary* createAeratedChocolate();
+public:
+	Confectionary *createChocolate();
+	Confectionary *createAeratedChocolate();
 };
 
 #endif

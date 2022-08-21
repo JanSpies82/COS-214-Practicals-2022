@@ -1,10 +1,6 @@
-#include <exception>
-#include <string>
+#include "Aero.h"
 using namespace std;
 
-#include "Aero.h"
-#include "AeratedChocolate.h"
-
-Aero::Aero(string manufacturer, double price, string bubblespccm) {
+Aero::Aero(string manufacturer, double price, int bubblespccm) : AeratedChocolate(manufacturer, price, bubblespccm)
+{
 }
-

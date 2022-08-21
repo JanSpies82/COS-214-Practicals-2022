@@ -1,19 +1,11 @@
-#include <exception>
-#include <string>
-using namespace std;
-
-#ifndef __Aero_h__
-#define __Aero_h__
+#ifndef AERO_H
+#define AERO_H
 
 #include "AeratedChocolate.h"
-
-// class AeratedChocolate;
-class Aero;
-
-class Aero: public AeratedChocolate
+class Aero : public AeratedChocolate
 {
-
-	public: Aero(string manufacturer, double price, string bubblespccm);
+public:
+	Aero(std::string manufacturer, double price, int bubblespccm);
 };
 
 #endif

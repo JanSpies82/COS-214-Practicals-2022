@@ -1,10 +1,6 @@
-#include <exception>
-#include <string>
+#include "DairyMilk.h"
 using namespace std;
 
-#include "DairyMilk.h"
-#include "Chocolate.h"
-
-DairyMilk::DairyMilk(string manufacturer, double price, bool slab) {
+DairyMilk::DairyMilk(string manufacturer, double price, bool slab) : Chocolate(manufacturer, price, slab)
+{
 }
-

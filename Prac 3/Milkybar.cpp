@@ -1,10 +1,6 @@
-#include <exception>
-#include <string>
+#include "Milkybar.h"
 using namespace std;
 
-#include "Milkybar.h"
-#include "Chocolate.h"
-
-Milkybar::Milkybar(string manufacturer, double price, bool slab) {
+Milkybar::Milkybar(string manufacturer, double price, bool slab) : Chocolate(manufacturer, price, slab)
+{
 }
-

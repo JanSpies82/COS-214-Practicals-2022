@@ -1,14 +1,12 @@
-#include <exception>
-#include <string>
+#include "AeratedChocolate.h"
 using namespace std;
 
-#include "AeratedChocolate.h"
-#include "Confectionary.h"
-
-AeratedChocolate::AeratedChocolate(string manufacturer, double price, int bubblespccm) {
+AeratedChocolate::AeratedChocolate(string manufacturer, double price, int bubblespccm) : Confectionary(manufacturer, price, "Aerated Chocolate")
+{
+	this->bubblespccm = bubblespccm;
 }
 
-string AeratedChocolate::getDescription() {
-	throw "Not yet implemented";
+string AeratedChocolate::getDescription()
+{
+	return "";
 }
-

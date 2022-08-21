@@ -1,17 +1,12 @@
-#include <exception>
-using namespace std;
-
-#ifndef __ConfectionaryFactory_h__
-#define __ConfectionaryFactory_h__
-
-class ConfectionaryFactory;
-
-__abstract class ConfectionaryFactory
+#ifndef CONFECTIONARYFACTORY_H
+#define CONFECTIONARYFACTORY_H
+#include "Confectionary.h"
+class ConfectionaryFactory
 {
 
-	public: virtual Confectionary* createChocolate() = 0;
-
-	public: virtual Confectionary* createAeratedChocolate() = 0;
+public:
+	virtual Confectionary *createChocolate() = 0;
+	virtual Confectionary *createAeratedChocolate() = 0;
 };
 
 #endif

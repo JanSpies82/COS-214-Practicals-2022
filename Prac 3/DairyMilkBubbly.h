@@ -1,19 +1,11 @@
-#include <exception>
-#include <string>
-using namespace std;
-
-#ifndef __DairyMilkBubbly_h__
-#define __DairyMilkBubbly_h__
+#ifndef DAIRYMILKBUBLY_H
+#define DAIRYMILKBUBLY_H
 
 #include "AeratedChocolate.h"
-
-// class AeratedChocolate;
-class DairyMilkBubbly;
-
-class DairyMilkBubbly: public AeratedChocolate
+class DairyMilkBubbly : public AeratedChocolate
 {
-
-	public: DairyMilkBubbly(string manufacturer, double price, int bubblespccm);
+public:
+	DairyMilkBubbly(std::string manufacturer, double price, int bubblespccm);
 };
 
 #endif

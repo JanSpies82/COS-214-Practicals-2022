@@ -1,14 +1,12 @@
-#include <exception>
+#include "CadburyFactory.h"
 using namespace std;
 
-#include "CadburyFactory.h"
-#include "ConfectionaryFactory.h"
-
-Confectionary* CadburyFactory::createChocolate() {
-	throw "Not yet implemented";
+Confectionary *CadburyFactory::createChocolate()
+{
+	return NULL;
 }
 
-Confectionary* CadburyFactory::createAeratedChocolate() {
-	throw "Not yet implemented";
+Confectionary *CadburyFactory::createAeratedChocolate()
+{
+	return NULL;
 }
-

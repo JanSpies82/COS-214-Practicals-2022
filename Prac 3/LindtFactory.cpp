@@ -1,14 +1,12 @@
-#include <exception>
+#include "LindtFactory.h"
 using namespace std;
 
-#include "LindtFactory.h"
-#include "ConfectionaryFactory.h"
-
-Confectionary* LindtFactory::createChocolate() {
-	throw "Not yet implemented";
+Confectionary *LindtFactory::createChocolate()
+{
+	return NULL;
 }
 
-Confectionary* LindtFactory::createAeratedChocolate() {
-	throw "Not yet implemented";
+Confectionary *LindtFactory::createAeratedChocolate()
+{
+	return NULL;
 }
-

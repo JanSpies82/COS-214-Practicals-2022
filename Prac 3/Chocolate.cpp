@@ -1,14 +1,12 @@
-#include <exception>
-#include <string>
+#include "Chocolate.h"
 using namespace std;
 
-#include "Chocolate.h"
-#include "Confectionary.h"
-
-Chocolate::Chocolate(string manufacturer, double price, bool slab) {
+Chocolate::Chocolate(string manufacturer, double price, bool slab) : Confectionary(manufacturer, price, "Chocolate")
+{
+	this->slab = slab;
 }
 
-string Chocolate::getDescription() {
-	throw "Not yet implemented";
+string Chocolate::getDescription()
+{
+	return "";
 }
-

@@ -1,19 +1,12 @@
-#include <exception>
-#include <string>
-using namespace std;
-
-#ifndef __Milkybar_h__
-#define __Milkybar_h__
+#ifndef MILKYBAR_H
+#define MILKYBAR_H
 
 #include "Chocolate.h"
 
-// class Chocolate;
-class Milkybar;
-
-class Milkybar: public Chocolate
+class Milkybar : public Chocolate
 {
-
-	public: Milkybar(string manufacturer, double price, bool slab);
+public:
+	Milkybar(std::string manufacturer, double price, bool slab);
 };
 
 #endif

@@ -1,20 +1,12 @@
-#include <exception>
-using namespace std;
-
-#ifndef __LindtFactory_h__
-#define __LindtFactory_h__
+#ifndef LINDTFACTORY_H
+#define LINDTFACTORY_H
 
 #include "ConfectionaryFactory.h"
-
-// class ConfectionaryFactory;
-class LindtFactory;
-
-class LindtFactory: public ConfectionaryFactory
+class LindtFactory : public ConfectionaryFactory
 {
-
-	public: Confectionary* createChocolate();
-
-	public: Confectionary* createAeratedChocolate();
+public:
+	Confectionary *createChocolate();
+	Confectionary *createAeratedChocolate();
 };
 
 #endif

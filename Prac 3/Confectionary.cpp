@@ -1,13 +1,12 @@
-#include <exception>
-#include <string>
-using namespace std;
-
 #include "Confectionary.h"
-Confectionary::Confectionary(string manufacturer, double price, string type) {
-	counter = 0;
+using namespace std;
+int Confectionary::counter = 0;
+
+Confectionary::Confectionary(string manufacturer, double price, string type)
+{
 }
 
-string Confectionary::getDescription() {
-	throw "Not yet implemented";
+string Confectionary::getDescription()
+{
+	return "";
 }
-

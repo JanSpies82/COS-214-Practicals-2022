@@ -1,10 +1,6 @@
-#include <exception>
-#include <string>
+#include "DairyMilkBubbly.h"
 using namespace std;
 
-#include "DairyMilkBubbly.h"
-#include "AeratedChocolate.h"
-
-DairyMilkBubbly::DairyMilkBubbly(string manufacturer, double price, int bubblespccm) {
+DairyMilkBubbly::DairyMilkBubbly(string manufacturer, double price, int bubblespccm) : AeratedChocolate(manufacturer, price, bubblespccm)
+{
 }
-

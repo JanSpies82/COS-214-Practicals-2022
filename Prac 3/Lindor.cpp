@@ -1,10 +1,6 @@
-#include <exception>
-#include <string>
+#include "Lindor.h"
 using namespace std;
 
-#include "Lindor.h"
-#include "Chocolate.h"
-
-Lindor::Lindor(string manufacturer, double price, bool slab) {
+Lindor::Lindor(string manufacturer, double price, bool slab) : Chocolate(manufacturer, price, slab)
+{
 }
-

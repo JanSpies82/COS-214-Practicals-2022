@@ -1,22 +1,16 @@
-#include <exception>
-#include <string>
-using namespace std;
-
-#ifndef __AeratedChocolate_h__
-#define __AeratedChocolate_h__
-
+#ifndef AERATEDcHOCOLATE_H
+#define AERATEDcHOCOLATE_H
 #include "Confectionary.h"
 
-// class Confectionary;
-class AeratedChocolate;
-
-class AeratedChocolate: public Confectionary
+class AeratedChocolate : public Confectionary
 {
-	private: int bubblespccm;
+public:
+	AeratedChocolate(std::string manufacturer, double price, int bubblespccm);
+	std::string getDescription();
+	int getBubblespccm();
 
-	public: AeratedChocolate(string manufacturer, double price, int bubblespccm);
-
-	public: string getDescription();
+private:
+	int bubblespccm;
 };
 
 #endif
