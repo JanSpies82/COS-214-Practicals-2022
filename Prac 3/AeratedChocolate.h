@@ -10,7 +10,7 @@ public:
 	std::string getDescription();
 	int getBubblespccm();
 
-private:
+protected:
 	int bubblespccm;
 };
 

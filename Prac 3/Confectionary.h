@@ -6,6 +6,7 @@ class Confectionary
 {
 public:
 	Confectionary(std::string manufacturer, double price, std::string type);
+	Confectionary();
 	virtual ~Confectionary();
 	virtual std::string getDescription();
 	double getPrice();
@@ -13,7 +14,7 @@ public:
 	std::string getType();
 	int getId();
 
-private:
+protected:
 	std::string manufacturer;
 	double price;
 	std::string type;

@@ -7,6 +7,8 @@ Confectionary::Confectionary(string manufacturer, double price, string type) : m
 	id = counter++;
 };
 
+Confectionary::Confectionary(){};
+
 Confectionary::~Confectionary()
 {
 }

@@ -9,7 +9,7 @@ public:
 	std::string getDescription();
 	bool getSlab();
 
-private:
+protected:
 	bool slab;
 };
 

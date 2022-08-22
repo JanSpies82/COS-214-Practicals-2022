@@ -60,7 +60,7 @@ void testFactories()
     cout << "Milkybar: " << m->getDescription() << endl;
     cout << "Aero: " << a->getDescription() << endl;
     cout << "Lindor: " << l->getDescription() << endl;
-    cout << "Empty Lindt function: " << lb << endl;
+    cout << "Empty Lindt function: " << lb->getDescription() << endl;
 
     delete cf;
     delete nf;
@@ -71,7 +71,6 @@ void testFactories()
     delete m;
     delete a;
     delete l;
-    
 }
 
 void runTests()
