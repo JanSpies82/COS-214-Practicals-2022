@@ -5,7 +5,7 @@
 class Lindor: public Chocolate
 {
 
-	public: Lindor(std::string manufacturer, double price, bool slab);
+	public: Lindor(bool slab);
 };
 
 #endif
