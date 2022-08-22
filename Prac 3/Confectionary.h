@@ -6,7 +6,7 @@ class Confectionary
 {
 public:
 	Confectionary(std::string manufacturer, double price, std::string type);
-	std::string getDescription();
+	virtual std::string getDescription();
 	double getPrice();
 	std::string getManufacturer();
 	std::string getType();

@@ -1,7 +1,7 @@
 #include "Chocolate.h"
 using namespace std;
 
-Chocolate::Chocolate(string manufacturer, double price, bool slab) : Confectionary(manufacturer, price, "Chocolate")
+Chocolate::Chocolate(string manufacturer, double price, bool slab) : Confectionary(manufacturer, price, "Bar")
 {
 	this->slab = slab;
 }
@@ -15,8 +15,8 @@ string Chocolate::getDescription()
 {
 	string out = Confectionary::getDescription();
 	if (slab)
-		out += " is a slab";
+		out += " and is a slab";
 	else
-		out += " is a minibar";
+		out += " and is a minibar";
 	return out;
 }

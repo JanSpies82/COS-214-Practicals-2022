@@ -10,7 +10,7 @@ Confectionary::Confectionary(string manufacturer, double price, string type) : m
 string Confectionary::getDescription()
 {
 	string out = "";
-	out += "Confectionary " + to_string(id) + ": " + manufacturer + " " + type + " costs " + to_string(price);
+	out += "Confectionary " + to_string(id) + ": " + manufacturer + " " + type + " costs R" + to_string(price).substr(0, to_string(price).find(".") + 3);
 	return out;
 }
 double Confectionary::getPrice()
