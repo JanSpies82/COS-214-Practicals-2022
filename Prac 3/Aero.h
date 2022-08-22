@@ -5,7 +5,7 @@
 class Aero : public AeratedChocolate
 {
 public:
-	Aero(std::string manufacturer, double price, int bubblespccm);
+	Aero(int bubblespccm);
 };
 
 #endif
