@@ -8,11 +8,12 @@ LindtFactory::~LindtFactory(){};
 
 Confectionary *LindtFactory::createChocolate(bool slab)
 {
+	cout << "LindtFactory creating chocolate" << endl;
 	return new Lindor(slab);
 }
 
-// TODO decide what this function does
 Confectionary *LindtFactory::createAeratedChocolate(int bubblespccm)
 {
+	cout << "LindtFactory creating aerated chocolate" << endl;
 	return new EmptyConfec();
 }

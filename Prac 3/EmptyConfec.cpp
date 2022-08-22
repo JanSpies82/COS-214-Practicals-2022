@@ -7,11 +7,15 @@ EmptyConfec::EmptyConfec() : Confectionary()
     price = 0;
     type = "none";
     id = -1;
+
+    cout << "Empty Confectionary created" << endl;
 }
 EmptyConfec::~EmptyConfec()
 {
+    cout << "Empty Confectionary destroyed" << endl;
 }
 
-string EmptyConfec::getDescription(){
+string EmptyConfec::getDescription()
+{
     return "This is an empty confectionary item";
 }

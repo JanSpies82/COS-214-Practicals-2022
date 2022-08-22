@@ -71,6 +71,7 @@ void testFactories()
     delete m;
     delete a;
     delete l;
+    delete lb;
 }
 
 void runTests()
