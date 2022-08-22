@@ -7,8 +7,8 @@ class ConfectionaryFactory
 public:
 	ConfectionaryFactory();
 	~ConfectionaryFactory();
-	virtual Confectionary *createChocolate() = 0;
-	virtual Confectionary *createAeratedChocolate() = 0;
+	virtual Confectionary *createChocolate(bool slab) = 0;
+	virtual Confectionary *createAeratedChocolate(int bubblespccm) = 0;
 };
 
 #endif

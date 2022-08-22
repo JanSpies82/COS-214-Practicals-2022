@@ -6,7 +6,7 @@ LindtFactory::~LindtFactory(){};
 
 Confectionary *LindtFactory::createChocolate(bool slab)
 {
-	return NULL;
+	return new Lindor(slab);
 }
 
 Confectionary *LindtFactory::createAeratedChocolate(int bubblespccm)

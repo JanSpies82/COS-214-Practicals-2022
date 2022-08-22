@@ -6,10 +6,10 @@ NestleFactory::~NestleFactory(){};
 
 Confectionary *NestleFactory::createChocolate(bool slab)
 {
-	return NULL;
+	return new Milkybar(slab);
 }
 
 Confectionary *NestleFactory::createAeratedChocolate(int bubblespccm)
 {
-	return NULL;
+	return new Aero(bubblespccm);
 }

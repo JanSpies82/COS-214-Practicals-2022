@@ -2,6 +2,8 @@
 #define NESTLEFACTORY_H
 
 #include "ConfectionaryFactory.h"
+#include "Aero.h"
+#include "Milkybar.h"
 class NestleFactory : public ConfectionaryFactory
 {
 public:

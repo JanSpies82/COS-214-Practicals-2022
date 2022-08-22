@@ -6,6 +6,10 @@
 #include "Lindor.h"
 #include "Milkybar.h"
 
+#include "CadburyFactory.h"
+#include "NestleFactory.h"
+#include "LindtFactory.h"
+
 using namespace std;
 
 const std::string RED = "\x1B[31m";
@@ -37,8 +41,43 @@ void testConcreteProducts()
     delete mb;
 }
 
-void runTests(){
-    testConcreteProducts();
+void testFactories()
+{
+    cout << CYAN << "Testing Factories" << RESET << endl;
+    ConfectionaryFactory *cf = new CadburyFactory();
+    ConfectionaryFactory *nf = new NestleFactory();
+    ConfectionaryFactory *lf = new LindtFactory();
+
+    Confectionary *dm = cf->createChocolate(true);
+    Confectionary *dmb = cf->createAeratedChocolate(3);
+    Confectionary *m = nf->createChocolate(false);
+    Confectionary *a = nf->createAeratedChocolate(5);
+    Confectionary *l = lf->createChocolate(false);
+    Confectionary *lb = lf->createAeratedChocolate(7);
+
+    cout << "Dairy Milk: " << dm->getDescription() << endl;
+    cout << "Dairy Milk Bubbly: " << dmb->getDescription() << endl;
+    cout << "Milkybar: " << m->getDescription() << endl;
+    cout << "Aero: " << a->getDescription() << endl;
+    cout << "Lindor: " << l->getDescription() << endl;
+    cout << "Empty Lindt function: " << lb << endl;
+
+    delete cf;
+    delete nf;
+    delete lf;
+
+    delete dm;
+    delete dmb;
+    delete m;
+    delete a;
+    delete l;
+    
+}
+
+void runTests()
+{
+    // testConcreteProducts();
+    testFactories();
 }
 
 int main()

@@ -3,12 +3,12 @@ using namespace std;
 
 CadburyFactory::CadburyFactory(){};
 CadburyFactory::~CadburyFactory(){};
-Confectionary *CadburyFactory::createChocolate()
+Confectionary *CadburyFactory::createChocolate(bool slab)
 {
-	return new DairyMilk();
+	return new DairyMilk(slab);
 }
 
-Confectionary *CadburyFactory::createAeratedChocolate()
+Confectionary *CadburyFactory::createAeratedChocolate(int bubblespccm)
 {
-	return NULL;
+	return new DairyMilkBubbly(bubblespccm);
 }
