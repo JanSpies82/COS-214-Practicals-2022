@@ -6,7 +6,17 @@ Chocolate::Chocolate(string manufacturer, double price, bool slab) : Confectiona
 	this->slab = slab;
 }
 
+bool Chocolate::getSlab()
+{
+	return slab;
+};
+
 string Chocolate::getDescription()
 {
-	return "";
+	string out = Confectionary::getDescription();
+	if (slab)
+		out += " is a slab";
+	else
+		out += " is a minibar";
+	return out;
 }
