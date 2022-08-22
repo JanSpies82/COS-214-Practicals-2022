@@ -1,6 +1,6 @@
 #include "DairyMilk.h"
 using namespace std;
 
-DairyMilk::DairyMilk(string manufacturer, double price, bool slab) : Chocolate(manufacturer, price, slab)
+DairyMilk::DairyMilk( bool slab) : Chocolate("Cadbury", 17, slab)
 {
 }

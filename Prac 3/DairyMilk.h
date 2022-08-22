@@ -5,7 +5,7 @@
 class DairyMilk : public Chocolate
 {
 public:
-	DairyMilk(std::string manufacturer, double price, bool slab);
+	DairyMilk(bool slab);
 };
 
 #endif
