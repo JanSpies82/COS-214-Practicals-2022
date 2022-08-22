@@ -1,0 +1,7 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/mnt/c/Users/janco/OneDrive - University of Pretoria/Modules/COS 214/Practicals/Prac 3'
+g++ -std=c++11 -c -w *.cpp
+g++ -std=c++11 -o main *.o
+./main
+make: Leaving directory '/mnt/c/Users/janco/OneDrive - University of Pretoria/Modules/COS 214/Practicals/Prac 3'
+ 
