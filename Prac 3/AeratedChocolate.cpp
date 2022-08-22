@@ -6,7 +6,14 @@ AeratedChocolate::AeratedChocolate(string manufacturer, double price, int bubble
 	this->bubblespccm = bubblespccm;
 }
 
+int AeratedChocolate::getBubblespccm()
+{
+	return bubblespccm;
+};
+
 string AeratedChocolate::getDescription()
 {
-	return "";
+	string out = Confectionary::getDescription();
+	out += " with " + to_string(bubblespccm) + " bubbles per cm";
+	return out;
 }
