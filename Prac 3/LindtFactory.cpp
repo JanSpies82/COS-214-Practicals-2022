@@ -4,12 +4,12 @@ using namespace std;
 LindtFactory::LindtFactory(){};
 LindtFactory::~LindtFactory(){};
 
-Confectionary *LindtFactory::createChocolate()
+Confectionary *LindtFactory::createChocolate(bool slab)
 {
 	return NULL;
 }
 
-Confectionary *LindtFactory::createAeratedChocolate()
+Confectionary *LindtFactory::createAeratedChocolate(int bubblespccm)
 {
 	return NULL;
 }

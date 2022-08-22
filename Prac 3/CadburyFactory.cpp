@@ -5,7 +5,7 @@ CadburyFactory::CadburyFactory(){};
 CadburyFactory::~CadburyFactory(){};
 Confectionary *CadburyFactory::createChocolate()
 {
-	return NULL;
+	return new DairyMilk();
 }
 
 Confectionary *CadburyFactory::createAeratedChocolate()

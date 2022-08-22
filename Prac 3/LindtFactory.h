@@ -7,8 +7,8 @@ class LindtFactory : public ConfectionaryFactory
 public:
 	LindtFactory();
 	~LindtFactory();
-	Confectionary *createChocolate();
-	Confectionary *createAeratedChocolate();
+	Confectionary *createChocolate(bool slab);
+	Confectionary *createAeratedChocolate(int bubblespccm);
 };
 
 #endif

@@ -2,13 +2,16 @@
 #define CADBURYFACTORY_H
 
 #include "ConfectionaryFactory.h"
+#include "DairyMilk.h"
+#include "DairymilkBubbly.h"
+
 class CadburyFactory : public ConfectionaryFactory
 {
 public:
 	CadburyFactory();
 	~CadburyFactory();
-	Confectionary *createChocolate();
-	Confectionary *createAeratedChocolate();
+	Confectionary *createChocolate(bool slab);
+	Confectionary *createAeratedChocolate(int bubblespccm);
 };
 
 #endif
