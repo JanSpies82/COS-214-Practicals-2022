@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -6,10 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Aug 22 16:13:07 2022
- 
-make: *** No rule to make target 'all'.  Stop.
-
+# Make data base, printed on Mon Aug 22 18:12:34 2022
 
 # Variables
 
@@ -35,8 +34,8 @@ SHELL = /bin/sh
 VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
 # environment
 _ = /home/janco/.vscode-server/bin/e4503b30fc78200f846c62cf8091b76ff5547662/node
-# makefile (from 'makefile', line 1)
-MAKEFILE_LIST :=  makefile
+# makefile
+MAKEFILE_LIST := 
 # 'override' directive
 GNUMAKEFLAGS := 
 # environment
@@ -72,7 +71,7 @@ LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
 LOGNAME = janco
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
@@ -85,12 +84,14 @@ MAKE = $(MAKE_COMMAND)
 MAKECMDGOALS := all
 # environment
 SHLVL = 0
+# environment
+LATEXWORKSHOP_DOCKER_LATEX = 
 # default
 MAKE_VERSION := 4.2.1
 # environment
 USER = janco
 # makefile
-.DEFAULT_GOAL := run
+.DEFAULT_GOAL := 
 # environment
 NAME = Spies82
 # automatic
@@ -138,7 +139,7 @@ TERM = xterm-256color
 # environment
 WSL_DISTRO_NAME = Ubuntu-20.04
 # variable set hash-table stats:
-# Load=62/1024=6%, Rehash=0, Collisions=4/87=5%
+# Load=63/1024=6%, Rehash=0, Collisions=4/85=5%
 
 # Pattern-specific Variable Values
 
@@ -146,9 +147,9 @@ WSL_DISTRO_NAME = Ubuntu-20.04
 
 # Directories
 
-# . (device 14, inode 3659174698367162): 32 files, no impossibilities.
+# . (device 14, inode 3659174698367162): 7 files, no impossibilities.
 
-# 32 files, no impossibilities in 1 directories.
+# 7 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -157,107 +158,25 @@ WSL_DISTRO_NAME = Ubuntu-20.04
 # Files
 
 # Not a target:
-LindtFactory.cpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'makefile', line 17):
-		rm *.o main
-
-# Not a target:
-Aero.cpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ConfectionaryFactory.cpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
 all:
 #  Command line target.
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has not been updated.
 
-*.o: ConfectionaryFactory.cpp Aero.cpp DairyMilk.cpp LindtFactory.cpp Lindor.cpp CadburyFactory.cpp AeratedChocolate.cpp DairyMilkBubbly.cpp Milkybar.cpp Confectionary.cpp Chocolate.cpp main.cpp NestleFactory.cpp
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'makefile', line 8):
-		g++ -std=c++11 -c -w *.cpp
-
-v:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'makefile', line 23):
-		make debugcpp
-		valgrind --tool=memcheck --leak-check=yes --track-origins=yes --log-file=valg.txt ./main
-		make c
-
-g:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'makefile', line 31):
-		make
-		gdb ./main
-		make c
-
 # Not a target:
-DairyMilk.cpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-debugo: ConfectionaryFactory.cpp Aero.cpp DairyMilk.cpp LindtFactory.cpp Lindor.cpp CadburyFactory.cpp AeratedChocolate.cpp DairyMilkBubbly.cpp Milkybar.cpp Confectionary.cpp Chocolate.cpp main.cpp NestleFactory.cpp
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'makefile', line 14):
-		g++ -std=c++11 -ggdb3 -c -w *.cpp
-
-debugcpp: debugo
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'makefile', line 11):
-		g++ -std=c++11 -ggdb3 -o main *.o
-
-val:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'makefile', line 28):
-		valgrind --tool=memcheck --leak-check=yes --track-origins=yes --log-file=valg.txt ./main
+Makefile:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
 
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-21 18:32:31.9985193
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
-
-# Not a target:
-main.cpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-DairyMilkBubbly.cpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Failed to be updated.
 
 # Not a target:
 .DEFAULT:
@@ -266,89 +185,26 @@ DairyMilkBubbly.cpp:
 #  File has not been updated.
 
 # Not a target:
-NestleFactory.cpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-Chocolate.cpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-Confectionary.cpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-CadburyFactory.cpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-run: main
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'makefile', line 2):
-		./main
-
-tar:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'makefile', line 20):
-		tar -cvz *.h *.cpp makefile -f u21434159.tar.gz
-
-# Not a target:
-Milkybar.cpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-tar_unzip:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'makefile', line 36):
-		tar -xzvf u21434159.tar.gz
-
-# Not a target:
-AeratedChocolate.cpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-main: *.o
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'makefile', line 5):
-		g++ -std=c++11 -o main *.o
-
-# Not a target:
-Lindor.cpp:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+GNUmakefile:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
 
 # files hash-table stats:
-# Load=28/1024=3%, Rehash=0, Collisions=5/70=7%
+# Load=6/1024=1%, Rehash=0, Collisions=0/15=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 48 / storage = 567 B / avg = 11 B
-# current buf: size = 8162 B / used = 567 B / count = 48 / avg = 11 B
+# strcache buffers: 1 (0) / strings = 15 / storage = 162 B / avg = 10 B
+# current buf: size = 8162 B / used = 162 B / count = 15 / avg = 10 B
 
-# strcache performance: lookups = 92 / hit rate = 47%
+# strcache performance: lookups = 18 / hit rate = 16%
 # hash-table stats:
-# Load=48/8192=1%, Rehash=0, Collisions=1/92=1%
-# Finished Make data base on Mon Aug 22 16:13:07 2022
+# Load=15/8192=0%, Rehash=0, Collisions=1/18=6%
+# Finished Make data base on Mon Aug 22 18:12:34 2022
 
  

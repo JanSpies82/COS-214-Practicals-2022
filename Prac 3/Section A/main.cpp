@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 #include "Aero.h"
 #include "DairyMilk.h"
@@ -76,12 +77,76 @@ void testFactories()
 
 void runTests()
 {
-    // testConcreteProducts();
+    testConcreteProducts();
     testFactories();
+}
+
+void confectionaryDemo()
+{
+    ConfectionaryFactory **factories = new ConfectionaryFactory *[3];
+    factories[0] = new CadburyFactory();
+    factories[1] = new NestleFactory();
+    factories[2] = new LindtFactory();
+
+    vector<Confectionary *> *confections = new vector<Confectionary *>();
+    cout << "Enter the number of the factory you want to use to create Aerated chocolate: ";
+    cout << "\n[0] Cadbury\n[1] Nestle\n[2] Lindt\n";
+    cout << "Choice: ";
+    int f;
+    cin >> f;
+
+    cout << "Enter the amount of aerated chocolates you want to create: ";
+    int amount;
+    cin >> amount;
+    for (int i = 0; i < amount; i++)
+    {
+        cout << "Enter the amount of bubbles per cubic cm for chocolate #" << i + 1 << ": ";
+        int bubbles;
+        cin >> bubbles;
+        confections->push_back(factories[f]->createAeratedChocolate(bubbles));
+    }
+
+    cout << endl
+         << "Enter the number of the factory you want to use to create Chocolate: ";
+    cout << "\n[0] Cadbury\n[1] Nestle\n[2] Lindt\n";
+    cout << "Choice: ";
+    cin >> f;
+
+    cout << "Enter the amount of chocolates you want to create: ";
+    cin >> amount;
+    for (int i = 0; i < amount; i++)
+    {
+        cout << "Enter whether chocolate #" << i + 1 << " is a slab: ";
+        bool slab;
+        cin >> slab;
+        confections->push_back(factories[f]->createChocolate(slab));
+    }
+
+    cout << "Now let us create an empty Lindt confection" << endl;
+    confections->push_back(factories[2]->createAeratedChocolate(0));
+
+    cout << "Here is the descriptions of all confections you created: " << endl;
+    for (int i = 0; i < confections->size(); i++)
+    {
+        cout << confections->at(i)->getDescription() << endl;
+    }
+
+    for (int i = 0; i < 3; i++)
+    {
+        delete factories[i];
+    }
+    delete[] factories;
+    for (int t = 0; t < confections->size(); t++)
+    {
+        delete confections->at(t);
+    }
+    delete confections;
 }
 
 int main()
 {
-    runTests();
+    // runTests();
+    confectionaryDemo();
+
     return 0;
 }
