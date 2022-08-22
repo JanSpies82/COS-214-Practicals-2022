@@ -6,7 +6,7 @@
 class Milkybar : public Chocolate
 {
 public:
-	Milkybar(std::string manufacturer, double price, bool slab);
+	Milkybar( bool slab);
 };
 
 #endif
