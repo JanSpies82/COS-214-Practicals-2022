@@ -5,6 +5,8 @@
 class CadburyFactory : public ConfectionaryFactory
 {
 public:
+	CadburyFactory();
+	~CadburyFactory();
 	Confectionary *createChocolate();
 	Confectionary *createAeratedChocolate();
 };

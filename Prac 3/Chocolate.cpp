@@ -6,6 +6,10 @@ Chocolate::Chocolate(string manufacturer, double price, bool slab) : Confectiona
 	this->slab = slab;
 }
 
+Chocolate::~Chocolate()
+{
+}
+
 bool Chocolate::getSlab()
 {
 	return slab;

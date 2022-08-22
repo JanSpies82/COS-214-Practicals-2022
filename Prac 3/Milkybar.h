@@ -7,6 +7,7 @@ class Milkybar : public Chocolate
 {
 public:
 	Milkybar( bool slab);
+	~Milkybar();
 };
 
 #endif

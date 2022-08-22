@@ -6,6 +6,10 @@ AeratedChocolate::AeratedChocolate(string manufacturer, double price, int bubble
 	this->bubblespccm = bubblespccm;
 }
 
+AeratedChocolate::~AeratedChocolate()
+{
+}
+
 int AeratedChocolate::getBubblespccm()
 {
 	return bubblespccm;

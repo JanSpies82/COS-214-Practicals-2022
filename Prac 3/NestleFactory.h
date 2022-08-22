@@ -5,6 +5,8 @@
 class NestleFactory : public ConfectionaryFactory
 {
 public:
+	NestleFactory();
+	~NestleFactory();
 	Confectionary *createChocolate();
 	Confectionary *createAeratedChocolate();
 };

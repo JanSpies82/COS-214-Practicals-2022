@@ -5,6 +5,8 @@ class ConfectionaryFactory
 {
 
 public:
+	ConfectionaryFactory();
+	~ConfectionaryFactory();
 	virtual Confectionary *createChocolate() = 0;
 	virtual Confectionary *createAeratedChocolate() = 0;
 };

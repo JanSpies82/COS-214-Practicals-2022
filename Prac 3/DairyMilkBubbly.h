@@ -6,6 +6,7 @@ class DairyMilkBubbly : public AeratedChocolate
 {
 public:
 	DairyMilkBubbly(int bubblespccm);
+	~DairyMilkBubbly();
 };
 
 #endif

@@ -5,6 +5,7 @@ class Chocolate : public Confectionary
 {
 public:
 	Chocolate(std::string manufacturer, double price, bool slab);
+	virtual ~Chocolate();
 	std::string getDescription();
 	bool getSlab();
 

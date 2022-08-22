@@ -5,6 +5,8 @@
 class LindtFactory : public ConfectionaryFactory
 {
 public:
+	LindtFactory();
+	~LindtFactory();
 	Confectionary *createChocolate();
 	Confectionary *createAeratedChocolate();
 };

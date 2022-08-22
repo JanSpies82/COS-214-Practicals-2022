@@ -7,6 +7,10 @@ Confectionary::Confectionary(string manufacturer, double price, string type) : m
 	id = counter++;
 };
 
+Confectionary::~Confectionary()
+{
+}
+
 string Confectionary::getDescription()
 {
 	string out = "";

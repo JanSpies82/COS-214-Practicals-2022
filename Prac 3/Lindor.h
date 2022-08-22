@@ -6,6 +6,7 @@ class Lindor: public Chocolate
 {
 
 	public: Lindor(bool slab);
+	~Lindor();
 };
 
 #endif
