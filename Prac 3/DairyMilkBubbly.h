@@ -5,7 +5,7 @@
 class DairyMilkBubbly : public AeratedChocolate
 {
 public:
-	DairyMilkBubbly(std::string manufacturer, double price, int bubblespccm);
+	DairyMilkBubbly(int bubblespccm);
 };
 
 #endif

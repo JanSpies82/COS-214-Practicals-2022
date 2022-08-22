@@ -1,6 +1,6 @@
 #include "DairyMilkBubbly.h"
 using namespace std;
 
-DairyMilkBubbly::DairyMilkBubbly(string manufacturer, double price, int bubblespccm) : AeratedChocolate(manufacturer, price, bubblespccm)
+DairyMilkBubbly::DairyMilkBubbly(int bubblespccm) : AeratedChocolate("Cadbury", 18, bubblespccm)
 {
 }
