@@ -6,5 +6,5 @@ PhysicalPlayStyle::~PhysicalPlayStyle(){};
 
 string PhysicalPlayStyle::attack()
 {
-	return "is using physical ability to attack.";
+	return " is using physical ability to attack.";
 }
