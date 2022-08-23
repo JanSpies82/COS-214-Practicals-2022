@@ -6,5 +6,5 @@ RunPlayStyle::~RunPlayStyle(){};
 
 string RunPlayStyle::attack()
 {
-	return "";
+	return " decides life is better than death and leaves the battle.";
 }

@@ -38,13 +38,27 @@ void Pokemon::selectBattleState()
 
 int Pokemon::attack()
 {
-	return 0;
+	if (HP > 0)
+	{
+		selectBattleState();
+		cout << name << style->attack() << endl;
+		return turndamage;
+	}
+	else
+	{
+		cout << name << " has fainted and cannot attack." << endl;
+		return 0;
+	}
 }
 
 void Pokemon::setStyle(PlayStyle *style)
 {
+	delete this->style;
+	this->style = style;
 }
 
 void Pokemon::takeDamage(int damage)
 {
+	HP -= damage;
+	HP < 0 ? HP = 0 : HP = HP;
 }

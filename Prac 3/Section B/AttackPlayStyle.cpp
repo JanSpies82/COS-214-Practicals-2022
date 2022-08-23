@@ -6,5 +6,5 @@ AttackPlayStyle::~AttackPlayStyle(){};
 
 string AttackPlayStyle::attack()
 {
-	return "";
+	return " is attacking the opposing Pokemon.";
 }
