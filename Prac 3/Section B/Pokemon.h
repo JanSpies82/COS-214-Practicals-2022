@@ -11,7 +11,8 @@ class Pokemon
 private:
 	std::string name;
 	int HP;
-	int damage;
+	int basedamage;
+	int turndamage;
 	BattleState *state;
 	PlayStyle *style;
 
