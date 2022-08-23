@@ -9,7 +9,7 @@ protected:
 	std::string battleStyle;
 
 public:
-	virtual int handle(string name, int damage) = 0;
+	virtual int handle(std::string name, int damage) = 0;
 	std::string getBattleStyle();
 };
 
