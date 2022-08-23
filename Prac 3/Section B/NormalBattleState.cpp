@@ -1,4 +1,5 @@
 #include "NormalBattleState.h"
+#include "AgileBattleState.h"
 using namespace std;
 
 NormalBattleState::NormalBattleState()
@@ -12,5 +13,14 @@ NormalBattleState::~NormalBattleState()
 
 int NormalBattleState::handle(string name, int damage)
 {
-	return 0;
+	cout << name << " has no special battle state, normal battle attack ";
+	cout << "will deal " << damage << " points." << endl;
+	return damage;
+}
+
+BattleState *NormalBattleState::nextState()
+{
+	BattleState *s = new AgileBattleState();
+	return s;
+	delete this;
 }

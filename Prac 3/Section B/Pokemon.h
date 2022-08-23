@@ -13,10 +13,11 @@ private:
 	int HP;
 	int damage;
 	BattleState *state;
-	std::string style;
+	PlayStyle *style;
 
 public:
 	Pokemon(std::string name, int HP, int damage, PlayStyle *style);
+	~Pokemon();
 	std::string getName();
 	int getHP();
 	int getDamage();

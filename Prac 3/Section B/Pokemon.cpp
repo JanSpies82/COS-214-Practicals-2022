@@ -1,8 +1,16 @@
 #include "Pokemon.h"
+#include "NormalBattleState.h"
 using namespace std;
 
-Pokemon::Pokemon(string name, int HP, int damage, PlayStyle *style)
+Pokemon::Pokemon(string name, int HP, int damage, PlayStyle *style) : name(name), HP(HP), damage(damage), style(style)
 {
+	state = new NormalBattleState();
+}
+
+Pokemon::~Pokemon()
+{
+	delete state;
+	delete style;
 }
 
 string Pokemon::getName()
@@ -22,7 +30,7 @@ int Pokemon::getDamage()
 
 void Pokemon::selectBattleState()
 {
-}
+	}
 
 int Pokemon::attack()
 {

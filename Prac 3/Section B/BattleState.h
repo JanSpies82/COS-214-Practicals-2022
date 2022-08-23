@@ -12,6 +12,7 @@ public:
 	BattleState();
 	virtual ~BattleState();
 	virtual int handle(std::string name, int damage) = 0;
+	virtual BattleState *nextState() = 0;
 	std::string getBattleStyle();
 };
 

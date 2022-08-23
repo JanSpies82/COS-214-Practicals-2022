@@ -9,6 +9,7 @@ public:
 	NormalBattleState();
 	~NormalBattleState();
 	int handle(std::string name, int damage);
+	BattleState *nextState();
 };
 
 #endif
