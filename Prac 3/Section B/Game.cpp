@@ -6,6 +6,12 @@
 using namespace std;
 
 const string Game::title = " ___  ___  _ __ ___  __ __  ___  _ _    ___  _  ___   _ _  ___  ___  ___ \n| . \\| . || / /| __]|  \\  \\| . || \\ |  | __]| |/  _] | | ||_ _|| __]| . \\ \n|  _/| | ||  \\ | _] |     || | ||   |  | _] | || [_/\\|   | | | | _] |   /\n|_|  `___'|_\\_\\|___]|_|_|_|`___'|_\\_|  |_|  |_|`____/|_|_| |_| |___]|_\\_\\ \n";
+const std::string RED = "\x1B[31m";
+const std::string GREEN = "\x1B[32m";
+const std::string YELLOW = "\x1B[33m";
+const std::string BLUE = "\x1B[34m";
+const std::string CYAN = "\x1B[36m";
+const std::string RESET = "\x1B[0m";
 
 Game::Game()
 {
@@ -26,7 +32,8 @@ Game::~Game()
 {
     for (int i = 0; i < allPokemon->size(); i++)
     {
-        delete allPokemon->at(i);
+        if (allPokemon->at(i) != NULL)
+            delete allPokemon->at(i);
     }
     delete allPokemon;
 
@@ -42,16 +49,22 @@ Game::~Game()
 void Game::newGame()
 {
     system("clear");
-    cout << title << endl;
+    cout << CYAN << title << RESET << endl;
     cout << "Welcome to Pokemon Fighter!" << endl;
     do
     {
         cout << "Please enter the size of your Pokemon team (3 max): ";
         cin >> teamSize;
+        if (!cin.good())
+        {
+            teamSize = 0;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
     } while (teamSize < 1 || teamSize > 3);
     cout << endl;
     team = new Pokemon *[teamSize];
-    enemies = new Pokemon *[teamSize];
+    enemies = new Pokemon *[6 - teamSize];
     for (int k = 0; k < teamSize; k++)
     {
         team[k] = NULL;
@@ -66,21 +79,28 @@ void Game::newGame()
 
     for (int i = 0; i < teamSize; i++)
     {
-        cout << "Please select your Pokemon #" << i + 1 << ": ";
         int index = 0;
         do
         {
+            cout << "Please select your Pokemon #" << i + 1 << ": ";
             cin >> index;
-        } while (index < 0 || index >= allPokemon->size());
+            if (!cin.good())
+            {
+                index = -1;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+        } while (index < 0 || index > 5);
         team[i] = allPokemon->at(index);
-        allPokemon->erase(allPokemon->begin() + index);
+        allPokemon->at(index) = NULL;
     }
 
-    for (int r = 0; r < teamSize; r++)
+    int count = 0;
+    for (int r = 0; r < 6; r++)
     {
-        int index = rand() % allPokemon->size();
-        enemies[r] = allPokemon->at(index);
-        allPokemon->erase(allPokemon->begin() + index);
+        if (allPokemon->at(r) != NULL)
+            enemies[count++] = allPokemon->at(r);
+        allPokemon->at(r) = NULL;
     }
 
     cout << "You are ready to begin the battle!" << endl;
@@ -92,8 +112,8 @@ void Game::newGame()
 void Game::addHead()
 {
     system("clear");
-    cout << title << endl;
-    cout << setw(45) << left << "Your team:"
+    cout << CYAN << title << RESET << endl;
+    cout << setw(47) << left << "Your team:"
          << "SCORE: " << score << endl;
     for (int t = 0; t < teamSize; t++)
     {
@@ -115,25 +135,37 @@ bool Game::takeTurn()
     cout << "Choose you fighter!" << endl;
     for (int i = 0; i < teamSize; i++)
     {
-        cout << "[" << i << "]: " << team[i]->getDescription() << endl;
+        if (team[i]->getHP() > 0)
+            cout << "[" << i << "]: " << team[i]->getDescription() << endl;
     }
     int index = 0;
     do
     {
         cout << "Choice: ";
         cin >> index;
-    } while ((index < 0 || index >= teamSize) && team[index]->getHP() > 0);
+        if (!cin.good())
+        {
+            index = -1;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+    } while ((index < 0 || index >= teamSize) || team[index]->getHP() == 0);
 
     cout << "Choose the playstyle of " << team[index]->getName() << "!" << endl;
     cout << "[0]: Attack" << endl;
     cout << "[1]: Physical" << endl;
     cout << "[2]: Run" << endl;
-    cout << "Choice: ";
     int playstyle = 0;
     do
     {
         cout << "Choice: ";
         cin >> playstyle;
+        if (!cin.good())
+        {
+            playstyle = -1;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
     } while (playstyle < 0 || playstyle > 2);
 
     switch (playstyle)
@@ -151,10 +183,15 @@ bool Game::takeTurn()
         team[index]->setStyle(new AttackPlayStyle());
     }
 
+    cout << YELLOW << "The battle begins!" << RESET << endl;
     while (team[index]->getHP() > 0 && enemies[enemyIndex]->getHP() > 0)
     {
         enemies[enemyIndex]->takeDamage(team[index]->attack());
         team[index]->takeDamage(enemies[enemyIndex]->attack());
+        cout << GREEN << team[index]->getName() << " has " << team[index]->getHP() << " HP remaining!" << RESET << endl;
+        cout << RED << enemies[enemyIndex]->getName() << " has " << enemies[enemyIndex]->getHP() << " HP remaining!" << RESET << endl;
+        cout << endl
+             << YELLOW << "The battle continues!" << RESET << endl;
     }
 
     if (enemies[enemyIndex]->getHP() <= 0)
@@ -162,16 +199,14 @@ bool Game::takeTurn()
         cout << team[index]->getName() << " has defeated " << enemies[enemyIndex]->getName() << "!" << endl;
         score += fullHP;
         enemyIndex++;
-        if (enemyIndex >= teamSize)
+        if (enemyIndex >= 6 - teamSize)
         {
-            cout << "You have defeated all of your enemies!" << endl;
             active = false;
         }
     }
     else
     {
         cout << team[index]->getName() << " has been defeated!" << endl;
-        active = isAlive();
     }
     cout << "Press Enter to continue..." << endl;
     cin.ignore();
@@ -185,9 +220,7 @@ bool Game::isAlive()
     for (int h = 0; h < teamSize; h++)
     {
         if (team[h]->getHP() > 0)
-        {
             a = true;
-        }
     }
     return a;
 }
@@ -195,12 +228,17 @@ bool Game::isAlive()
 void Game::gameOver()
 {
     system("clear");
-    cout << title << endl;
-    cout << endl;
+    cout << CYAN << title << RESET << endl;
+    cout << RED;
     cout << "  ___                                             \n";
     cout << " / __| __ _  _ __   ___        ___ __ __ ___  _ _ \n";
     cout << "| (_ |/ _` || \'  \\ / -_)      / _ \\\\ V // -_)| \'_|\n";
     cout << " \\___|\\__/_||_|_|_|\\___|      \\___/ \\_/ \\___||_|  \n";
+    cout << RESET;
+    if (!active)
+        cout << "You have defeated all of your enemies!" << endl;
+    else
+        cout << "You have been defeated!" << endl;
     cout << setw(45) << left << "Your team:"
          << "FINAL SCORE: " << score << endl;
     for (int t = 0; t < teamSize; t++)

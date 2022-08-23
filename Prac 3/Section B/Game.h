@@ -4,6 +4,7 @@
 #include <iostream>
 #include <iomanip>
 #include <vector>
+#include <limits>
 #include "Pokemon.h"
 
 class Game

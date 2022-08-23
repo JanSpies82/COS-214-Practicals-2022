@@ -1,5 +1,6 @@
 #include "NormalBattleState.h"
 #include "AgileBattleState.h"
+#include "StrongBattleState.h"
 using namespace std;
 
 NormalBattleState::NormalBattleState()
@@ -20,7 +21,15 @@ int NormalBattleState::handle(string name, int damage)
 
 BattleState *NormalBattleState::nextState()
 {
-	BattleState *s = new AgileBattleState();
-	return s;
+	int randNum = 0;
+	randNum = rand() % 2;
+	if (randNum == 0)
+	{
+		return new StrongBattleState();
+	}
+	else
+	{
+		return new AgileBattleState();
+	}
 	delete this;
 }
