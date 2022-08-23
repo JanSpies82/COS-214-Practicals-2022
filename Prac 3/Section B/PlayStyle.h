@@ -5,6 +5,8 @@
 class PlayStyle
 {
 public:
+	PlayStyle();
+	virtual ~PlayStyle();
 	virtual std::string attack() = 0;
 };
 

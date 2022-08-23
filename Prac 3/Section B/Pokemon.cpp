@@ -1,7 +1,7 @@
 #include "Pokemon.h"
 using namespace std;
 
-Pokemon::Pokemon(string name, int hP, int damage, PlayStyle *style)
+Pokemon::Pokemon(string name, int HP, int damage, PlayStyle *style)
 {
 }
 
@@ -12,7 +12,7 @@ string Pokemon::getName()
 
 int Pokemon::getHP()
 {
-	return this->hP;
+	return this->HP;
 }
 
 int Pokemon::getDamage()

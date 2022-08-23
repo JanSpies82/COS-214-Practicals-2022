@@ -7,6 +7,7 @@ class NormalBattleState : public BattleState
 
 public:
 	NormalBattleState();
+	~NormalBattleState();
 	int handle(std::string name, int damage);
 };
 

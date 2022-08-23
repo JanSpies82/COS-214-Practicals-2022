@@ -9,6 +9,8 @@ protected:
 	std::string battleStyle;
 
 public:
+	BattleState();
+	virtual ~BattleState();
 	virtual int handle(std::string name, int damage) = 0;
 	std::string getBattleStyle();
 };

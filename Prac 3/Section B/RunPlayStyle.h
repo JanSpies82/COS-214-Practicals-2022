@@ -5,6 +5,8 @@
 class RunPlayStyle : public PlayStyle
 {
 public:
+	RunPlayStyle();
+	~RunPlayStyle();
 	std::string attack();
 };
 

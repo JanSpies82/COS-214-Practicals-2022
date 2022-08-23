@@ -10,13 +10,13 @@ class Pokemon
 {
 private:
 	std::string name;
-	int hP;
+	int HP;
 	int damage;
 	BattleState *state;
 	std::string style;
 
 public:
-	Pokemon(std::string name, int hP, int damage, PlayStyle *style);
+	Pokemon(std::string name, int HP, int damage, PlayStyle *style);
 	std::string getName();
 	int getHP();
 	int getDamage();

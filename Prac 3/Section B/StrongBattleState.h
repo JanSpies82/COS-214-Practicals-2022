@@ -6,6 +6,7 @@ class StrongBattleState : public BattleState
 
 public:
 	StrongBattleState();
+	~StrongBattleState();
 	int handle(std::string name, int damage);
 };
 

@@ -2,6 +2,11 @@
 using namespace std;
 AgileBattleState::AgileBattleState()
 {
+	battleStyle = "agile";
+}
+
+AgileBattleState::~AgileBattleState()
+{
 }
 
 int AgileBattleState::handle(string name, int damage)

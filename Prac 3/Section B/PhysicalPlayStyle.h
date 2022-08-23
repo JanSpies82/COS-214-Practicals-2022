@@ -5,6 +5,8 @@
 class PhysicalPlayStyle : public PlayStyle
 {
 public:
+	PhysicalPlayStyle();
+	~PhysicalPlayStyle();
 	std::string attack();
 };
 
