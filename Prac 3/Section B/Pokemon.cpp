@@ -5,6 +5,7 @@ using namespace std;
 Pokemon::Pokemon(string name, int HP, int damage, PlayStyle *style) : name(name), HP(HP), basedamage(damage), style(style)
 {
 	state = new NormalBattleState();
+	turndamage = damage;
 }
 
 Pokemon::~Pokemon()
@@ -61,4 +62,20 @@ void Pokemon::takeDamage(int damage)
 {
 	HP -= damage;
 	HP < 0 ? HP = 0 : HP = HP;
+}
+
+string Pokemon::getDescription()
+{
+	string out = "";
+	out += name + " has " + to_string(HP) + " HP ";
+	out += "and " + to_string(basedamage) + " base damage.";
+	return out;
+}
+
+void Pokemon::getStatus()
+{
+	if (HP > 0)
+		cout << name << ": " << HP << "HP with " << turndamage << " current damage" << endl;
+	else
+		cout << name << ": fainted" << endl;
 }

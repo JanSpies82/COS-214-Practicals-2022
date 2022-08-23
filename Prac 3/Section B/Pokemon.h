@@ -26,6 +26,8 @@ public:
 	int attack();
 	void setStyle(PlayStyle *style);
 	void takeDamage(int damage);
+	std::string getDescription();
+	void getStatus();
 };
 
 #endif

@@ -24,26 +24,26 @@ Game::~Game()
 {
     for (int i = 0; i < 4; i++)
     {
-        cout << "Del factory " << i << endl;
+        // cout << "Del factory " << i << endl;
         delete enemyFactories[i];
     }
-    cout << "Del factories" << endl;
+    // cout << "Del factories" << endl;
     delete[] enemyFactories;
     for (int i = 0; i < 2; i++)
     {
-        cout << "Del squad " << i << endl;
+        // cout << "Del squad " << i << endl;
         delete squadMembers[i];
     }
-    cout << "Del squad" << endl;
+    // cout << "Del squad" << endl;
     delete[] squadMembers;
 
-    cout << "Del moves" << endl;
+    // cout << "Del moves" << endl;
     delete moveHistory;
-    cout << "Del current enemy" << endl;
+    // cout << "Del current enemy" << endl;
     delete currentEnemy;
-    cout << "Del backup" << endl;
+    // cout << "Del backup" << endl;
     delete backup;
-    cout << "end" << endl;
+    // cout << "end" << endl;
 }
 
 void Game::newGame()
