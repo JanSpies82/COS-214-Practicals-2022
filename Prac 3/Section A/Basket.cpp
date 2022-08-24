@@ -1,9 +1,9 @@
 #include "Basket.h"
 using namespace std;
 
-Basket::Basket()
+Basket::Basket() : Confectionary("Lynwood Florest", 0, "Basket")
 {
-    confectionaries = new vector<Confectionary *>();
+    this->confectionaries = new vector<Confectionary *>();
 }
 
 Basket::~Basket()
@@ -23,4 +23,14 @@ void Basket::add(Confectionary *confectionary)
 Confectionary *Basket::getConfectionary(int index)
 {
     return confectionaries->at(index);
+}
+
+string Basket::getDescription()
+{
+    return "";
+}
+
+int Basket::getSize()
+{
+    return confectionaries->size();
 }

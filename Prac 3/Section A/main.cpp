@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <limits>
+#include <iomanip>
 
 #include "Aero.h"
 #include "DairyMilk.h"
@@ -10,6 +12,8 @@
 #include "CadburyFactory.h"
 #include "NestleFactory.h"
 #include "LindtFactory.h"
+
+#include "Basket.h"
 
 using namespace std;
 
@@ -143,10 +147,128 @@ void confectionaryDemo()
     delete confections;
 }
 
+void calculateBasket(Basket *b)
+{
+    cout << "--------------------------------------------------------------------" << endl;
+    double total = 0;
+    for (int d = 0; d < b->getSize(); d++)
+    {
+        cout << "Confectionary #" << d + 1 << ": " << b->getConfectionary(d)->getDescription() << endl;
+        total += b->getConfectionary(d)->getPrice();
+    }
+    cout << "--------------------------------------------------------------------" << endl;
+    cout << "Total for basket: R" << setprecision(5) << total << endl;
+    cout << "--------------------------------------------------------------------" << endl;
+}
+
+void basketDemo()
+{
+    ConfectionaryFactory **factories = new ConfectionaryFactory *[3];
+    factories[0] = new CadburyFactory();
+    factories[1] = new NestleFactory();
+    factories[2] = new LindtFactory();
+
+    Basket *basket = new Basket();
+    cout << "The list of available chocolates is: " << endl;
+    cout << "[0] DairyMilk\n[1] DairyMilk Bubbly\n[2] Milkybar\n";
+    cout << "[3] Aero\n[4] Lindor\n";
+    cout << "Enter how many different types of chocolate you would like to add to your basket: ";
+    int f;
+    do
+    {
+        cout << "Choice: ";
+        cin >> f;
+        if (!cin.good())
+        {
+            f = -1;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+    } while (f <= 0 || f > 5);
+
+    for (int h = 0; h < f; h++)
+    {
+        system("clear");
+        cout << "The list of available chocolates is: " << endl;
+        cout << "[0] DairyMilk\n[1] DairyMilk Bubbly\n[2] Milkybar\n";
+        cout << "[3] Aero\n[4] Lindor\n";
+        cout << "Choose chocolate #" << h + 1 << " to add to your basket : ";
+        int chocInd = -1;
+        do
+        {
+            cin >> chocInd;
+            if (!cin.good())
+            {
+                chocInd = -1;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+        } while (chocInd < 0 || chocInd > 4);
+
+        cout << "Enter the amount of chocolates you want to add to your basket: ";
+        int amount;
+        do
+        {
+            cout << "Amount: ";
+            cin >> amount;
+            if (!cin.good())
+            {
+                amount = -1;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+        } while (amount < 0);
+
+        for (int i = 0; i < amount; i++)
+        {
+            if (chocInd % 2 == 0)
+                cout << "Enter whether chocolate #" << i + 1 << " is a slab: ";
+            else
+                cout << "Enter the amount of bubbles per cubic cm for chocolate #" << i + 1 << ": ";
+            int bubbles;
+            bool slab;
+            do
+            {
+                cin >> bubbles;
+                if (!cin.good())
+                {
+                    bubbles = -1;
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
+            } while (bubbles == -1);
+            slab = bubbles;
+
+            if (chocInd < 2)
+                basket->add((chocInd % 2 == 0) ? factories[0]->createChocolate(slab) : factories[0]->createAeratedChocolate(bubbles));
+            else if (chocInd < 4)
+                basket->add((chocInd % 2 == 0) ? factories[1]->createChocolate(slab) : factories[1]->createAeratedChocolate(bubbles));
+            else if (chocInd == 4)
+                basket->add(factories[2]->createChocolate(slab));
+            else
+                basket->add(factories[2]->createAeratedChocolate(1));
+        }
+        cout << "Please press Enter to continue. . . ";
+        cin.ignore();
+        cin.get();
+    }
+
+    cout << "Here is the descriptions of all confections you created: " << endl;
+    calculateBasket(basket);
+
+    for (int i = 0; i < 3; i++)
+    {
+        delete factories[i];
+    }
+    delete[] factories;
+    delete basket;
+}
+
 int main()
 {
     // runTests();
-    confectionaryDemo();
+    // confectionaryDemo();
+    basketDemo();
 
     return 0;
 }

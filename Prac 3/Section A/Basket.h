@@ -10,6 +10,8 @@ public:
     ~Basket();
     void add(Confectionary *);
     Confectionary *getConfectionary(int);
+    std::string getDescription();
+    int getSize();
 
 private:
     std::vector<Confectionary *> *confectionaries;
