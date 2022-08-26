@@ -9,5 +9,6 @@ public:
     Component();
     virtual ~Component();
     virtual std::string getDescription() = 0;    
+    virtual double getPrice() = 0;
 };
 #endif

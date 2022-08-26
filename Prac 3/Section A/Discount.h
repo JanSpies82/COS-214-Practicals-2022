@@ -5,16 +5,19 @@
 class Discount : public Component
 {
 public:
-    Discount(std::string description, std::string date, double discount);
+    Discount(std::string description, std::string date, double discount, Component *component);
     virtual ~Discount();
-    virtual std::string getDescription();
-    virtual double getPrice();
-    virtual std::string getDate();
-    virtual double getDiscount();
+    std::string getDescription();
+    double getPrice();
+    std::string getDate();
+    double getDiscount();
+    Component* getComponent();
+    void setComponent(Component* component);
 
 protected:
     std::string description;
     std::string date;
     double discount;
+    Component* component;
 };
 #endif
