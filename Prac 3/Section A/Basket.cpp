@@ -1,9 +1,11 @@
 #include "Basket.h"
+#include "Confectionary.h"
 using namespace std;
 
 Basket::Basket() : Component()
 {
     this->confectionaries = new vector<Confectionary *>();
+    setType("Basket");
 }
 
 Basket::~Basket()
@@ -42,5 +44,6 @@ double Basket::getPrice()
     {
         price += (*it)->getPrice();
     }
+    setPrice(price);
     return price;
 }

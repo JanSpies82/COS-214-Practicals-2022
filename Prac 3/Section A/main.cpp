@@ -253,6 +253,7 @@ void basketDemo()
         cin.get();
     }
 
+    system("clear");
     cout << "Here is the descriptions of all confections you created: " << endl;
     calculateBasket(basket);
 
@@ -268,7 +269,6 @@ int main()
 {
     // runTests();
     // confectionaryDemo();
-	//TODO abstract basket higher than confectionary?
     basketDemo();
 
     return 0;

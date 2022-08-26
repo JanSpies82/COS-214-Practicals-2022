@@ -2,12 +2,12 @@
 using namespace std;
 int Confectionary::counter = 1;
 
-Confectionary::Confectionary(string manufacturer, double price, string type) : manufacturer(manufacturer), price(price), type(type)
+Confectionary::Confectionary(string manufacturer, double price, string type) : Component(price, manufacturer), manufacturer(manufacturer)
 {
 	id = counter++;
 };
 
-Confectionary::Confectionary(){};
+Confectionary::Confectionary() : Component(){};
 
 Confectionary::~Confectionary()
 {

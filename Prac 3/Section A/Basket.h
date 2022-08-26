@@ -2,7 +2,7 @@
 #define BASKET_H
 #include <vector>
 #include "Component.h"
-#include "Confectionary.h"
+class Confectionary;
 
 class Basket : public Component
 {
