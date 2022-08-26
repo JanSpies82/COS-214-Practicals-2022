@@ -330,11 +330,12 @@ int main()
     // basketDemo();
     testDiscounts();
 
-    // Discount object is added last to chain
-    // When discount object is created it sets all childrens discount value to its value
-    // Each component has a discount attribute that is set to 0 by default
-    // Each component has a function to check whether it is eligible for discount
-    // Each object returns its price with the discount included based on whether it is eligible for discount in getPrice
+    // TODO abstract out getPrice function to component?
+    //  Discount object is added last to chain
+    //  When discount object is created it sets all childrens discount value to its value
+    //  Each component has a discount attribute that is set to 0 by default
+    //  Each component has a function to check whether it is eligible for discount
+    //  Each object returns its price with the discount included based on whether it is eligible for discount in getPrice
 
     // Each object has a function to say whether a new discount object has been added to the chain
 

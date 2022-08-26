@@ -29,7 +29,13 @@ Confectionary *Basket::getConfectionary(int i)
 
 string Basket::getDescription()
 {
-    return "This is a basket with " + to_string(confectionaries->size()) + " confectionaries";
+    string out = "";
+    out += "This is a basket with " + to_string(confectionaries->size()) + " confectionaries:\n";
+    for (vector<Confectionary *>::iterator it = confectionaries->begin(); it != confectionaries->end(); ++it)
+    {
+        out += (*it)->getDescription() + "\n";
+    }
+    return out;
 }
 
 int Basket::getSize()
