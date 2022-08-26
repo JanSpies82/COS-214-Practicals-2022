@@ -6,7 +6,9 @@ Discount::Discount(std::string description, std::string date, double discount, C
     this->description = description;
     this->date = date;
     this->component = component;
-    this->setDiscount(discount);
+    if (component->canAddDiscount())
+        this->setDiscount(discount);
+    
 }
 
 Discount::~Discount()

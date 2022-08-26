@@ -310,12 +310,17 @@ void testDiscounts()
     else
         cout << GREEN << "canAddDiscount Success" << RESET << endl;
 
+    Component *s = new SpringDay(m);
+
+    cout << YELLOW << "Spring day discount (should stay the same): " << RESET << endl;
+    cout << "R" << setprecision(5) << basket->getPrice() << endl;
+
     for (int i = 0; i < 3; i++)
     {
         delete factories[i];
     }
     delete[] factories;
-    delete m;
+    delete s;
 }
 
 int main()
