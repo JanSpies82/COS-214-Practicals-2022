@@ -47,3 +47,18 @@ double Basket::getPrice()
     setPrice(price);
     return price;
 }
+
+string Basket::getType()
+{
+    return type;
+}
+
+void Basket::setPrice(double price)
+{
+    this->price = price;
+}
+
+void Basket::setType(string type)
+{
+    this->type = type;
+}

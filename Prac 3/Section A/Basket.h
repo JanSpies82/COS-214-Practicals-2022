@@ -14,8 +14,13 @@ public:
     std::string getDescription();
     int getSize();
     double getPrice();
+    std::string getType();
+    void setPrice(double price);
+    void setType(std::string type);
 
 private:
     std::vector<Confectionary *> *confectionaries;
+    double price;
+    std::string type;
 };
 #endif

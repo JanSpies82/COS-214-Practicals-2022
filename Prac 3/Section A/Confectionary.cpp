@@ -2,7 +2,7 @@
 using namespace std;
 int Confectionary::counter = 1;
 
-Confectionary::Confectionary(string manufacturer, double price, string type) : Component(price, manufacturer), manufacturer(manufacturer)
+Confectionary::Confectionary(string manufacturer, double price, string type) : Component(), manufacturer(manufacturer), price(price), type(type)
 {
 	id = counter++;
 };
@@ -35,3 +35,17 @@ int Confectionary::getId()
 {
 	return id;
 };
+string Confectionary::getType()
+{
+    return type;
+}
+
+void Confectionary::setPrice(double price)
+{
+    this->price = price;
+}
+
+void Confectionary::setType(string type)
+{
+    this->type = type;
+}
