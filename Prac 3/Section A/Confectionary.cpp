@@ -21,7 +21,10 @@ string Confectionary::getDescription()
 }
 double Confectionary::getPrice()
 {
-	return price;
+	if (isDiscountable())
+		return price - (price * discount);
+	else
+		return price;
 };
 std::string Confectionary::getManufacturer()
 {
@@ -35,17 +38,28 @@ int Confectionary::getId()
 {
 	return id;
 };
-string Confectionary::getType()
-{
-    return type;
-}
 
 void Confectionary::setPrice(double price)
 {
-    this->price = price;
+	this->price = price;
 }
 
 void Confectionary::setType(string type)
 {
-    this->type = type;
+	this->type = type;
+}
+
+bool Confectionary::canAddDiscount()
+{
+	return true;
+}
+
+bool Confectionary::isDiscountable()
+{
+	return true;
+}
+
+void Confectionary::setDiscount(double discount)
+{
+	this->discount = discount;
 }

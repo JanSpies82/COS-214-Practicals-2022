@@ -62,3 +62,22 @@ void Basket::setType(string type)
 {
     this->type = type;
 }
+
+bool Basket::canAddDiscount()
+{
+    return true;
+}
+
+bool Basket::isDiscountable()
+{
+    return false;
+}
+
+void Basket::setDiscount(double discount)
+{
+    this->discount = discount;
+    for (vector<Confectionary *>::iterator it = confectionaries->begin(); it != confectionaries->end(); ++it)
+    {
+        (*it)->setDiscount(discount);
+    }
+}

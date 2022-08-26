@@ -17,6 +17,9 @@ public:
     std::string getType();
     void setPrice(double price);
     void setType(std::string type);
+    bool canAddDiscount();
+    bool isDiscountable();
+    void setDiscount(double discount);
 
 private:
     std::vector<Confectionary *> *confectionaries;

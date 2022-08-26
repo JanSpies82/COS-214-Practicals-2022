@@ -10,14 +10,15 @@ public:
     std::string getDescription();
     double getPrice();
     std::string getDate();
-    double getDiscount();
     Component* getComponent();
     void setComponent(Component* component);
+    bool canAddDiscount();
+    bool isDiscountable();
+    void setDiscount(double discount);
 
 protected:
     std::string description;
     std::string date;
-    double discount;
     Component* component;
 };
 #endif

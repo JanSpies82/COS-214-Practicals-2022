@@ -1,12 +1,12 @@
 #include "Discount.h"
 using namespace std;
 
-Discount::Discount(std::string description, std::string date, double discount, Component *component)
+Discount::Discount(std::string description, std::string date, double discount, Component *component) : Component()
 {
     this->description = description;
     this->date = date;
-    this->discount = discount;
     this->component = component;
+    this->setDiscount(discount);
 }
 
 Discount::~Discount()
@@ -21,17 +21,12 @@ std::string Discount::getDescription()
 
 double Discount::getPrice()
 {
-    return discount * component->getPrice();
+    return component->getPrice();
 }
 
 std::string Discount::getDate()
 {
     return date;
-}
-
-double Discount::getDiscount()
-{
-    return discount;
 }
 
 Component *Discount::getComponent()
@@ -46,4 +41,20 @@ void Discount::setComponent(Component *component)
         delete this->component;
     }
     this->component = component;
+}
+
+bool Discount::canAddDiscount()
+{
+    return false;
+}
+
+bool Discount::isDiscountable()
+{
+    return false;
+}
+
+void Discount::setDiscount(double discount)
+{
+    this->discount = discount;
+    component->setDiscount(discount);
 }
