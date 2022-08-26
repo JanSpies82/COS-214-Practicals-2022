@@ -15,6 +15,10 @@
 
 #include "Basket.h"
 
+#include "MothersDay.h"
+#include "ValentinesDay.h"
+#include "SpringDay.h"
+
 using namespace std;
 
 const std::string RED = "\x1B[31m";
@@ -265,20 +269,69 @@ void basketDemo()
     delete basket;
 }
 
+void testDiscounts()
+{
+    ConfectionaryFactory **factories = new ConfectionaryFactory *[3];
+    factories[0] = new CadburyFactory();
+    factories[1] = new NestleFactory();
+    factories[2] = new LindtFactory();
+
+    Basket *basket = new Basket();
+
+    for (int q = 0; q < 3; q++)
+    {
+        for (int h = 0; h < 2; h++)
+        {
+            for (int w = 0; w < 3; w++)
+            {
+                if (h == 0)
+                    basket->add(factories[q]->createChocolate(w));
+                else
+                    basket->add(factories[q]->createAeratedChocolate(h));
+            }
+        }
+    }
+
+    cout << YELLOW << "Without discount: " << RESET << endl;
+    cout << "R" << setprecision(5) << basket->getPrice() << endl;
+
+    if (!basket->canAddDiscount())
+        cout << RED << "canAddDiscount Failed" << RESET << endl;
+    else
+        cout << GREEN << "canAddDiscount Success" << RESET << endl;
+
+    Component *m = new MothersDay(basket);
+
+    cout << YELLOW << "Mothers day discount: " << RESET << endl;
+    cout << "R" << setprecision(5) << basket->getPrice() << endl;
+
+    if (m->canAddDiscount())
+        cout << RED << "canAddDiscount Failed" << RESET << endl;
+    else
+        cout << GREEN << "canAddDiscount Success" << RESET << endl;
+
+    for (int i = 0; i < 3; i++)
+    {
+        delete factories[i];
+    }
+    delete[] factories;
+    delete m;
+}
+
 int main()
 {
     // runTests();
     // confectionaryDemo();
     // basketDemo();
+    testDiscounts();
 
-    //Discount object is added last to chain
-    //When discount object is created it sets all childrens discount value to its value
-    //Each component has a discount attribute that is set to 0 by default
-    //Each component has a function to check whether it is eligible for discount
-    //Each object returns its price with the discount included based on whether it is eligible for discount in getPrice
+    // Discount object is added last to chain
+    // When discount object is created it sets all childrens discount value to its value
+    // Each component has a discount attribute that is set to 0 by default
+    // Each component has a function to check whether it is eligible for discount
+    // Each object returns its price with the discount included based on whether it is eligible for discount in getPrice
 
-    //Each object has a function to say whether a new discount object has been added to the chain 
-    
+    // Each object has a function to say whether a new discount object has been added to the chain
 
     return 0;
 }

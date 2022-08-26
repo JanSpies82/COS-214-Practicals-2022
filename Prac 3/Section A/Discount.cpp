@@ -11,7 +11,6 @@ Discount::Discount(std::string description, std::string date, double discount, C
 
 Discount::~Discount()
 {
-    delete component;
 }
 
 std::string Discount::getDescription()
