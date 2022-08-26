@@ -1,8 +1,7 @@
 #ifndef CONFECTIONARY_H
 #define CONFECTIONARY_H
-#include <iostream>
-#include <string>
-class Confectionary
+#include "Component.h"
+class Confectionary: public Component
 {
 public:
 	Confectionary(std::string manufacturer, double price, std::string type);
@@ -16,8 +15,6 @@ public:
 
 protected:
 	std::string manufacturer;
-	double price;
-	std::string type;
 	int id;
 	static int counter;
 };
