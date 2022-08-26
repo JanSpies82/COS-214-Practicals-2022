@@ -8,7 +8,6 @@ public:
     Ribbon(std::string color,Component *component);
     ~Ribbon();
     bool isDiscountable();
-    double getPrice();
     std::string getDescription();
 private:
     std::string color;

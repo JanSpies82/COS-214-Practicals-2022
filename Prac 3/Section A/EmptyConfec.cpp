@@ -17,5 +17,5 @@ EmptyConfec::~EmptyConfec()
 
 string EmptyConfec::getDescription()
 {
-    return "This is an empty confectionary item";
+    return "This is an empty confectionary item\n";
 }

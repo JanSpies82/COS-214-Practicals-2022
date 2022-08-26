@@ -8,7 +8,6 @@ Discount::Discount(std::string description, std::string date, double discount, C
     this->component = component;
     if (component->canAddDiscount())
         this->setDiscount(discount);
-    
 }
 
 Discount::~Discount()
@@ -17,7 +16,7 @@ Discount::~Discount()
 
 std::string Discount::getDescription()
 {
-    return description;
+    return component->getDescription() + description + " discount added on " + date + " (" + to_string(discount * 100).substr(0, to_string(discount * 100).find(".") + 3) + "%)\n";
 }
 
 double Discount::getPrice()

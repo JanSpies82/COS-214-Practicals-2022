@@ -19,6 +19,11 @@
 #include "ValentinesDay.h"
 #include "SpringDay.h"
 
+#include "Card.h"
+#include "Note.h"
+#include "Ribbon.h"
+#include "Flower.h"
+
 using namespace std;
 
 const std::string RED = "\x1B[31m";
@@ -323,12 +328,74 @@ void testDiscounts()
     delete s;
 }
 
+void testAddOns()
+{
+    Component *c = new Ribbon("Red", new Card("A bit longer message", new Note("For You!!", new Flower("Rose", new Aero(25)))));
+    cout << CYAN << "Description: " << RESET << endl;
+    cout << c->getDescription() << endl;
+
+    cout << CYAN << "Price: " << RESET << endl;
+    cout << "R" << setprecision(5) << c->getPrice() << endl;
+
+    Component *m = new SpringDay(c);
+    cout << CYAN << "Description with discount: " << RESET << endl;
+    cout << m->getDescription() << endl;
+
+    cout << CYAN << "Price with discount: " << RESET << endl;
+    cout << "R" << setprecision(5) << m->getPrice() << endl;
+
+    Component *s = new MothersDay(m);
+
+    cout << CYAN << "Price should stay the same as discount: " << RESET << endl;
+    cout << "R" << setprecision(5) << s->getPrice() << endl;
+
+    delete s;
+    c = NULL;
+    m = NULL;
+
+    ConfectionaryFactory **factories = new ConfectionaryFactory *[3];
+    factories[0] = new CadburyFactory();
+    factories[1] = new NestleFactory();
+    factories[2] = new LindtFactory();
+
+    Basket *basket = new Basket();
+
+    for (int q = 0; q < 3; q++)
+    {
+        for (int h = 0; h < 2; h++)
+        {
+            for (int w = 0; w < 3; w++)
+            {
+                if (h == 0)
+                    basket->add(factories[q]->createChocolate(w));
+                else
+                    basket->add(factories[q]->createAeratedChocolate(h));
+            }
+        }
+    }
+
+    Component *hamper = new MothersDay(new Ribbon("Blue", new Card("Have a wonderfull day!", new Flower("Orchid", basket))));
+    basket = NULL;
+    cout << CYAN << "Description of basket with discount with discount: " << RESET << endl;
+    cout << hamper->getDescription() << endl;
+    cout << CYAN << "Price of basket with discount: " << RESET << endl;
+    cout << "R" << setprecision(5) << hamper->getPrice() << endl;
+
+    for (int i = 0; i < 3; i++)
+    {
+        delete factories[i];
+    }
+    delete[] factories;
+    delete hamper;
+}
+
 int main()
 {
     // runTests();
     // confectionaryDemo();
     // basketDemo();
-    testDiscounts();
+    // testDiscounts();
+    testAddOns();
 
     // TODO abstract out getPrice function to component?
     //  Discount object is added last to chain

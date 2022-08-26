@@ -33,7 +33,7 @@ string Basket::getDescription()
     out += "This is a basket with " + to_string(confectionaries->size()) + " confectionaries:\n";
     for (vector<Confectionary *>::iterator it = confectionaries->begin(); it != confectionaries->end(); ++it)
     {
-        out += (*it)->getDescription() + "\n";
+        out += (*it)->getDescription();
     }
     return out;
 }

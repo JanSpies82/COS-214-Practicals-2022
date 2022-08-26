@@ -18,5 +18,5 @@ bool Card::isDiscountable()
 
 std::string Card::getDescription()
 {
-    return "Card with message: " + message;
+    return "Card with message: " + message + "\n" + component->getDescription();
 }

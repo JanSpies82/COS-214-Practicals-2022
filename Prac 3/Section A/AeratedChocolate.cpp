@@ -18,6 +18,6 @@ int AeratedChocolate::getBubblespccm()
 string AeratedChocolate::getDescription()
 {
 	string out = Confectionary::getDescription();
-	out += " with " + to_string(bubblespccm) + " bubbles per cubic cm";
+	out += " with " + to_string(bubblespccm) + " bubbles per cubic cm \n";
 	return out;
 }

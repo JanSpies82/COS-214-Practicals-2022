@@ -8,7 +8,6 @@ public:
     Flower(std::string variety, Component *component);
     ~Flower();
     bool isDiscountable();
-    double getPrice();
     std::string getDescription();
 
 protected:
