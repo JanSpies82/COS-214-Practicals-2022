@@ -16,7 +16,28 @@ bool Card::isDiscountable()
     return true;
 }
 
+double Card::getPrice()
+{
+    if (component->hasCard())
+        return 0 + component->getPrice();
+    else
+        return AddOn::getPrice();
+}
+
 std::string Card::getDescription()
 {
-    return "Card with message: " + message + "\n" + component->getDescription();
+    if (component->hasCard())
+        return "" + component->getDescription();
+    else
+        return "Card with message: " + message + "\n" + component->getDescription();
+}
+
+bool Card::hasNote()
+{
+    return component->hasNote();
+}
+
+bool Card::hasCard()
+{
+    return true;
 }

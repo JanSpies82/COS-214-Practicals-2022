@@ -20,3 +20,13 @@ std::string Flower::getDescription()
 {
     return "Flower of variety: " + variety + "\n" + component->getDescription();
 }
+
+bool Flower::hasNote()
+{
+    return component->hasNote();
+}
+
+bool Flower::hasCard()
+{
+    return component->hasCard();
+}

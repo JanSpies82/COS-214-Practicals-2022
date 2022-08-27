@@ -30,7 +30,7 @@ Confectionary *Basket::getConfectionary(int i)
 string Basket::getDescription()
 {
     string out = "";
-    out += "This is a basket with " + to_string(confectionaries->size()) + " confectionaries:\n";
+    out += "This is a basket with " + to_string(confectionaries->size()) + " confectionary(s):\n";
     for (vector<Confectionary *>::iterator it = confectionaries->begin(); it != confectionaries->end(); ++it)
     {
         out += (*it)->getDescription();
@@ -86,4 +86,14 @@ void Basket::setDiscount(double discount)
     {
         (*it)->setDiscount(discount);
     }
+}
+
+bool Basket::hasNote()
+{
+    return false;
+}
+
+bool Basket::hasCard()
+{
+    return false;
 }

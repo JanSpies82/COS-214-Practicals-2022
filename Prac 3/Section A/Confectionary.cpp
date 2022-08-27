@@ -63,3 +63,13 @@ void Confectionary::setDiscount(double discount)
 {
 	this->discount = discount;
 }
+
+bool Confectionary::hasNote()
+{
+	return false;
+}
+
+bool Confectionary::hasCard()
+{
+	return false;
+}

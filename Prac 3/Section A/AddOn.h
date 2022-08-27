@@ -5,15 +5,17 @@
 class AddOn : public Component
 {
 public:
-    AddOn(double price, Component* component);
+    AddOn(double price, Component *component);
     ~AddOn();
     Component *getComponent();
     void setComponent(Component *component);
     bool canAddDiscount();
     virtual bool isDiscountable() = 0;
     void setDiscount(double discount);
-    double getPrice();
+    virtual double getPrice();
     virtual std::string getDescription() = 0;
+    virtual bool hasNote() = 0;
+    virtual bool hasCard() = 0;
 
 protected:
     Component *component;

@@ -9,6 +9,8 @@ public:
     ~Flower();
     bool isDiscountable();
     std::string getDescription();
+    bool hasNote();
+    bool hasCard();
 
 protected:
     std::string variety;

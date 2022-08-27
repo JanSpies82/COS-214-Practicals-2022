@@ -20,6 +20,8 @@ public:
     bool canAddDiscount();
     bool isDiscountable();
     void setDiscount(double discount);
+    bool hasNote();
+    bool hasCard();
 
 private:
     std::vector<Confectionary *> *confectionaries;

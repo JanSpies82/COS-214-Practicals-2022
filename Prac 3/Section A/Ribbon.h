@@ -9,6 +9,8 @@ public:
     ~Ribbon();
     bool isDiscountable();
     std::string getDescription();
+    bool hasNote();
+    bool hasCard();
 private:
     std::string color;
 };

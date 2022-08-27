@@ -58,3 +58,13 @@ void Discount::setDiscount(double discount)
     this->discount = discount;
     component->setDiscount(discount);
 }
+
+bool Discount::hasNote()
+{
+    return component->hasNote();
+}
+
+bool Discount::hasCard()
+{
+    return component->hasCard();
+}

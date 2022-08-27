@@ -15,6 +15,8 @@ public:
     bool canAddDiscount();
     bool isDiscountable();
     void setDiscount(double discount);
+    bool hasNote();
+    bool hasCard();
 
 protected:
     std::string description;

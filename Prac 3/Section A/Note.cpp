@@ -16,7 +16,28 @@ bool Note::isDiscountable()
     return false;
 }
 
+double Note::getPrice()
+{
+    if (component->hasNote())
+        return 0 + component->getPrice();
+    else
+        return AddOn::getPrice();
+}
+
 std::string Note::getDescription()
 {
-    return "Note with message: " +  message + "\n" + component->getDescription();
+    if (component->hasNote())
+        return "" + component->getDescription();
+    else
+        return "Note with message: " + message + "\n" + component->getDescription();
+}
+
+bool Note::hasNote()
+{
+    return true;
+}
+
+bool Note::hasCard()
+{
+    return component->hasCard();
 }

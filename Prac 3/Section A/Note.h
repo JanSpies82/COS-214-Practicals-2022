@@ -9,6 +9,9 @@ public:
     ~Note();
     bool isDiscountable();
     std::string getDescription();
+    bool hasNote();
+    bool hasCard();
+    double getPrice();
 
 protected:
     std::string message;
