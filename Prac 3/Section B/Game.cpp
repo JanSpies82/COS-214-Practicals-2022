@@ -39,8 +39,13 @@ Game::~Game()
 
     for (int i = 0; i < teamSize; i++)
     {
-        delete team[i];
-        delete enemies[i];
+        if (team[i] != NULL)
+            delete team[i];
+    }
+    for (int j = 0; j < 6 - teamSize; j++)
+    {
+        if (enemies[j] != NULL)
+            delete enemies[j];
     }
     delete[] team;
     delete[] enemies;
