@@ -663,9 +663,9 @@ void runTests()
 int main()
 {
     // runTests();
-    // confectionaryDemo(); //Task 2.3
+    confectionaryDemo(); //Task 2.3
     // basketDemo(); // Task 3.1
-    demoAll();
+    // demoAll();
 
     return 0;
 }
