@@ -39,5 +39,11 @@ gm:
 		gdb ./marks
 		rm *.o marks
 
+vc:
+		g++ -std=c++11 -ggdb3 -c -w capture.cpp
+		g++ -std=c++11 -ggdb3 -o capture capture.o
+		valgrind --tool=memcheck --leak-check=yes --track-origins=yes --log-file=valg.txt ./capture
+		rm *.o capture
+
 tar_unzip:
 		tar -xzvf u21434159.tar.gz
