@@ -7,17 +7,15 @@ class Directory : public Node
 {
 public:
     Directory();
-    Directory(std::string name);
+    Directory(std::string name, bool synchronous);
     virtual ~Directory();
     virtual void addChild(Node *child) = 0;
-    Node *removeChild(std::string name);
+    void removeChild(std::string name);
     std::vector<Node *> *getChildren();
     std::string listContents();
-    std::string getType();
     virtual Node *access(std::string name) = 0;
 
 protected:
-    std::string type;
     std::vector<Node *> *children;
 };
 #endif

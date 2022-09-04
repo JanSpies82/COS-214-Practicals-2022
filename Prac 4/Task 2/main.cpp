@@ -1,9 +1,12 @@
 #include <iostream>
 #include <string>
 #include <ctime>
+#include <stdexcept>
+
 #include "Node.h"
 #include "File.h"
-#include "Directory.h"
+#include "AsynchronousDirectory.h"
+#include "SynchronousDirectory.h"
 
 using namespace std;
 
@@ -17,7 +20,7 @@ const std::string RESET = "\x1B[0m";
 void testNodes()
 {
     Node *node1 = new Node();
-    Node *node2 = new Node("Node2");
+    Node *node2 = new Node("Node2", false);
     cout << "Node1 name: " << node1->getName() << endl;
     cout << "Node2 name: " << node2->getName() << endl;
     cout << "Node1 last modified: " << node1->getLastModified() << " : " << node1->timeToString(node1->getLastModified()) << endl;
@@ -68,14 +71,61 @@ void testFile()
     delete file2;
 }
 
-void testDirectories(){
+void testAsynchronousDirectory()
+{
+    Directory *adir1 = new AsynchronousDirectory("adir1");
+    Directory *adir2 = new AsynchronousDirectory("adir2");
 
+    cout << "adir1 name: " << adir1->getName() << endl;
+    cout << "adir2 name: " << adir2->getName() << endl;
+
+    Node *n11 = new File("n11.txt");
+    Node *n12 = new File("n12.txt");
+    Node *n21 = new File("n21.txt");
+    Node *n22 = new File("n22.txt");
+
+    adir1->addChild(n11);
+    adir1->addChild(n12);
+    adir2->addChild(n21);
+    adir2->addChild(n22);
+
+    cout << "adir1 contents: " << endl
+         << adir1->listContents();
+    cout << "adir2 contents: " << endl
+         << adir2->listContents();
+
+    try
+    {
+        adir1->removeChild("n.txt");
+        cout << RED << "Error: No exception thrown when removing non-existent child" << RESET << endl;
+    }
+    catch (invalid_argument &e)
+    {
+        cout << GREEN << "Caught correct exception" << RESET << endl;
+    }
+    catch (...)
+    {
+        cout << RED << "Error: Wrong exception thrown when removing non-existent child" << RESET << endl;
+    }
+
+    try {
+        adir1->removeChild("n11.txt");
+        cout << GREEN << "Removed child" << RESET << endl;
+    }
+    catch (...)
+    {
+        cout << RED << "Error: Exception thrown when removing existing child" << RESET << endl;
+    }
+
+    delete adir1;
+    delete adir2;
 }
 
 void runTests()
 {
     // testNodes();
     // testFile();
+    testAsynchronousDirectory();
 }
 int main()
 {

@@ -5,13 +5,14 @@ Node::Node()
 {
     name = "";
     lastModified = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()).count();
+    synchronous = 1;
 }
 
-Node::Node(string name)
+Node::Node(string name, bool synchronous)
 {
     this->name = name;
     lastModified = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()).count();
-    ;
+    this->synchronous = synchronous;
 }
 
 Node::~Node()
@@ -39,4 +40,9 @@ string Node::timeToString(double time)
 {
     time_t t = time;
     return ctime(&t);
+}
+
+bool Node::isSynchronous()
+{
+    return synchronous;
 }

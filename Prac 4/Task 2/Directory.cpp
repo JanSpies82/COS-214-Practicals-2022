@@ -1,5 +1,6 @@
 #include "Directory.h"
 
+
 using namespace std;
 
 Directory::Directory() : Node()
@@ -7,26 +8,22 @@ Directory::Directory() : Node()
     children = new vector<Node *>();
 }
 
-Directory::Directory(string name) : Node(name)
+Directory::Directory(string name, bool synchronous) : Node(name, synchronous)
 {
     children = new vector<Node *>();
 }
 
 Directory::~Directory()
 {
-    for (int i = 0; i < children->size(); i++)
-    {
-        delete children->at(i);
-    }
-    delete children;
 }
 
 void Directory::addChild(Node *child)
 {
     children->push_back(child);
+    this->lastModified = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()).count();
 }
 
-Node *Directory::removeChild(string name)
+void Directory::removeChild(string name)
 {
     for (int i = 0; i < children->size(); i++)
     {
@@ -34,10 +31,12 @@ Node *Directory::removeChild(string name)
         {
             Node *child = children->at(i);
             children->erase(children->begin() + i);
-            return child;
+            this->lastModified = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()).count();
+            delete child;
+            return;
         }
     }
-    return NULL;
+    throw invalid_argument("No child with name " + name + " found");
 }
 
 vector<Node *> *Directory::getChildren()
@@ -54,9 +53,3 @@ string Directory::listContents()
     }
     return contents;
 }
-
-string Directory::getType()
-{
-    return type;
-}
-
