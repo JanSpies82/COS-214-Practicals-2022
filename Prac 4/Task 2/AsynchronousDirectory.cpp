@@ -15,7 +15,7 @@ AsynchronousDirectory::~AsynchronousDirectory()
 
 void AsynchronousDirectory::addChild(Node *child)
 {
-    if (child->isSynchronous())
+    if ((child->getType() != "File") && (child->isSynchronous()))
         __throw_invalid_argument("Cannot add a synchronous node to an asynchronous directory");
     Directory::addChild(child);
 }

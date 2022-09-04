@@ -8,7 +8,7 @@ File::File() : Node()
     extension = "";
 }
 
-File::File(string name) : Node(name, false)
+File::File(string name) : Node(name, false, "File")
 {
     contents = "";
     extension = determineExtension(name);

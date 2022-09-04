@@ -8,7 +8,7 @@ Directory::Directory() : Node()
     children = new vector<Node *>();
 }
 
-Directory::Directory(string name, bool synchronous) : Node(name, synchronous)
+Directory::Directory(string name, bool synchronous) : Node(name, synchronous, "Directory")
 {
     children = new vector<Node *>();
 }

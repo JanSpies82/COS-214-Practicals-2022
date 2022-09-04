@@ -20,7 +20,7 @@ const std::string RESET = "\x1B[0m";
 void testNodes()
 {
     Node *node1 = new Node();
-    Node *node2 = new Node("Node2", false);
+    Node *node2 = new Node("Node2", false, "Node");
     cout << "Node1 name: " << node1->getName() << endl;
     cout << "Node2 name: " << node2->getName() << endl;
     cout << "Node1 last modified: " << node1->getLastModified() << " : " << node1->timeToString(node1->getLastModified()) << endl;
@@ -108,7 +108,8 @@ void testAsynchronousDirectory()
         cout << RED << "Error: Wrong exception thrown when removing non-existent child" << RESET << endl;
     }
 
-    try {
+    try
+    {
         adir1->removeChild("n11.txt");
         cout << GREEN << "Removed child" << RESET << endl;
     }
@@ -117,15 +118,119 @@ void testAsynchronousDirectory()
         cout << RED << "Error: Exception thrown when removing existing child" << RESET << endl;
     }
 
+    SynchronousDirectory *sd = new SynchronousDirectory("sd");
+    try
+    {
+        adir1->addChild(sd);
+        cout << RED << "Error: No exception thrown when adding child of wrong type" << RESET << endl;
+    }
+    catch (invalid_argument &e)
+    {
+        cout << GREEN << "Caught correct exception" << RESET << endl;
+    }
+    catch (...)
+    {
+        cout << RED << "Error: Wrong exception thrown when adding child of wrong type" << RESET << endl;
+    }
+
     delete adir1;
     delete adir2;
+    delete sd;
+}
+
+void testSynchronousDirectory()
+{
+    Directory *sdir1 = new SynchronousDirectory("sdir1");
+    Directory *sdir2 = new SynchronousDirectory("sdir2");
+
+    cout << "sdir1 name: " << sdir1->getName() << endl;
+    cout << "sdir2 name: " << sdir2->getName() << endl;
+
+    Node *n11 = new File("n11.txt");
+    Node *n12 = new File("n12.txt");
+    Node *n21 = new File("n21.txt");
+    Node *n22 = new File("n22.txt");
+
+    sdir1->addChild(n11);
+    sdir1->addChild(n12);
+    sdir2->addChild(n21);
+    sdir2->addChild(n22);
+
+    cout << "sdir1 contents: " << endl
+         << sdir1->listContents();
+    cout << "sdir2 contents: " << endl
+         << sdir2->listContents();
+
+    try
+    {
+        sdir1->removeChild("n.txt");
+        cout << RED << "Error: No exception thrown when removing non-existent child" << RESET << endl;
+    }
+    catch (invalid_argument &e)
+    {
+        cout << GREEN << "Caught correct exception" << RESET << endl;
+    }
+    catch (...)
+    {
+        cout << RED << "Error: Wrong exception thrown when removing non-existent child" << RESET << endl;
+    }
+
+    try
+    {
+        sdir1->removeChild("n11.txt");
+        cout << GREEN << "Removed child" << RESET << endl;
+    }
+    catch (...)
+    {
+        cout << RED << "Error: Exception thrown when removing existing child" << RESET << endl;
+    }
+
+    AsynchronousDirectory *ad = new AsynchronousDirectory("ad");
+    try
+    {
+        sdir1->addChild(ad);
+        cout << GREEN << "Can add Async directories" << RESET << endl;
+    }
+    catch (...)
+    {
+        cout << RED << "Error: Exception thrown when adding Async directory" << RESET << endl;
+    }
+
+    Node *n = new Node("n", 0, "");
+    try
+    {
+        sdir1->addChild(n);
+        cout << RED << "Error: No exception thrown when adding child of wrong type" << RESET << endl;
+    }
+    catch (invalid_argument &e)
+    {
+        cout << GREEN << "Caught correct exception" << RESET << endl;
+    }
+    catch (...)
+    {
+        cout << RED << "Error: Wrong exception thrown when adding child of wrong type" << RESET << endl;
+    }
+
+    if (sdir2->access("n21.txt")->getName() != "n21.txt")
+    {
+        cout << RED << "Error: Accessing child by name failed" << RESET << endl;
+    }
+    else
+    {
+        cout << GREEN << "Accessing child by name succeeded" << RESET << endl;
+    }
+
+    delete sdir1;
+    delete sdir2;
+    delete n;
 }
 
 void runTests()
 {
     // testNodes();
     // testFile();
-    testAsynchronousDirectory();
+    // testAsynchronousDirectory();
+    testSynchronousDirectory();
 }
 int main()
 {
