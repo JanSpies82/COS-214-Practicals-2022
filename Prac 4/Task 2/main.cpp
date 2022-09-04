@@ -1,8 +1,8 @@
 #include <iostream>
 #include <string>
 #include <ctime>
-#include <unistd.h>
 #include "Node.h"
+#include "File.h"
 
 using namespace std;
 
@@ -31,9 +31,46 @@ void testNodes()
     delete node2;
 }
 
+void testFile()
+{
+    File *file1 = new File();
+    File *file2 = new File("File2.txt");
+    cout << "File1 name: " << file1->getName() << endl;
+    cout << "File2 name: " << file2->getName() << endl;
+    cout << "File1 last modified: " << file1->getLastModified() << " : " << file1->timeToString(file1->getLastModified());
+    cout << "File2 last modified: " << file2->getLastModified() << " : " << file2->timeToString(file2->getLastModified());
+    file1->setName("File11.txt");
+    cout << "File1 name: " << file1->getName() << endl;
+    cout << "File2 name: " << file2->getName() << endl;
+    cout << "File1 last modified: " << file1->getLastModified() << " : " << file1->timeToString(file1->getLastModified());
+    cout << "File2 last modified: " << file2->getLastModified() << " : " << file2->timeToString(file2->getLastModified());
+    cout << "Is file1 last modified equal to file2 last modified? " << (file1->getLastModified() == file2->getLastModified() ? "Yes" : "No") << endl;
+    cout << "File1 contents: " << file1->getContents() << endl;
+    cout << "File2 contents: " << file2->getContents() << endl;
+    file1->setContents("File1 contents");
+    file2->setContents("File2 contents");
+    cout << "File1 contents: " << file1->getContents() << endl;
+    cout << "File2 contents: " << file2->getContents() << endl;
+    cout << "File1 extension: " << file1->getExtension() << endl;
+    cout << "File2 extension: " << file2->getExtension() << endl;
+    file1->setExtension("txt");
+    file2->setExtension("txt");
+    cout << "File1 extension: " << file1->getExtension() << endl;
+    cout << "File2 extension: " << file2->getExtension() << endl;
+    cout << "File1 name: " << file1->getName() << endl;
+    cout << "File2 name: " << file2->getName() << endl;
+    file1->appendContents(" appended");
+    file2->prependContents("prepended ");
+    cout << "File1 contents: " << file1->getContents() << endl;
+    cout << "File2 contents: " << file2->getContents() << endl;
+    delete file1;
+    delete file2;
+}
+
 void runTests()
 {
-    testNodes();
+    // testNodes();
+    // testFile();
 }
 int main()
 {
