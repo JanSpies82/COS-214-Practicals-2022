@@ -3,6 +3,7 @@
 #include <ctime>
 #include "Node.h"
 #include "File.h"
+#include "Directory.h"
 
 using namespace std;
 
@@ -65,6 +66,10 @@ void testFile()
     cout << "File2 contents: " << file2->getContents() << endl;
     delete file1;
     delete file2;
+}
+
+void testDirectories(){
+
 }
 
 void runTests()
