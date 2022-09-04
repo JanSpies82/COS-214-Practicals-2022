@@ -21,4 +21,15 @@
     \item[1.2 #6]An integer is 4 bytes long and an array of 10 integers has not been freed. Therefore 40 bytes have been lost.
     \item[1.2 #7]I would deallocate the integer array that is created in the \textit{capture} method at line 3.
 \end{itemize}
+\subsection*{Task 2}
+\begin{itemize}
+    \item[2.1]The first approach is to use the Composite design pattern to model the way directories are made up of files together with the Template method 
+    pattern to model the difference between asynchronous directories and synchronous directories. The second approach is to use the Template method pattern 
+    to model directories and files having shared attributes and the Strategy pattern to model the difference between asynchronous directories and synchronous
+    directories. The first approach directly imitates the tree structure we want in our file system and therefore makes the operations to be applied to the system 
+    more intuitive. The second approach is less intuitive since the tree structure of the program will have to be mimicked by other classes which adds extra 
+    complexity to the system. 
+    \item[2.2]I will follow the first approach by using the Composite design pattern to model the way directories are made up of files together with the Template
+    method pattern to model the difference between asynchronous directories and synchronous directories.
+\end{itemize}
 \end{document}
