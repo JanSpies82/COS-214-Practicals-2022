@@ -37,9 +37,8 @@
 \begin{itemize}
     \item[3.3]The Factory method pattern will work best to allow the user to create two different iterators 
     easily by having a \textit{Creator} class that creates NodeIterator objects with \textit{concreteCreators} DirectoryIteratorFactory and FileIteratorFactory.
-    \item[3.4]The first approach is to set the return type of the \textit{DirectoryIterator} to \textit{Directory*} and the return type of the \textit{FileIterator}
-    to \textit{File*}. This will ensure that the iterators always return the correct type of object, but polymorphism cannot be exploited. The second approach is to
-    set the return type on both classes to \textit{Node*} and then cast the returned object to the correct type. This approach is less safe since the user will have to
+    \item[3.4]The first approach is to use the State pattern to switch between the \textit{File} and \textit{Directory} iterators depending on the current Node.
+    The second approach is to set the return type on both classes to \textit{Node*} and then cast the returned object to the correct type. This approach is less safe since the user will have to
     cast the returned object to the correct type, but polymorphism can be exploited.
 \end{itemize}
 \end{document}
