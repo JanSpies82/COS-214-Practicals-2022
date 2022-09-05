@@ -1,6 +1,6 @@
 #ifndef NODEITERATOR_H
 #define NODEITERATOR_H
-#include "Node.h"
+class Node;
 class NodeIterator
 {
 public:

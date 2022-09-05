@@ -79,7 +79,8 @@ NodeIterator *File::createIterator()
     return n;
 }
 
-void File::print()
+void File::print(bool files)
 {
-    cout << "FILE: " << name << endl;
+    if (files)
+        cout << "FILE: " << name << endl;
 }

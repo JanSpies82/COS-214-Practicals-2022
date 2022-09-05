@@ -71,12 +71,51 @@ void Directory::addDirectory(Directory *directory)
     this->addChild(directory);
 }
 
-void Directory::print()
+void Directory::print(bool files)
 {
-    cout << "DIRECTORY: " << this->getName() << endl;
+    if (!files)
+        cout << "DIRECTORY: " << this->getName() << endl;
     for (int i = 0; i < children->size(); i++)
     {
         cout << "\t -";
-        children->at(i)->print();
+        children->at(i)->print(files);
     }
+}
+
+void Directory::addFile(File *file)
+{
+    this->addChild((Node *)file);
+}
+
+void Directory::removeDirectory(std::string name)
+{
+    this->removeChild(name);
+}
+
+void Directory::removeFile(std::string name)
+{
+    this->removeChild(name);
+}
+
+void Directory::listDirectory()
+{
+    cout << "All directories in " << this->getName() << endl;
+    for (int i = 0; i < children->size(); i++)
+    {
+        children->at(i)->print(false);
+    }
+}
+
+void Directory::listFile()
+{
+    cout << "All files in " << this->getName() << endl;
+    for (int i = 0; i < children->size(); i++)
+    {
+        children->at(i)->print(true);
+    }
+}
+
+bool Directory::isEmpty()
+{
+    return children->size() == 0;
 }

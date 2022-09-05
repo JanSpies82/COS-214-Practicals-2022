@@ -26,7 +26,7 @@ bool DirectoryIterator::hasNext()
 
 Directory *DirectoryIterator::current()
 {
-	throw "Not yet implemented";
+	return NULL;
 }
 
 void DirectoryIterator::handle()

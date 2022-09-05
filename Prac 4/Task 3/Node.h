@@ -18,7 +18,7 @@ public:
     bool isSynchronous();
     std::string getType();
     virtual NodeIterator *createIterator() = 0;
-    virtual void print() = 0;
+    virtual void print(bool files) = 0;
 
 protected:
     std::string name;

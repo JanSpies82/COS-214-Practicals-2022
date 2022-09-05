@@ -16,7 +16,7 @@ public:
     void prependContents(std::string contents);
     void setName(std::string name);
     NodeIterator *createIterator();
-    void print();
+    void print(bool files);
 
 private:
     std::string contents;
