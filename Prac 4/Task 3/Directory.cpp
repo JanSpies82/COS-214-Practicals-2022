@@ -66,14 +66,18 @@ void Directory::addDirectory(Directory *directory)
     this->addChild(directory);
 }
 
-string Directory::print()
+string Directory::print(int depth)
 {
     string out = "";
+    string space = "   ", hyph = "-";
+    for (int h = 0; h < depth; h++)
+        out += space;
     out += this->getName() + ":\n";
+    int d = depth + 1;
     for (int i = 0; i < children->size(); i++)
     {
-        if (children->at(i)->print() != "")
-            out += "  -" + children->at(i)->print();
+        if (children->at(i)->print(depth) != "")
+            out +=children->at(i)->print(d);
     }
     return out;
 }

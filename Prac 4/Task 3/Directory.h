@@ -23,7 +23,7 @@ public:
     virtual bool listFile();
     virtual bool isEmpty();
     NodeIterator *createIterator();
-    std::string print();
+    std::string print(int depth=0);
 
 protected:
     std::vector<Node *> *children;

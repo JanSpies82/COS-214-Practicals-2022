@@ -16,7 +16,7 @@ public:
     void prependContents(std::string contents);
     void setName(std::string name);
     NodeIterator *createIterator();
-    std::string print();
+    std::string print(int depth =0);
     virtual void addDirectory(Directory *directory);
     virtual void addFile(File *file);
     virtual void removeDirectory(std::string name);

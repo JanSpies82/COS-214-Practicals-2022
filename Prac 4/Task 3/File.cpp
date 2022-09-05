@@ -80,9 +80,14 @@ NodeIterator *File::createIterator()
     return n;
 }
 
-string File::print()
+string File::print(int depth)
 {
-    return name + "\n";
+    string out = "";
+    string space = "   ", hyph = "-";
+    for (int h = 0; h < depth; h++)
+        out += space;
+    out += hyph + this->getName() + "\n";
+    return out;
 }
 
 void File::addDirectory(Directory *directory)

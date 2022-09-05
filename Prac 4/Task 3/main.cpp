@@ -255,7 +255,7 @@ void testDirectoryTask3()
     cout << "Does d4 contain a file? " << d4->listFile() << endl;
 
     cout << "d1 contents: " << endl;
-    cout << d1->print();
+    cout << d1->print() << endl;
 
     cout << "d2 contents: " << endl;
     cout << d2->print();
