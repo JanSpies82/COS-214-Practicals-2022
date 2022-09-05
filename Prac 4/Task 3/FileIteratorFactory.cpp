@@ -10,5 +10,5 @@ FileIteratorFactory::~FileIteratorFactory()
 }
 NodeIterator *FileIteratorFactory::createIterator()
 {
-	throw "Not yet implemented";
+	return new FileIterator();
 }
