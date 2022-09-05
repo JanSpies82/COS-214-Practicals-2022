@@ -14,11 +14,6 @@ Directory::Directory(string name, bool synchronous) : Node(name, synchronous, "D
 
 Directory::~Directory()
 {
-    for (int i = 0; i < children->size(); i++)
-    {
-        delete children->at(i);
-    }
-    delete children;
 }
 
 void Directory::addChild(Node *child)
@@ -71,15 +66,16 @@ void Directory::addDirectory(Directory *directory)
     this->addChild(directory);
 }
 
-void Directory::print(bool files)
+string Directory::print()
 {
-    if (!files)
-        cout << "DIRECTORY: " << this->getName() << endl;
+    string out = "";
+    out += this->getName() + ":\n";
     for (int i = 0; i < children->size(); i++)
     {
-        cout << "\t -";
-        children->at(i)->print(files);
+        if (children->at(i)->print() != "")
+            out += "  -" + children->at(i)->print();
     }
+    return out;
 }
 
 void Directory::addFile(File *file)
@@ -97,22 +93,22 @@ void Directory::removeFile(std::string name)
     this->removeChild(name);
 }
 
-void Directory::listDirectory()
+bool Directory::listDirectory()
 {
-    cout << "All directories in " << this->getName() << endl;
+    bool hasDirectory = false;
     for (int i = 0; i < children->size(); i++)
-    {
-        children->at(i)->print(false);
-    }
+        if (children->at(i)->getType() == "Directory")
+            hasDirectory = true;
+    return hasDirectory;
 }
 
-void Directory::listFile()
+bool Directory::listFile()
 {
-    cout << "All files in " << this->getName() << endl;
+    bool hasFile = false;
     for (int i = 0; i < children->size(); i++)
-    {
-        children->at(i)->print(true);
-    }
+        if (children->at(i)->getType() == "File")
+            hasFile = true;
+    return hasFile;
 }
 
 bool Directory::isEmpty()

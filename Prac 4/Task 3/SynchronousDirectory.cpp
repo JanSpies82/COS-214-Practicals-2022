@@ -33,3 +33,38 @@ Node *SynchronousDirectory::access(string name)
     }
     throw invalid_argument("No child with name " + name + " found");
 }
+
+void SynchronousDirectory::addDirectory(Directory *directory)
+{
+    Directory::addDirectory(directory);
+}
+
+void SynchronousDirectory::addFile(File *file)
+{
+    Directory::addFile(file);
+}
+
+void SynchronousDirectory::removeDirectory(string name)
+{
+    Directory::removeDirectory(name);
+}
+
+void SynchronousDirectory::removeFile(string name)
+{
+    Directory::removeFile(name);
+}
+
+bool SynchronousDirectory::listDirectory()
+{
+    return Directory::listDirectory();
+}
+
+bool SynchronousDirectory::listFile()
+{
+    return Directory::listFile();
+}
+
+bool SynchronousDirectory::isEmpty()
+{
+    return Directory::isEmpty();
+}

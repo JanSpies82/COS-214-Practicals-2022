@@ -1,5 +1,6 @@
 #include "File.h"
 #include "FileIteratorFactory.h"
+#include "Directory.h"
 using namespace std;
 
 File::File() : Node()
@@ -79,8 +80,42 @@ NodeIterator *File::createIterator()
     return n;
 }
 
-void File::print(bool files)
+string File::print()
 {
-    if (files)
-        cout << "FILE: " << name << endl;
+    return name + "\n";
+}
+
+void File::addDirectory(Directory *directory)
+{
+    __throw_logic_error("Cannot add directory to file");
+}
+
+void File::addFile(File *file)
+{
+    __throw_logic_error("Cannot add file to file");
+}
+
+void File::removeDirectory(std::string name)
+{
+    __throw_logic_error("Cannot remove directory from file");
+}
+
+void File::removeFile(std::string name)
+{
+    __throw_logic_error("Cannot remove file from file");
+}
+
+bool File::listDirectory()
+{
+    return true;
+}
+
+bool File::listFile()
+{
+    return false;
+}
+
+bool File::isEmpty()
+{
+    return true;
 }

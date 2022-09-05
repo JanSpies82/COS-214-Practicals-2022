@@ -19,11 +19,11 @@ public:
     virtual void addFile(File *file);
     virtual void removeDirectory(std::string name);
     virtual void removeFile(std::string name);
-    virtual void listDirectory();
-    virtual void listFile();
+    virtual bool listDirectory();
+    virtual bool listFile();
     virtual bool isEmpty();
     NodeIterator *createIterator();
-    void print(bool files);
+    std::string print();
 
 protected:
     std::vector<Node *> *children;

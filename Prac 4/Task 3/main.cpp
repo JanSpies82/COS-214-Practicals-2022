@@ -225,12 +225,52 @@ void testSynchronousDirectory()
     // delete n;
 }
 
+void testDirectoryTask3()
+{
+    Node *d1 = new SynchronousDirectory("Base");
+    Directory *d2 = new SynchronousDirectory("Sub1");
+    Directory *d3 = new AsynchronousDirectory("Sub2");
+    Directory *d4 = new SynchronousDirectory("Sub3");
+
+    d1->addFile(new File("inBase1.txt"));
+    d1->addFile(new File("inBase2.txt"));
+
+    d2->addFile(new File("inSub1.txt"));
+    d2->addFile(new File("inSub1.txt"));
+
+    d3->addDirectory(new AsynchronousDirectory("SubSub1"));
+    d3->addDirectory(new AsynchronousDirectory("SubSub2"));
+
+    d1->addDirectory(d2);
+    d1->addDirectory(d3);
+    d1->addDirectory(d4);
+
+    cout << "Does d1 contain a directory? " << d1->listDirectory() << endl;
+    cout << "Does d1 contain a file? " << d1->listFile() << endl;
+    cout << "Does d2 contain a directory? " << d2->listDirectory() << endl;
+    cout << "Does d2 contain a file? " << d2->listFile() << endl;
+    cout << "Does d3 contain a directory? " << d3->listDirectory() << endl;
+    cout << "Does d3 contain a file? " << d3->listFile() << endl;
+    cout << "Does d4 contain a directory? " << d4->listDirectory() << endl;
+    cout << "Does d4 contain a file? " << d4->listFile() << endl;
+
+    cout << "d1 contents: " << endl;
+    cout << d1->print();
+
+    cout << "d2 contents: " << endl;
+    cout << d2->print();
+
+    delete d1;
+}
+
 void runTests()
 {
     //* Task 2 tests
     // testFile();
     // testAsynchronousDirectory();
     // testSynchronousDirectory();
+
+    testDirectoryTask3();
 }
 int main()
 {

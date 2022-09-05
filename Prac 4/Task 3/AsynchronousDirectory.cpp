@@ -31,3 +31,38 @@ Node *AsynchronousDirectory::access(string name)
     }
     throw invalid_argument("No child with name " + name + " found");
 }
+
+void AsynchronousDirectory::addDirectory(Directory *directory)
+{
+    Directory::addDirectory(directory);
+}
+
+void AsynchronousDirectory::addFile(File *file)
+{
+    Directory::addFile(file);
+}
+
+void AsynchronousDirectory::removeDirectory(string name)
+{
+    Directory::removeDirectory(name);
+}
+
+void AsynchronousDirectory::removeFile(string name)
+{
+    Directory::removeFile(name);
+}
+
+bool AsynchronousDirectory::listDirectory()
+{
+    return Directory::listDirectory();
+}
+
+bool AsynchronousDirectory::listFile()
+{
+    return Directory::listFile();
+}
+
+bool AsynchronousDirectory::isEmpty()
+{
+    return Directory::isEmpty();
+}

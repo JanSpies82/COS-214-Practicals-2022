@@ -5,6 +5,9 @@
 #include <stdexcept>
 #include <iostream>
 #include "NodeIterator.h"
+
+class Directory;
+class File;
 class Node
 {
 public:
@@ -18,7 +21,14 @@ public:
     bool isSynchronous();
     std::string getType();
     virtual NodeIterator *createIterator() = 0;
-    virtual void print(bool files) = 0;
+    virtual std::string print() = 0;
+    virtual void addDirectory(Directory *directory) = 0;
+    virtual void addFile(File *file) = 0;
+    virtual void removeDirectory(std::string name) = 0;
+    virtual void removeFile(std::string name) = 0;
+    virtual bool listDirectory() = 0;
+    virtual bool listFile() = 0;
+    virtual bool isEmpty() = 0;
 
 protected:
     std::string name;
