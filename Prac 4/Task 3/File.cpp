@@ -78,3 +78,8 @@ NodeIterator *File::createIterator()
     delete factory;
     return n;
 }
+
+void File::print()
+{
+    cout << "FILE: " << name << endl;
+}

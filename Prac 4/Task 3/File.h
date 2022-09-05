@@ -16,6 +16,7 @@ public:
     void prependContents(std::string contents);
     void setName(std::string name);
     NodeIterator *createIterator();
+    void print();
 
 private:
     std::string contents;

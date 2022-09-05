@@ -17,23 +17,23 @@ const std::string BLUE = "\x1B[34m";
 const std::string CYAN = "\x1B[36m";
 const std::string RESET = "\x1B[0m";
 
-void testNodes()
-{
-    Node *node1 = new Node();
-    Node *node2 = new Node("Node2", false, "Node");
-    cout << "Node1 name: " << node1->getName() << endl;
-    cout << "Node2 name: " << node2->getName() << endl;
-    cout << "Node1 last modified: " << node1->getLastModified() << " : " << node1->timeToString(node1->getLastModified()) << endl;
-    cout << "Node2 last modified: " << node2->getLastModified() << " : " << node2->timeToString(node2->getLastModified()) << endl;
-    node1->setName("Node11");
-    cout << "Node1 name: " << node1->getName() << endl;
-    cout << "Node2 name: " << node2->getName() << endl;
-    cout << "Node1 last modified: " << node1->getLastModified() << " : " << node1->timeToString(node1->getLastModified()) << endl;
-    cout << "Node2 last modified: " << node2->getLastModified() << " : " << node2->timeToString(node2->getLastModified()) << endl;
-    cout << "Is node1 last modified equal to node2 last modified? " << (node1->getLastModified() == node2->getLastModified() ? "Yes" : "No") << endl;
-    delete node1;
-    delete node2;
-}
+// void testNodes()
+// {
+//     Node *node1 = new Node();
+//     Node *node2 = new Node("Node2", false, "Node");
+//     cout << "Node1 name: " << node1->getName() << endl;
+//     cout << "Node2 name: " << node2->getName() << endl;
+//     cout << "Node1 last modified: " << node1->getLastModified() << " : " << node1->timeToString(node1->getLastModified()) << endl;
+//     cout << "Node2 last modified: " << node2->getLastModified() << " : " << node2->timeToString(node2->getLastModified()) << endl;
+//     node1->setName("Node11");
+//     cout << "Node1 name: " << node1->getName() << endl;
+//     cout << "Node2 name: " << node2->getName() << endl;
+//     cout << "Node1 last modified: " << node1->getLastModified() << " : " << node1->timeToString(node1->getLastModified()) << endl;
+//     cout << "Node2 last modified: " << node2->getLastModified() << " : " << node2->timeToString(node2->getLastModified()) << endl;
+//     cout << "Is node1 last modified equal to node2 last modified? " << (node1->getLastModified() == node2->getLastModified() ? "Yes" : "No") << endl;
+//     delete node1;
+//     delete node2;
+// }
 
 void testFile()
 {
@@ -196,20 +196,20 @@ void testSynchronousDirectory()
         cout << RED << "Error: Exception thrown when adding Async directory" << RESET << endl;
     }
 
-    Node *n = new Node("n", 0, "");
-    try
-    {
-        sdir1->addChild(n);
-        cout << RED << "Error: No exception thrown when adding child of wrong type" << RESET << endl;
-    }
-    catch (invalid_argument &e)
-    {
-        cout << GREEN << "Caught correct exception" << RESET << endl;
-    }
-    catch (...)
-    {
-        cout << RED << "Error: Wrong exception thrown when adding child of wrong type" << RESET << endl;
-    }
+    // Node *n = new Node("n", 0, "");
+    // try
+    // {
+    //     sdir1->addChild(n);
+    //     cout << RED << "Error: No exception thrown when adding child of wrong type" << RESET << endl;
+    // }
+    // catch (invalid_argument &e)
+    // {
+    //     cout << GREEN << "Caught correct exception" << RESET << endl;
+    // }
+    // catch (...)
+    // {
+    //     cout << RED << "Error: Wrong exception thrown when adding child of wrong type" << RESET << endl;
+    // }
 
     if (sdir2->access("n21.txt")->getName() != "n21.txt")
     {
@@ -222,13 +222,12 @@ void testSynchronousDirectory()
 
     delete sdir1;
     delete sdir2;
-    delete n;
+    // delete n;
 }
 
 void runTests()
 {
     //* Task 2 tests
-    // testNodes();
     // testFile();
     // testAsynchronousDirectory();
     // testSynchronousDirectory();

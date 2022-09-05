@@ -3,6 +3,7 @@
 #include <string>
 #include <chrono>
 #include <stdexcept>
+#include <iostream>
 #include "NodeIterator.h"
 class Node
 {
@@ -16,7 +17,8 @@ public:
     std::string timeToString(double time);
     bool isSynchronous();
     std::string getType();
-    virtual NodeIterator* createIterator() = 0;
+    virtual NodeIterator *createIterator() = 0;
+    virtual void print() = 0;
 
 protected:
     std::string name;

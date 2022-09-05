@@ -65,3 +65,18 @@ NodeIterator *Directory::createIterator()
     delete factory;
     return n;
 }
+
+void Directory::addDirectory(Directory *directory)
+{
+    this->addChild(directory);
+}
+
+void Directory::print()
+{
+    cout << "DIRECTORY: " << this->getName() << endl;
+    for (int i = 0; i < children->size(); i++)
+    {
+        cout << "\t -";
+        children->at(i)->print();
+    }
+}
