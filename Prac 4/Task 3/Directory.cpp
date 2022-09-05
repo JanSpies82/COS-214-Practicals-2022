@@ -1,6 +1,5 @@
 #include "Directory.h"
-
-
+#include "DirectoryIteratorFactory.h"
 using namespace std;
 
 Directory::Directory() : Node()
@@ -15,6 +14,11 @@ Directory::Directory(string name, bool synchronous) : Node(name, synchronous, "D
 
 Directory::~Directory()
 {
+    for (int i = 0; i < children->size(); i++)
+    {
+        delete children->at(i);
+    }
+    delete children;
 }
 
 void Directory::addChild(Node *child)
@@ -52,4 +56,12 @@ string Directory::listContents()
         contents += children->at(i)->getName() + "\n";
     }
     return contents;
+}
+
+NodeIterator *Directory::createIterator()
+{
+    DirectoryIteratorFactory *factory = new DirectoryIteratorFactory();
+    NodeIterator *n = factory->createIterator();
+    delete factory;
+    return n;
 }

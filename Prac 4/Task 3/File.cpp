@@ -1,5 +1,5 @@
 #include "File.h"
-
+#include "FileIteratorFactory.h"
 using namespace std;
 
 File::File() : Node()
@@ -69,4 +69,12 @@ string File::determineExtension(string name)
         return name.substr(index + 1);
     }
     return "";
+}
+
+NodeIterator *File::createIterator()
+{
+    FileIteratorFactory *factory = new FileIteratorFactory();
+    NodeIterator *n = factory->createIterator();
+    delete factory;
+    return n;
 }
