@@ -270,6 +270,7 @@ void runTests()
     // testAsynchronousDirectory();
     // testSynchronousDirectory();
 
+    //* Task 3 tests
     testDirectoryTask3();
 }
 int main()

@@ -8,12 +8,13 @@ Node::Node()
     synchronous = 1;
 }
 
-Node::Node(string name, bool synchronous, string type)
+Node::Node(string name, bool synchronous, string type, Node* parent)
 {
     this->name = name;
     lastModified = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()).count();
     this->synchronous = synchronous;
     this->type = type;
+    this->parent = parent;
 }
 
 Node::~Node()
@@ -51,4 +52,14 @@ bool Node::isSynchronous()
 string Node::getType()
 {
     return type;
+}
+
+Node* Node::getParent()
+{
+    return parent;
+}
+
+void Node::setParent(Node* parent)
+{
+    this->parent = parent;
 }

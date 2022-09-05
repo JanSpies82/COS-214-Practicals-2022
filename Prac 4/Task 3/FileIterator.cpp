@@ -1,21 +1,26 @@
 #include "FileIterator.h"
 using namespace std;
 
-FileIterator::FileIterator()
+FileIterator::FileIterator(Node *n) : NodeIterator(n)
 {
 }
 
 FileIterator::~FileIterator()
 {
 }
-void FileIterator::next()
+NodeIterator* FileIterator::next()
 {
 	throw "Not yet implemented";
 }
 
 void FileIterator::first()
 {
-	throw "Not yet implemented";
+	Node *ptr = node;
+	while (ptr->getParent() != NULL)
+	{
+		ptr = ptr->getParent();
+	}
+	node = ptr;
 }
 
 bool FileIterator::hasNext()
@@ -24,11 +29,6 @@ bool FileIterator::hasNext()
 }
 
 File *FileIterator::current()
-{
-	throw "Not yet implemented";
-}
-
-void FileIterator::handle()
 {
 	throw "Not yet implemented";
 }

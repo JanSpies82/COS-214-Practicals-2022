@@ -2,10 +2,9 @@
 #include "Node.h"
 using namespace std;
 
-
-NodeIterator::NodeIterator()
+NodeIterator::NodeIterator(Node* n)
 {
-	node = NULL;
+	node = n;
 }
 
 NodeIterator::~NodeIterator()

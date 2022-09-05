@@ -5,13 +5,12 @@
 class DirectoryIterator : public NodeIterator
 {
 public:
-	DirectoryIterator();
+	DirectoryIterator(Node* n );
 	~DirectoryIterator();
 	void first();
-	void next();
+	NodeIterator* next();
 	bool hasNext();
 	Directory *current();
-	void handle();
 };
 
 #endif

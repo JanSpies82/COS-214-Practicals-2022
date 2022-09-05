@@ -5,8 +5,9 @@
 class File : public Node
 {
 public:
+    friend class FileIterator;
     File();
-    File(std::string name);
+    File(std::string name, Node *parent = NULL);
     ~File();
     std::string getContents();
     void setContents(std::string contents);
@@ -16,7 +17,7 @@ public:
     void prependContents(std::string contents);
     void setName(std::string name);
     NodeIterator *createIterator();
-    std::string print(int depth =0);
+    std::string print(int depth = 0);
     virtual void addDirectory(Directory *directory);
     virtual void addFile(File *file);
     virtual void removeDirectory(std::string name);

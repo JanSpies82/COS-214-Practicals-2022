@@ -9,7 +9,7 @@ File::File() : Node()
     extension = "";
 }
 
-File::File(string name) : Node(name, false, "File")
+File::File(string name, Node* parent) : Node(name, false, "File", parent)
 {
     contents = "";
     extension = determineExtension(name);
@@ -75,7 +75,7 @@ string File::determineExtension(string name)
 NodeIterator *File::createIterator()
 {
     FileIteratorFactory *factory = new FileIteratorFactory();
-    NodeIterator *n = factory->createIterator();
+    NodeIterator *n = factory->createIterator(this);
     delete factory;
     return n;
 }

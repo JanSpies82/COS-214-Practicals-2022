@@ -7,7 +7,7 @@ class DirectoryIteratorFactory : public IteratorFactory
 public:
 	DirectoryIteratorFactory();
 	~DirectoryIteratorFactory();
-	NodeIterator *createIterator();
+	NodeIterator *createIterator(Node* n);
 };
 
 #endif

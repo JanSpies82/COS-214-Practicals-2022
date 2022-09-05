@@ -1,8 +1,10 @@
 #include "DirectoryIterator.h"
+#include "FileIterator.h"
 using namespace std;
 
-DirectoryIterator::DirectoryIterator()
+DirectoryIterator::DirectoryIterator(Node *n) : NodeIterator(n)
 {
+	parent = (Directory *)n->getParent();
 }
 
 DirectoryIterator::~DirectoryIterator()
@@ -11,25 +13,50 @@ DirectoryIterator::~DirectoryIterator()
 
 void DirectoryIterator::first()
 {
-	throw "Not yet implemented";
+	Node *ptr = node;
+	while (ptr->getParent() != NULL)
+	{
+		ptr = ptr->getParent();
+	}
+	node = ptr;
 }
 
-void DirectoryIterator::next()
+NodeIterator *DirectoryIterator::next()
 {
-	throw "Not yet implemented";
+	if (parent == NULL)
+		node = NULL;
+	else
+	{
+		int i = 0;
+		while (parent->getChild(i) != node)
+			i++;
+		if (i < parent->getChildrenCount() - 1)
+			node = parent->getChild(i + 1);
+		else
+			node = NULL;
+	}
+	if (node != NULL)
+		if (node->getType() != "Directory")
+		{
+			return (NodeIterator *)new FileIterator(node);
+			delete this;
+		}
+	return this;
 }
 
 bool DirectoryIterator::hasNext()
 {
-	throw "Not yet implemented";
+	if (parent == NULL)
+		return false;
+	int i = 0;
+	while (parent->getChild(i) != node)
+		i++;
+	if (i >= parent->getChildrenCount() - 1)
+		return false;
+	return true;
 }
 
 Directory *DirectoryIterator::current()
-{
-	return NULL;
-}
-
-void DirectoryIterator::handle()
-{
-	throw "Not yet implemented";
+{ 
+	return (Directory*) node;
 }

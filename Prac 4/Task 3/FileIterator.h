@@ -5,13 +5,12 @@
 class FileIterator : public NodeIterator
 {
 public:
-	FileIterator();
+	FileIterator(Node* n);
 	~FileIterator();
-	void next();
+	NodeIterator* next();
 	void first();
 	bool hasNext();
 	File *current();
-	void handle();
 };
 
 #endif

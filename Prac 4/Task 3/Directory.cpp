@@ -7,7 +7,7 @@ Directory::Directory() : Node()
     children = new vector<Node *>();
 }
 
-Directory::Directory(string name, bool synchronous) : Node(name, synchronous, "Directory")
+Directory::Directory(string name, bool synchronous, Node *parent) : Node(name, synchronous, "Directory", parent)
 {
     children = new vector<Node *>();
 }
@@ -19,6 +19,7 @@ Directory::~Directory()
 void Directory::addChild(Node *child)
 {
     children->push_back(child);
+    child->setParent(this);
     this->lastModified = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()).count();
 }
 
@@ -38,9 +39,16 @@ void Directory::removeChild(string name)
     throw invalid_argument("No child with name " + name + " found");
 }
 
-vector<Node *> *Directory::getChildren()
+Node *Directory::getChild(int i)
 {
-    return children;
+    if (i > children->size() - 1)
+        return NULL;
+    return children->at(i);
+}
+
+int Directory::getChildrenCount()
+{
+    return children->size();
 }
 
 string Directory::listContents()
@@ -56,7 +64,7 @@ string Directory::listContents()
 NodeIterator *Directory::createIterator()
 {
     DirectoryIteratorFactory *factory = new DirectoryIteratorFactory();
-    NodeIterator *n = factory->createIterator();
+    NodeIterator *n = factory->createIterator(this);
     delete factory;
     return n;
 }
@@ -77,7 +85,7 @@ string Directory::print(int depth)
     for (int i = 0; i < children->size(); i++)
     {
         if (children->at(i)->print(depth) != "")
-            out +=children->at(i)->print(d);
+            out += children->at(i)->print(d);
     }
     return out;
 }

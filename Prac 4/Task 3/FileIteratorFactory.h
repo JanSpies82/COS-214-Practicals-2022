@@ -7,6 +7,6 @@ class FileIteratorFactory : public IteratorFactory
 public:
 	FileIteratorFactory();
 	~FileIteratorFactory();
-	NodeIterator *createIterator();
+	NodeIterator *createIterator(Node* n);
 };
 #endif

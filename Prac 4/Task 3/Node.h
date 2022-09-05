@@ -12,7 +12,7 @@ class Node
 {
 public:
     Node();
-    Node(std::string name, bool synchronous, std::string type);
+    Node(std::string name, bool synchronous, std::string type, Node* parent);
     virtual ~Node();
     std::string getName();
     void setName(std::string name);
@@ -29,11 +29,14 @@ public:
     virtual bool listDirectory() = 0;
     virtual bool listFile() = 0;
     virtual bool isEmpty() = 0;
+    Node* getParent();
+    void setParent(Node* parent);
 
 protected:
     std::string name;
     double lastModified;
     bool synchronous;
     std::string type;
+    Node* parent;
 };
 #endif

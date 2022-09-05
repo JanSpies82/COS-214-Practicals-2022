@@ -1,4 +1,5 @@
 #include "FileIteratorFactory.h"
+class Node;
 using namespace std;
 
 FileIteratorFactory::FileIteratorFactory()
@@ -8,7 +9,7 @@ FileIteratorFactory::FileIteratorFactory()
 FileIteratorFactory::~FileIteratorFactory()
 {
 }
-NodeIterator *FileIteratorFactory::createIterator()
+NodeIterator *FileIteratorFactory::createIterator(Node* n)
 {
-	return new FileIterator();
+	return new FileIterator(n);
 }
