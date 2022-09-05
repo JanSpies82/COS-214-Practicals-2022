@@ -2,7 +2,8 @@
 #define DIRECTORY_H
 #include "Node.h"
 #include <vector>
-
+class File;
+class NodeIterator;
 class Directory : public Node
 {
 public:
@@ -14,6 +15,14 @@ public:
     std::vector<Node *> *getChildren();
     std::string listContents();
     virtual Node *access(std::string name) = 0;
+    virtual void addDirectory(Directory *directory);
+    virtual void addFile(File *file);
+    virtual void removeDirectory(std::string name);
+    virtual void removeFile(std::string name);
+    virtual void listDirectory();
+    virtual void listFile();
+    virtual bool isEmpty();
+    NodeIterator *createIterator();
 
 protected:
     std::vector<Node *> *children;
