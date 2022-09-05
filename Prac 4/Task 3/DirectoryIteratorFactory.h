@@ -1,18 +1,13 @@
-#include <exception>
-using namespace std;
-
-#ifndef __DirectoryIteratorFactory_h__
-#define __DirectoryIteratorFactory_h__
-
+#ifndef DIRECTORYITERATORFACTORY_H
+#define DIRECTORYITERATORFACTORY_H
 #include "IteratorFactory.h"
-
-// class IteratorFactory;
-class DirectoryIteratorFactory;
-
-class DirectoryIteratorFactory: public IteratorFactory
+#include "DirectoryIterator.h"
+class DirectoryIteratorFactory : public IteratorFactory
 {
-
-	public: NodeIterator* createIterator();
+public:
+	DirectoryIteratorFactory();
+	~DirectoryIteratorFactory();
+	NodeIterator *createIterator();
 };
 
 #endif

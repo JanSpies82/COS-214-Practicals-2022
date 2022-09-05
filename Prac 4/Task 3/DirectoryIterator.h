@@ -1,30 +1,17 @@
-#include <exception>
-using namespace std;
-
-#ifndef __DirectoryIterator_h__
-#define __DirectoryIterator_h__
-
-// #include "Directory.h"
+#ifndef DIRECTORYITERATOR_H
+#define DIRECTORYITERATOR_H
+#include "Directory.h"
 #include "NodeIterator.h"
-
-class Directory;
-// class NodeIterator;
-class DirectoryIterator;
-
-class DirectoryIterator: public NodeIterator
+class DirectoryIterator : public NodeIterator
 {
-	private: Directory* directory;
-	public: Directory* unnamed_Directory_;
-
-	public: void first();
-
-	public: void next();
-
-	public: bool hasNext();
-
-	public: Directory* current();
-
-	public: void handle();
+public:
+	DirectoryIterator();
+	~DirectoryIterator();
+	void first();
+	void next();
+	bool hasNext();
+	Directory *current();
+	void handle();
 };
 
 #endif

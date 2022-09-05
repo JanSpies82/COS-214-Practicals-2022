@@ -1,8 +1,10 @@
-#include <exception>
+#include "IteratorFactory.h"
 using namespace std;
 
-#include "IteratorFactory.h"
-NodeIterator* IteratorFactory::createIterator() {
-	throw "Not yet implemented";
+IteratorFactory::IteratorFactory()
+{
 }
 
+IteratorFactory::~IteratorFactory()
+{
+}

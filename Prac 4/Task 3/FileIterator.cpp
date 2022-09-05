@@ -1,27 +1,34 @@
-#include <exception>
+#include "FileIterator.h"
 using namespace std;
 
-#include "FileIterator.h"
-#include "File.h"
-#include "NodeIterator.h"
+FileIterator::FileIterator()
+{
+}
 
-void FileIterator::next() {
+FileIterator::~FileIterator()
+{
+}
+void FileIterator::next()
+{
 	throw "Not yet implemented";
 }
 
-void FileIterator::first() {
+void FileIterator::first()
+{
 	throw "Not yet implemented";
 }
 
-bool FileIterator::hasNext() {
+bool FileIterator::hasNext()
+{
 	throw "Not yet implemented";
 }
 
-File* FileIterator::current() {
+File *FileIterator::current()
+{
 	throw "Not yet implemented";
 }
 
-void FileIterator::handle() {
+void FileIterator::handle()
+{
 	throw "Not yet implemented";
 }
-

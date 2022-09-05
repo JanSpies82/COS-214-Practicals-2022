@@ -1,30 +1,17 @@
-#include <exception>
-using namespace std;
-
-#ifndef __FileIterator_h__
-#define __FileIterator_h__
-
-// #include "File.h"
+#ifndef FILEITERATOR_H
+#define FILEITERATOR_H
 #include "NodeIterator.h"
-
-class File;
-// class NodeIterator;
-class FileIterator;
-
-class FileIterator: public NodeIterator
+#include "File.h"
+class FileIterator : public NodeIterator
 {
-	private: File* file;
-	public: File* unnamed_File_;
-
-	public: void next();
-
-	public: void first();
-
-	public: bool hasNext();
-
-	public: File* current();
-
-	public: void handle();
+public:
+	FileIterator();
+	~FileIterator();
+	void next();
+	void first();
+	bool hasNext();
+	File *current();
+	void handle();
 };
 
 #endif

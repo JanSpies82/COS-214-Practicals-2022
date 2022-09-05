@@ -1,27 +1,35 @@
-#include <exception>
+#include "DirectoryIterator.h"
 using namespace std;
 
-#include "DirectoryIterator.h"
-#include "Directory.h"
-#include "NodeIterator.h"
+DirectoryIterator::DirectoryIterator()
+{
+}
 
-void DirectoryIterator::first() {
+DirectoryIterator::~DirectoryIterator()
+{
+}
+
+void DirectoryIterator::first()
+{
 	throw "Not yet implemented";
 }
 
-void DirectoryIterator::next() {
+void DirectoryIterator::next()
+{
 	throw "Not yet implemented";
 }
 
-bool DirectoryIterator::hasNext() {
+bool DirectoryIterator::hasNext()
+{
 	throw "Not yet implemented";
 }
 
-Directory* DirectoryIterator::current() {
+Directory *DirectoryIterator::current()
+{
 	throw "Not yet implemented";
 }
 
-void DirectoryIterator::handle() {
+void DirectoryIterator::handle()
+{
 	throw "Not yet implemented";
 }
-

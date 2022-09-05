@@ -1,23 +1,19 @@
-#include <exception>
-using namespace std;
-
-#ifndef __NodeIterator_h__
-#define __NodeIterator_h__
-
-class NodeIterator;
-
-__abstract class NodeIterator
+#ifndef NODEITERATOR_H
+#define NODEITERATOR_H
+#include "Node.h"
+class NodeIterator
 {
+public:
+	NodeIterator();
+	virtual ~NodeIterator();
+	virtual void first() = 0;
+	virtual void next() = 0;
+	virtual bool hasNext() = 0;
+	virtual Node *current() = 0;
+	virtual void handle() = 0;
 
-	public: virtual void first() = 0;
-
-	public: virtual void next() = 0;
-
-	public: virtual bool hasNext() = 0;
-
-	public: virtual Node* current() = 0;
-
-	public: virtual void handle() = 0;
+protected:
+	Node *node;
 };
 
 #endif

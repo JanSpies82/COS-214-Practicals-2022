@@ -1,15 +1,12 @@
-#include <exception>
-using namespace std;
-
-#ifndef __IteratorFactory_h__
-#define __IteratorFactory_h__
-
-class IteratorFactory;
-
-__abstract class IteratorFactory
+#ifndef ITERATORFACTORY_H
+#define ITERATORFACTORY_H
+#include "NodeIterator.h"
+class IteratorFactory
 {
-
-	public: virtual NodeIterator* createIterator() = 0;
+public:
+	IteratorFactory();
+	virtual ~IteratorFactory();
+	virtual NodeIterator *createIterator() = 0;
 };
 
 #endif

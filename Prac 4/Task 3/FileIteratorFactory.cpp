@@ -1,10 +1,14 @@
-#include <exception>
+#include "FileIteratorFactory.h"
 using namespace std;
 
-#include "FileIteratorFactory.h"
-#include "IteratorFactory.h"
-
-NodeIterator* FileIteratorFactory::createIterator() {
-	throw "Not yet implemented";
+FileIteratorFactory::FileIteratorFactory()
+{
 }
 
+FileIteratorFactory::~FileIteratorFactory()
+{
+}
+NodeIterator *FileIteratorFactory::createIterator()
+{
+	throw "Not yet implemented";
+}
