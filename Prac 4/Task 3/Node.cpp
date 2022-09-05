@@ -6,15 +6,17 @@ Node::Node()
     name = "";
     lastModified = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()).count();
     synchronous = 1;
+    visited = 0;
 }
 
-Node::Node(string name, bool synchronous, string type, Node* parent)
+Node::Node(string name, bool synchronous, string type, Node *parent)
 {
     this->name = name;
     lastModified = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()).count();
     this->synchronous = synchronous;
     this->type = type;
     this->parent = parent;
+    visited = 0;
 }
 
 Node::~Node()
@@ -54,12 +56,17 @@ string Node::getType()
     return type;
 }
 
-Node* Node::getParent()
+Node *Node::getParent()
 {
     return parent;
 }
 
-void Node::setParent(Node* parent)
+void Node::setParent(Node *parent)
 {
     this->parent = parent;
+}
+
+bool Node::isVisited()
+{
+    return visited;
 }

@@ -9,7 +9,7 @@ File::File() : Node()
     extension = "";
 }
 
-File::File(string name, Node* parent) : Node(name, false, "File", parent)
+File::File(string name, Node *parent) : Node(name, false, "File", parent)
 {
     contents = "";
     extension = determineExtension(name);
@@ -123,4 +123,14 @@ bool File::listFile()
 bool File::isEmpty()
 {
     return true;
+}
+
+void File::visit()
+{
+    visited = true;
+}
+
+void File::resetVisit()
+{
+    visited = false;
 }

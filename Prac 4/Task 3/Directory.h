@@ -26,6 +26,9 @@ public:
     virtual bool isEmpty();
     NodeIterator *createIterator();
     std::string print(int depth = 0);
+    void visit();
+    void resetVisit();
+    bool isVisited();
 
 protected:
     std::vector<Node *> *children;

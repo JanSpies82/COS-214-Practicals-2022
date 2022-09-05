@@ -25,6 +25,8 @@ public:
     virtual bool listDirectory();
     virtual bool listFile();
     virtual bool isEmpty();
+    void visit();
+    void resetVisit();
 
 private:
     std::string contents;

@@ -127,3 +127,23 @@ bool Directory::isEmpty()
 {
     return children->size() == 0;
 }
+
+void Directory::visit()
+{
+    this->visited = true;
+}
+
+void Directory::resetVisit()
+{
+    this->visited = false;
+    for (int i = 0; i < children->size(); i++)
+        children->at(i)->resetVisit();
+}
+
+bool Directory::isVisited()
+{
+    bool v = true;
+    for (int i = 0; i < children->size(); i++)
+        v = v && children->at(i)->isVisited();
+    return v;
+}
