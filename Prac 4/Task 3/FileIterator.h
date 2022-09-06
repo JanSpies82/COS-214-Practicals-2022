@@ -11,6 +11,8 @@ public:
 	void first();
 	bool hasNext();
 	File *current();
+private:
+	NodeIterator *handle(Node *n);
 };
 
 #endif

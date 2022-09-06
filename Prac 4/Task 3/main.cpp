@@ -8,6 +8,10 @@
 #include "AsynchronousDirectory.h"
 #include "SynchronousDirectory.h"
 
+#include "NodeIterator.h"
+#include "FileIterator.h"
+#include "DirectoryIterator.h"
+
 using namespace std;
 
 const std::string RED = "\x1B[31m";
@@ -263,6 +267,46 @@ void testDirectoryTask3()
     delete d1;
 }
 
+void testBasicIterators()
+{
+    Directory *root = new SynchronousDirectory("Root");
+    Directory *d11 = new SynchronousDirectory("d11");
+    Directory *d12 = new AsynchronousDirectory("d12");
+    Directory *d21 = new AsynchronousDirectory("d21");
+    Directory *d31 = new AsynchronousDirectory("d31");
+    Directory *d32 = new AsynchronousDirectory("d32");
+
+    d21->addDirectory(d31);
+    d21->addDirectory(d32);
+
+    d11->addFile(new File("f21.txt"));
+    d11->addDirectory(d21);
+
+    d12->addFile(new File("f22.txt"));
+
+    root->addDirectory(d11);
+    root->addFile(new File("f11.txt"));
+    root->addFile(new File("f12.txt"));
+    root->addDirectory(d12);
+
+    cout << "Root contents: " << endl;
+    cout << root->print();
+
+    cout << "Traversing the tree using the iterator" << endl;
+    // TODO debug iterator
+    NodeIterator *it = root->createIterator();
+    it->first();
+    while (it->hasNext())
+    {
+        Node *n = it->current();
+        cout << n->getName() << endl;
+        it->next();
+    }
+
+    delete it;
+    delete root;
+}
+
 void runTests()
 {
     //* Task 2 tests
@@ -271,7 +315,8 @@ void runTests()
     // testSynchronousDirectory();
 
     //* Task 3 tests
-    testDirectoryTask3();
+    // testDirectoryTask3();
+    testBasicIterators();
 }
 int main()
 {
