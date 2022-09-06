@@ -1,6 +1,7 @@
 #ifndef NODEITERATOR_H
 #define NODEITERATOR_H
 class Node;
+class Directory;
 class NodeIterator
 {
 public:

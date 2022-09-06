@@ -142,7 +142,7 @@ void Directory::resetVisit()
 
 bool Directory::isVisited()
 {
-    bool v = true;
+    bool v = visited;
     for (int i = 0; i < children->size(); i++)
         v = v && children->at(i)->isVisited();
     return v;
