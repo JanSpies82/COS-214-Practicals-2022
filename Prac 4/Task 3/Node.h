@@ -4,6 +4,7 @@
 #include <chrono>
 #include <stdexcept>
 #include <iostream>
+#include <string>
 #include "NodeIterator.h"
 
 class Directory;
@@ -11,6 +12,12 @@ class File;
 class Node
 {
 public:
+    const std::string RED = "\x1B[31m";
+    const std::string GREEN = "\x1B[32m";
+    const std::string YELLOW = "\x1B[33m";
+    const std::string BLUE = "\x1B[34m";
+    const std::string CYAN = "\x1B[36m";
+    const std::string RESET = "\x1B[0m";
     Node();
     Node(std::string name, bool synchronous, std::string type, Node *parent);
     virtual ~Node();

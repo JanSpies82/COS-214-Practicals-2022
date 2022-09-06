@@ -143,7 +143,15 @@ void Directory::resetVisit()
 bool Directory::isVisited()
 {
     bool v = visited;
+    // if (this->getName() == "root" || this->getName() == "d12")
+    //     cout << YELLOW << "We are in: " << this->getName() << " " << GREEN << v << RESET << endl;
     for (int i = 0; i < children->size(); i++)
+    {
+        // if (this->getName() == "root" || this->getName() == "d12")
+        //     cout << YELLOW << children->at(i)->getName() << " " << GREEN << children->at(i)->isVisited() << RESET << endl;
         v = v && children->at(i)->isVisited();
+    }
+    // if (this->getName() == "root" || this->getName() == "d12")
+    //     cout << "\t" << YELLOW << "Returning: " << GREEN << v << RESET << endl;
     return v;
 }

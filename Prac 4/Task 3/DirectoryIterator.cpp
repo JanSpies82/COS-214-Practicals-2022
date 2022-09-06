@@ -12,6 +12,7 @@ DirectoryIterator::~DirectoryIterator()
 
 void DirectoryIterator::first()
 {
+	// cout << YELLOW << "Moving to first" << RESET << endl;
 	Node *ptr = node;
 	while (ptr->getParent() != NULL)
 	{
@@ -20,21 +21,14 @@ void DirectoryIterator::first()
 	node = ptr;
 	parent = NULL;
 	node->resetVisit();
+	node->visit();
+	// cout << CYAN << "At first: " << node->getName() << RESET << endl;
 }
 
-// NodeIterator next will return a new NodeIterator object,
-// which is of the correct ConcreteIterator type for the
-// current(previously next) node
-
-// TODO - implement next & hasnext functions such that they can
-// perform breadth first traversal
-// set call parent->visit() in getCurrent function
-// When you reach the last child of the parent, you should
-// check whether one of the children is a directory and enter it
-// parent->isVisited() is false if there is a child directory
-// child->isVisited() is false if the child is a directory
 NodeIterator *DirectoryIterator::next()
 {
+	// if (hasNext())
+	// cout << YELLOW << node->getName() << " has a next " << RESET << endl;
 	parent = (Directory *)node->getParent();
 	if (!hasNext())
 		throw logic_error("No next element");
@@ -52,7 +46,7 @@ NodeIterator *DirectoryIterator::next()
 			{
 				if (!parent->getChild(h)->isVisited())
 				{ // if a child directory is not visited
-					node = parent->getChild(h);
+					node = ((Directory *)parent->getChild(h))->getChild(0);
 					return handle(node);
 				}
 				h++;
@@ -66,6 +60,7 @@ NodeIterator *DirectoryIterator::next()
 					int g = 0;
 					while (g < ((Directory *)ptr)->getChildrenCount())
 					{
+						// cout << BLUE << "Calling " << ((Directory *)ptr)->getChild(g)->getName() << RESET << endl;
 						if (!((Directory *)ptr)->getChild(g)->isVisited())
 						{
 							node = ((Directory *)((Directory *)ptr)->getChild(g))->getChild(0);
@@ -100,8 +95,11 @@ bool DirectoryIterator::hasNext()
 			int h = 0;
 			while (h < parent->getChildrenCount())
 			{
-				if (!parent->getChild(h)->isVisited()) // if a child directory is not visited
+				if (!parent->getChild(h)->isVisited())
+				{ // if a child directory is not visited
+					// cout << BLUE << "1" << RESET << endl;
 					return true;
+				}
 				h++;
 			}
 			// if all children are visited, move back up tree and look for unvisited nodes
@@ -110,14 +108,22 @@ bool DirectoryIterator::hasNext()
 			{
 				ptr = ptr->getParent();
 				if (!ptr->isVisited())
+				{
+					// cout << RED << "returning true for " << ptr->getName() << RESET << endl;
 					return true;
+				}
 			}
+			// cout << RED << "1" << RESET << endl;
 			return false;
 		}
 		else
+		{
+			// cout << BLUE << "3" << RESET << endl;
 			return true; // if there are more children
+		}
 	}
-	return node->isVisited(); // if current node is root
+	// cout << RED << "4" << RESET << endl;
+	return !node->isVisited(); // if current node is root
 }
 
 Directory *DirectoryIterator::current()

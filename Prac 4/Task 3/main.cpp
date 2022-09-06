@@ -289,19 +289,23 @@ void testBasicIterators()
     root->addFile(new File("f12.txt"));
     root->addDirectory(d12);
 
-    cout << "Root contents: " << endl;
-    cout << root->print();
+    // cout << "Root contents: " << endl;
+    // cout << root->print();
 
     cout << "Traversing the tree using the iterator" << endl;
-    // TODO debug iterator
     NodeIterator *it = root->createIterator();
     it->first();
+    // cout << "\t Hasnext: " << it->hasNext() << endl;
     while (it->hasNext())
     {
         Node *n = it->current();
         cout << n->getName() << endl;
         it->next();
+        // cout << "\t Hasnext: " << it->hasNext() << endl;
     }
+
+    Node *n = it->current();
+    cout << n->getName() << endl;
 
     delete it;
     delete root;
