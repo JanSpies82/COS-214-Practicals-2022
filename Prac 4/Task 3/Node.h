@@ -9,6 +9,7 @@
 
 class Directory;
 class File;
+class IteratorManager;
 class Node
 {
 public:
@@ -28,6 +29,7 @@ public:
     bool isSynchronous();
     std::string getType();
     virtual NodeIterator *createIterator() = 0;
+    virtual IteratorManager* createIteratorManager() = 0;
     virtual std::string print(int depth = 0) = 0;
     virtual void addDirectory(Directory *directory) = 0;
     virtual void addFile(File *file) = 0;

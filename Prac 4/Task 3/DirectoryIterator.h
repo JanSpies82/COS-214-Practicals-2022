@@ -8,12 +8,9 @@ public:
 	DirectoryIterator(Node *n);
 	~DirectoryIterator();
 	void first();
-	NodeIterator *next();
+	Node*next();
 	bool hasNext();
 	Directory *current();
-
-private:
-	NodeIterator *handle(Node *n);
 };
 
 #endif

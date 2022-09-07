@@ -9,7 +9,7 @@ FileIterator::FileIterator(Node *n) : NodeIterator(n)
 FileIterator::~FileIterator()
 {
 }
-NodeIterator *FileIterator::next()
+Node *FileIterator::next()
 {
 	parent = (Directory *)node->getParent();
 	if (!hasNext())
@@ -28,8 +28,8 @@ NodeIterator *FileIterator::next()
 			{
 				if (!parent->getChild(h)->isVisited())
 				{ // if a child directory is not visited
-					node = parent->getChild(h);
-					return handle(node);
+					node = ((Directory *)parent->getChild(h))->getChild(0);
+					return node;
 				}
 				h++;
 			}
@@ -45,7 +45,7 @@ NodeIterator *FileIterator::next()
 						if (!((Directory *)ptr)->getChild(g)->isVisited())
 						{
 							node = ((Directory *)((Directory *)ptr)->getChild(g))->getChild(0);
-							return handle(node);
+							return node;
 						}
 						g++;
 					}
@@ -55,11 +55,11 @@ NodeIterator *FileIterator::next()
 		else
 		{
 			node = parent->getChild(i);
-			return handle(node); // if there are more children
+			return node; // if there are more children
 		}
 	}
 	node = ((Directory *)node)->getChild(0);
-	return handle(node); // if current node is root
+	return node; // if current node is root
 }
 
 void FileIterator::first()
@@ -72,6 +72,7 @@ void FileIterator::first()
 	node = ptr;
 	parent = NULL;
 	node->resetVisit();
+	node->visit();
 }
 
 bool FileIterator::hasNext()
@@ -105,7 +106,7 @@ bool FileIterator::hasNext()
 		else
 			return true; // if there are more children
 	}
-	return node->isVisited(); // if current node is root
+	return !node->isVisited(); // if current node is root
 }
 
 File *FileIterator::current()
@@ -113,14 +114,19 @@ File *FileIterator::current()
 	return (File *)node;
 }
 
-NodeIterator *FileIterator::handle(Node *n)
-{
-	n->visit();
-	if (n->getType() == "File")
-		return (NodeIterator *)this;
-	else
-	{
-		return (NodeIterator *)new DirectoryIterator(n);
-		delete this;
-	}
-}
+// NodeIterator *FileIterator::handle(Node *n)
+// {
+// 	n->visit();
+// 	if (n->getType() == "File")
+// 		return (NodeIterator *)this;
+// 	else
+// 	{
+// 		return (NodeIterator *)new DirectoryIterator(n);
+// 		delete this;
+// 	}
+// }
+
+// string FileIterator::iType()
+// {
+// 	return "FileIterator";
+// }

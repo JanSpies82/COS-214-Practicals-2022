@@ -1,6 +1,7 @@
 #include "File.h"
 #include "FileIteratorFactory.h"
 #include "Directory.h"
+#include "IteratorManager.h"
 using namespace std;
 
 File::File() : Node()
@@ -78,6 +79,13 @@ NodeIterator *File::createIterator()
     NodeIterator *n = factory->createIterator(this);
     delete factory;
     return n;
+}
+
+IteratorManager *File::createIteratorManager()
+{
+    IteratorManager *manager = new IteratorManager();
+    manager->setNode(this);
+    return manager;
 }
 
 string File::print(int depth)

@@ -4,6 +4,7 @@
 #include <vector>
 class File;
 class NodeIterator;
+class IteratorManager;
 class Directory : public Node
 {
 public:
@@ -25,6 +26,7 @@ public:
     virtual bool listFile();
     virtual bool isEmpty();
     NodeIterator *createIterator();
+    IteratorManager *createIteratorManager();
     std::string print(int depth = 0);
     void visit();
     void resetVisit();

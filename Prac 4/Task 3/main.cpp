@@ -8,6 +8,7 @@
 #include "AsynchronousDirectory.h"
 #include "SynchronousDirectory.h"
 
+#include "IteratorManager.h"
 #include "NodeIterator.h"
 #include "FileIterator.h"
 #include "DirectoryIterator.h"
@@ -289,11 +290,11 @@ void testBasicIterators()
     root->addFile(new File("f12.txt"));
     root->addDirectory(d12);
 
-    // cout << "Root contents: " << endl;
-    // cout << root->print();
+    cout << "Root contents: " << endl;
+    cout << root->print();
 
     cout << "Traversing the tree using the iterator" << endl;
-    NodeIterator *it = root->createIterator();
+    IteratorManager* it = root->createIteratorManager();
     it->first();
     // cout << "\t Hasnext: " << it->hasNext() << endl;
     while (it->hasNext())
@@ -301,8 +302,14 @@ void testBasicIterators()
         Node *n = it->current();
         cout << n->getName() << endl;
         it->next();
-        // cout << "\t Hasnext: " << it->hasNext() << endl;
+        // cout << CYAN << "\t It type: " << it->iType() << RESET << endl;
     }
+
+    // TODO must create new class to act as context for iterator states
+    // context stores an iterator as member and calls its methods
+    // context will then perform what handle does in the iterator
+    // Interface of context will be the same as iterator
+    // context inherits from nodeIterator?
 
     Node *n = it->current();
     cout << n->getName() << endl;

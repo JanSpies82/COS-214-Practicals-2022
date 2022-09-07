@@ -1,5 +1,6 @@
 #include "Directory.h"
 #include "DirectoryIteratorFactory.h"
+#include "IteratorManager.h"
 using namespace std;
 
 Directory::Directory() : Node()
@@ -67,6 +68,13 @@ NodeIterator *Directory::createIterator()
     NodeIterator *n = factory->createIterator(this);
     delete factory;
     return n;
+}
+
+IteratorManager *Directory::createIteratorManager()
+{
+    IteratorManager *manager = new IteratorManager();
+    manager->setNode(this);
+    return manager;
 }
 
 void Directory::addDirectory(Directory *directory)

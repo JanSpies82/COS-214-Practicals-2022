@@ -12,7 +12,6 @@ DirectoryIterator::~DirectoryIterator()
 
 void DirectoryIterator::first()
 {
-	// cout << YELLOW << "Moving to first" << RESET << endl;
 	Node *ptr = node;
 	while (ptr->getParent() != NULL)
 	{
@@ -22,10 +21,9 @@ void DirectoryIterator::first()
 	parent = NULL;
 	node->resetVisit();
 	node->visit();
-	// cout << CYAN << "At first: " << node->getName() << RESET << endl;
 }
 
-NodeIterator *DirectoryIterator::next()
+Node *DirectoryIterator::next()
 {
 	// if (hasNext())
 	// cout << YELLOW << node->getName() << " has a next " << RESET << endl;
@@ -47,7 +45,7 @@ NodeIterator *DirectoryIterator::next()
 				if (!parent->getChild(h)->isVisited())
 				{ // if a child directory is not visited
 					node = ((Directory *)parent->getChild(h))->getChild(0);
-					return handle(node);
+					return node;
 				}
 				h++;
 			}
@@ -64,7 +62,7 @@ NodeIterator *DirectoryIterator::next()
 						if (!((Directory *)ptr)->getChild(g)->isVisited())
 						{
 							node = ((Directory *)((Directory *)ptr)->getChild(g))->getChild(0);
-							return handle(node);
+							return node;
 						}
 						g++;
 					}
@@ -74,11 +72,11 @@ NodeIterator *DirectoryIterator::next()
 		else
 		{
 			node = parent->getChild(i);
-			return handle(node); // if there are more children
+			return node; // if there are more children
 		}
 	}
 	node = ((Directory *)node)->getChild(0);
-	return handle(node); // if current node is root
+	return node; // if current node is root
 }
 
 bool DirectoryIterator::hasNext()
@@ -131,14 +129,22 @@ Directory *DirectoryIterator::current()
 	return (Directory *)node;
 }
 
-NodeIterator *DirectoryIterator::handle(Node *n)
-{
-	n->visit();
-	if (n->getType() == "Directory")
-		return (NodeIterator *)this;
-	else
-	{
-		return (NodeIterator *)new FileIterator(n);
-		delete this;
-	}
-}
+// void DirectoryIterator::handle(Node *n)
+// {
+// 	n->visit();
+// 	if (n->getType() == "Directory")
+// 	{
+// 		cout << YELLOW << n->getName() << " is a " << n->getType() << RESET << endl;
+// 		setNext(this);
+// 	}
+// 	else
+// 	{
+// 		cout << YELLOW << n->getName() << " is a " << n->getType() << RESET << endl;
+// 		setNext(new FileIterator(n));
+// 	}
+// }
+
+// string DirectoryIterator::iType()
+// {
+// 	return "DirectoryIterator";
+// }

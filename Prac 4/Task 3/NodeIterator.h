@@ -15,7 +15,7 @@ public:
 	NodeIterator(Node *n);
 	virtual ~NodeIterator();
 	virtual void first() = 0;
-	virtual NodeIterator *next() = 0;
+	virtual Node *next() = 0;
 	virtual bool hasNext() = 0;
 	virtual Node *current() = 0;
 

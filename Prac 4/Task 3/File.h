@@ -1,7 +1,7 @@
 #ifndef FILE_H
 #define FILE_H
 #include "Node.h"
-
+class IteratorManager;
 class File : public Node
 {
 public:
@@ -17,6 +17,7 @@ public:
     void prependContents(std::string contents);
     void setName(std::string name);
     NodeIterator *createIterator();
+    IteratorManager *createIteratorManager();
     std::string print(int depth = 0);
     virtual void addDirectory(Directory *directory);
     virtual void addFile(File *file);
