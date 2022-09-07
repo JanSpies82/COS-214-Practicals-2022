@@ -62,14 +62,6 @@ string Directory::listContents()
     return contents;
 }
 
-NodeIterator *Directory::createIterator()
-{
-    DirectoryIteratorFactory *factory = new DirectoryIteratorFactory();
-    NodeIterator *n = factory->createIterator(this);
-    delete factory;
-    return n;
-}
-
 IteratorManager *Directory::createIteratorManager()
 {
     IteratorManager *manager = new IteratorManager();

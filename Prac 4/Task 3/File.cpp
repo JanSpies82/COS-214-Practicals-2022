@@ -73,14 +73,6 @@ string File::determineExtension(string name)
     return "";
 }
 
-NodeIterator *File::createIterator()
-{
-    FileIteratorFactory *factory = new FileIteratorFactory();
-    NodeIterator *n = factory->createIterator(this);
-    delete factory;
-    return n;
-}
-
 IteratorManager *File::createIteratorManager()
 {
     IteratorManager *manager = new IteratorManager();

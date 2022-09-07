@@ -25,7 +25,6 @@ public:
     virtual bool listDirectory();
     virtual bool listFile();
     virtual bool isEmpty();
-    NodeIterator *createIterator();
     IteratorManager *createIteratorManager();
     std::string print(int depth = 0);
     void visit();

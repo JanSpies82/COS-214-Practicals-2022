@@ -232,40 +232,51 @@ void testSynchronousDirectory()
 
 void testDirectoryTask3()
 {
-    Node *d1 = new SynchronousDirectory("Base");
-    Directory *d2 = new SynchronousDirectory("Sub1");
-    Directory *d3 = new AsynchronousDirectory("Sub2");
-    Directory *d4 = new SynchronousDirectory("Sub3");
+    Directory *root = new SynchronousDirectory("Root");
+    Directory *d11 = new SynchronousDirectory("d11");
+    Directory *d12 = new AsynchronousDirectory("d12");
+    Directory *d21 = new AsynchronousDirectory("d21");
+    Directory *d31 = new AsynchronousDirectory("d31");
+    Directory *d32 = new AsynchronousDirectory("d32");
 
-    d1->addFile(new File("inBase1.txt"));
-    d1->addFile(new File("inBase2.txt"));
+    d21->addDirectory(d31);
+    d21->addDirectory(d32);
 
-    d2->addFile(new File("inSub1.txt"));
-    d2->addFile(new File("inSub1.txt"));
+    d11->addFile(new File("f21.txt"));
+    d11->addDirectory(d21);
 
-    d3->addDirectory(new AsynchronousDirectory("SubSub1"));
-    d3->addDirectory(new AsynchronousDirectory("SubSub2"));
+    d12->addFile(new File("f22.txt"));
 
-    d1->addDirectory(d2);
-    d1->addDirectory(d3);
-    d1->addDirectory(d4);
+    root->addDirectory(d11);
+    root->addFile(new File("f11.txt"));
+    root->addFile(new File("f12.txt"));
+    root->addDirectory(d12);
 
-    cout << "Does d1 contain a directory? " << d1->listDirectory() << endl;
-    cout << "Does d1 contain a file? " << d1->listFile() << endl;
-    cout << "Does d2 contain a directory? " << d2->listDirectory() << endl;
-    cout << "Does d2 contain a file? " << d2->listFile() << endl;
-    cout << "Does d3 contain a directory? " << d3->listDirectory() << endl;
-    cout << "Does d3 contain a file? " << d3->listFile() << endl;
-    cout << "Does d4 contain a directory? " << d4->listDirectory() << endl;
-    cout << "Does d4 contain a file? " << d4->listFile() << endl;
+    cout << "Does root contain a directory? " << root->listDirectory() << endl;
+    cout << "Does root contain a file? " << root->listFile() << endl;
+    cout << "Does d11 contain a directory? " << d11->listDirectory() << endl;
+    cout << "Does d11 contain a file? " << d11->listFile() << endl;
+    cout << "Does d12 contain a directory? " << d12->listDirectory() << endl;
+    cout << "Does d12 contain a file? " << d12->listFile() << endl;
+    cout << "Does d21 contain a directory? " << d21->listDirectory() << endl;
+    cout << "Does d21 contain a file? " << d21->listFile() << endl;
 
-    cout << "d1 contents: " << endl;
-    cout << d1->print() << endl;
+    cout << "root contents: " << endl;
+    cout << root->print() << endl;
 
-    cout << "d2 contents: " << endl;
-    cout << d2->print();
+    cout <<"Now removing directory d32" << endl;
+    d21->removeDirectory("d32");
 
-    delete d1;
+    cout << "root contents: " << endl;
+    cout << root->print() << endl;
+
+    cout <<" Now removing file f11.txt" << endl;
+    root->removeFile("f11.txt");
+
+    cout << "root contents: " << endl;
+    cout << root->print() << endl;
+
+    delete root;
 }
 
 void testBasicIterators()
@@ -294,22 +305,14 @@ void testBasicIterators()
     cout << root->print();
 
     cout << "Traversing the tree using the iterator" << endl;
-    IteratorManager* it = root->createIteratorManager();
+    IteratorManager *it = root->createIteratorManager();
     it->first();
-    // cout << "\t Hasnext: " << it->hasNext() << endl;
     while (it->hasNext())
     {
         Node *n = it->current();
         cout << n->getName() << endl;
         it->next();
-        // cout << CYAN << "\t It type: " << it->iType() << RESET << endl;
     }
-
-    // TODO must create new class to act as context for iterator states
-    // context stores an iterator as member and calls its methods
-    // context will then perform what handle does in the iterator
-    // Interface of context will be the same as iterator
-    // context inherits from nodeIterator?
 
     Node *n = it->current();
     cout << n->getName() << endl;
@@ -326,8 +329,8 @@ void runTests()
     // testSynchronousDirectory();
 
     //* Task 3 tests
-    // testDirectoryTask3();
-    testBasicIterators();
+    testDirectoryTask3();
+    // testBasicIterators();
 }
 int main()
 {

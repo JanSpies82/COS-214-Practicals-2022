@@ -16,7 +16,6 @@ public:
     void appendContents(std::string contents);
     void prependContents(std::string contents);
     void setName(std::string name);
-    NodeIterator *createIterator();
     IteratorManager *createIteratorManager();
     std::string print(int depth = 0);
     virtual void addDirectory(Directory *directory);
