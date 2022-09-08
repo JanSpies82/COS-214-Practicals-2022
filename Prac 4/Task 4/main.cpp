@@ -2,6 +2,7 @@
 #include <string>
 #include <ctime>
 #include <stdexcept>
+#include <gtest/gtest.h>
 
 #include "Node.h"
 #include "File.h"
@@ -12,6 +13,8 @@
 #include "NodeIterator.h"
 #include "FileIterator.h"
 #include "DirectoryIterator.h"
+
+#include "Root_unittest.cpp"
 
 using namespace std;
 
@@ -264,13 +267,13 @@ void testDirectoryTask3()
     cout << "root contents: " << endl;
     cout << root->print() << endl;
 
-    cout <<"Now removing directory d32" << endl;
+    cout << "Now removing directory d32" << endl;
     d21->removeDirectory("d32");
 
     cout << "root contents: " << endl;
     cout << root->print() << endl;
 
-    cout <<" Now removing file f11.txt" << endl;
+    cout << " Now removing file f11.txt" << endl;
     root->removeFile("f11.txt");
 
     cout << "root contents: " << endl;
@@ -332,8 +335,11 @@ void runTests()
     testDirectoryTask3();
     // testBasicIterators();
 }
-int main()
+int main(int argc, char **argv)
 {
     runTests();
+
+    // testing::InitGoogleTest(&argc, argv);
+    // return RUN_ALL_TESTS();
     return 0;
 }
