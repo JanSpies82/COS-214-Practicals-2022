@@ -2,6 +2,7 @@
 #include "FileIteratorFactory.h"
 #include "Directory.h"
 #include "IteratorManager.h"
+#include "FileState.h"
 using namespace std;
 
 File::File() : Node()
@@ -133,4 +134,16 @@ void File::visit()
 void File::resetVisit()
 {
     visited = false;
+}
+
+State *File::getState()
+{
+    return new FileState(this);
+}
+
+void File::setState(State *state)
+{
+    FileState *s = (FileState*)state;
+    contents = s->contents;
+    extension = s->extension;
 }

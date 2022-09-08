@@ -4,9 +4,9 @@ using namespace std;
 
 FileState::FileState(File *n) : State(n)
 {
-    File *f = (File*)n;
-    contents = f->getContents();
-    extension = f->getExtension();
+    type = "File";
+    contents = n->getContents();
+    extension = n->getExtension();
 }
 
 FileState::FileState()

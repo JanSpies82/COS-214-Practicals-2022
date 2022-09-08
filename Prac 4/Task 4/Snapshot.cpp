@@ -3,7 +3,7 @@ using namespace std;
 
 Snapshot::Snapshot(State* state)
 {
-    rootState = state->clone();
+    rootState = state;
 }
 
 Snapshot::~Snapshot()

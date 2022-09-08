@@ -7,10 +7,8 @@ class State
     friend class Node;
 
 public:
-    ~State();
-    virtual State *clone()=0;
-
-protected:
+    virtual ~State();
+    virtual State *clone() = 0;
     State(Node *n);
     State();
     void setName(std::string name);
@@ -19,8 +17,12 @@ protected:
     std::string getName();
     double getLastModified();
     bool isSynchronous();
+    std::string getType();
+
+protected:
     std::string name;
     double lastModified;
     bool synchronous;
+    std::string type;
 };
 #endif

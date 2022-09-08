@@ -1,4 +1,7 @@
 #include "AsynchronousDirectory.h"
+#include "File.h"
+#include "SynchronousDirectory.h"
+#include "DirectoryState.h"
 using namespace std;
 AsynchronousDirectory::AsynchronousDirectory(string name) : Directory(name, false)
 {
@@ -65,4 +68,35 @@ bool AsynchronousDirectory::listFile()
 bool AsynchronousDirectory::isEmpty()
 {
     return Directory::isEmpty();
+}
+
+void AsynchronousDirectory::setState(State *state)
+{
+    DirectoryState *directoryState = (DirectoryState *)state;
+    this->name = directoryState->getName();
+    this->synchronous = directoryState->isSynchronous();
+    this->lastModified = directoryState->getLastModified();
+    this->removeAllChildren();
+    for (int i = 0; i < directoryState->children->size(); i++)
+    {
+        string s = directoryState->children->at(i)->getType();
+        if (s == "Synchronous Directory")
+        {
+            SynchronousDirectory *d = new SynchronousDirectory(directoryState->children->at(i)->getName());
+            d->setState(directoryState->children->at(i));
+            this->addChild(d);
+        }
+        else if (s == "Asynchronous Directory")
+        {
+            AsynchronousDirectory *d = new AsynchronousDirectory(directoryState->children->at(i)->getName());
+            d->setState(directoryState->children->at(i));
+            this->addChild(d);
+        }
+        else if (s == "File")
+        {
+            File *f = new File(directoryState->children->at(i)->getName());
+            f->setState(directoryState->children->at(i));
+            this->addChild(f);
+        }
+    }
 }

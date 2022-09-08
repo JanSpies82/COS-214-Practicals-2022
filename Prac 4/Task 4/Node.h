@@ -10,6 +10,7 @@
 class Directory;
 class File;
 class IteratorManager;
+class State;
 class Node
 {
     friend class State;
@@ -44,6 +45,8 @@ public:
     virtual void visit() = 0;
     virtual bool isVisited();
     virtual void resetVisit() = 0;
+    virtual State *getState() = 0;
+    virtual void setState(State *state) = 0;
 
 protected:
     std::string name;

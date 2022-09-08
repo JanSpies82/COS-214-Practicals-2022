@@ -2,6 +2,7 @@
 #define FILE_H
 #include "Node.h"
 class IteratorManager;
+class State;
 class File : public Node
 {
 public:
@@ -27,6 +28,8 @@ public:
     virtual bool isEmpty();
     void visit();
     void resetVisit();
+    State *getState();
+    void setState(State *state);
 
 private:
     std::string contents;

@@ -6,6 +6,10 @@
 class DirectoryState : public State
 {
     friend class Directory;
+    friend class SynchronousDirectory;
+    friend class AsynchronousDirectory;
+    friend class Root;
+
 public:
     ~DirectoryState();
     State *clone();
@@ -13,6 +17,6 @@ public:
 protected:
     DirectoryState(Directory *n);
     DirectoryState();
-    std::vector<State*>* children;
+    std::vector<State *> *children;
 };
 #endif

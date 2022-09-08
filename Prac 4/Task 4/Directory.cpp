@@ -1,6 +1,7 @@
 #include "Directory.h"
 #include "DirectoryIteratorFactory.h"
 #include "IteratorManager.h"
+#include "DirectoryState.h"
 using namespace std;
 
 Directory::Directory() : Node()
@@ -143,15 +144,21 @@ void Directory::resetVisit()
 bool Directory::isVisited()
 {
     bool v = visited;
-    // if (this->getName() == "root" || this->getName() == "d12")
-    //     cout << YELLOW << "We are in: " << this->getName() << " " << GREEN << v << RESET << endl;
+    for (int i = 0; i < children->size(); i++)
+        v = v && children->at(i)->isVisited();
+    return v;
+}
+
+State *Directory::getState()
+{
+    return new DirectoryState(this);
+}
+
+void Directory::removeAllChildren(){
     for (int i = 0; i < children->size(); i++)
     {
-        // if (this->getName() == "root" || this->getName() == "d12")
-        //     cout << YELLOW << children->at(i)->getName() << " " << GREEN << children->at(i)->isVisited() << RESET << endl;
-        v = v && children->at(i)->isVisited();
+        Node *child = children->at(i);
+        children->erase(children->begin() + i);
+        delete child;
     }
-    // if (this->getName() == "root" || this->getName() == "d12")
-    //     cout << "\t" << YELLOW << "Returning: " << GREEN << v << RESET << endl;
-    return v;
 }

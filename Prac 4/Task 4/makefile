@@ -150,6 +150,33 @@ AsynchronousDirectory.cpp.s:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/AsynchronousDirectory.cpp.s
 .PHONY : AsynchronousDirectory.cpp.s
 
+Backup.o: Backup.cpp.o
+
+.PHONY : Backup.o
+
+# target to build an object file
+Backup.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Backup.cpp.o
+.PHONY : Backup.cpp.o
+
+Backup.i: Backup.cpp.i
+
+.PHONY : Backup.i
+
+# target to preprocess a source file
+Backup.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Backup.cpp.i
+.PHONY : Backup.cpp.i
+
+Backup.s: Backup.cpp.s
+
+.PHONY : Backup.s
+
+# target to generate assembly for a file
+Backup.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Backup.cpp.s
+.PHONY : Backup.cpp.s
+
 Directory.o: Directory.cpp.o
 
 .PHONY : Directory.o
@@ -231,6 +258,33 @@ DirectoryIteratorFactory.cpp.s:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/DirectoryIteratorFactory.cpp.s
 .PHONY : DirectoryIteratorFactory.cpp.s
 
+DirectoryState.o: DirectoryState.cpp.o
+
+.PHONY : DirectoryState.o
+
+# target to build an object file
+DirectoryState.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/DirectoryState.cpp.o
+.PHONY : DirectoryState.cpp.o
+
+DirectoryState.i: DirectoryState.cpp.i
+
+.PHONY : DirectoryState.i
+
+# target to preprocess a source file
+DirectoryState.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/DirectoryState.cpp.i
+.PHONY : DirectoryState.cpp.i
+
+DirectoryState.s: DirectoryState.cpp.s
+
+.PHONY : DirectoryState.s
+
+# target to generate assembly for a file
+DirectoryState.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/DirectoryState.cpp.s
+.PHONY : DirectoryState.cpp.s
+
 File.o: File.cpp.o
 
 .PHONY : File.o
@@ -311,6 +365,33 @@ FileIteratorFactory.s: FileIteratorFactory.cpp.s
 FileIteratorFactory.cpp.s:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/FileIteratorFactory.cpp.s
 .PHONY : FileIteratorFactory.cpp.s
+
+FileState.o: FileState.cpp.o
+
+.PHONY : FileState.o
+
+# target to build an object file
+FileState.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/FileState.cpp.o
+.PHONY : FileState.cpp.o
+
+FileState.i: FileState.cpp.i
+
+.PHONY : FileState.i
+
+# target to preprocess a source file
+FileState.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/FileState.cpp.i
+.PHONY : FileState.cpp.i
+
+FileState.s: FileState.cpp.s
+
+.PHONY : FileState.s
+
+# target to generate assembly for a file
+FileState.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/FileState.cpp.s
+.PHONY : FileState.cpp.s
 
 IteratorFactory.o: IteratorFactory.cpp.o
 
@@ -474,6 +555,60 @@ Root_unittest.cpp.s:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Root_unittest.cpp.s
 .PHONY : Root_unittest.cpp.s
 
+Snapshot.o: Snapshot.cpp.o
+
+.PHONY : Snapshot.o
+
+# target to build an object file
+Snapshot.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Snapshot.cpp.o
+.PHONY : Snapshot.cpp.o
+
+Snapshot.i: Snapshot.cpp.i
+
+.PHONY : Snapshot.i
+
+# target to preprocess a source file
+Snapshot.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Snapshot.cpp.i
+.PHONY : Snapshot.cpp.i
+
+Snapshot.s: Snapshot.cpp.s
+
+.PHONY : Snapshot.s
+
+# target to generate assembly for a file
+Snapshot.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Snapshot.cpp.s
+.PHONY : Snapshot.cpp.s
+
+State.o: State.cpp.o
+
+.PHONY : State.o
+
+# target to build an object file
+State.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/State.cpp.o
+.PHONY : State.cpp.o
+
+State.i: State.cpp.i
+
+.PHONY : State.i
+
+# target to preprocess a source file
+State.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/State.cpp.i
+.PHONY : State.cpp.i
+
+State.s: State.cpp.s
+
+.PHONY : State.s
+
+# target to generate assembly for a file
+State.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/State.cpp.s
+.PHONY : State.cpp.s
+
 SynchronousDirectory.o: SynchronousDirectory.cpp.o
 
 .PHONY : SynchronousDirectory.o
@@ -540,6 +675,9 @@ help:
 	@echo "... AsynchronousDirectory.o"
 	@echo "... AsynchronousDirectory.i"
 	@echo "... AsynchronousDirectory.s"
+	@echo "... Backup.o"
+	@echo "... Backup.i"
+	@echo "... Backup.s"
 	@echo "... Directory.o"
 	@echo "... Directory.i"
 	@echo "... Directory.s"
@@ -549,6 +687,9 @@ help:
 	@echo "... DirectoryIteratorFactory.o"
 	@echo "... DirectoryIteratorFactory.i"
 	@echo "... DirectoryIteratorFactory.s"
+	@echo "... DirectoryState.o"
+	@echo "... DirectoryState.i"
+	@echo "... DirectoryState.s"
 	@echo "... File.o"
 	@echo "... File.i"
 	@echo "... File.s"
@@ -558,6 +699,9 @@ help:
 	@echo "... FileIteratorFactory.o"
 	@echo "... FileIteratorFactory.i"
 	@echo "... FileIteratorFactory.s"
+	@echo "... FileState.o"
+	@echo "... FileState.i"
+	@echo "... FileState.s"
 	@echo "... IteratorFactory.o"
 	@echo "... IteratorFactory.i"
 	@echo "... IteratorFactory.s"
@@ -576,6 +720,12 @@ help:
 	@echo "... Root_unittest.o"
 	@echo "... Root_unittest.i"
 	@echo "... Root_unittest.s"
+	@echo "... Snapshot.o"
+	@echo "... Snapshot.i"
+	@echo "... Snapshot.s"
+	@echo "... State.o"
+	@echo "... State.i"
+	@echo "... State.s"
 	@echo "... SynchronousDirectory.o"
 	@echo "... SynchronousDirectory.i"
 	@echo "... SynchronousDirectory.s"

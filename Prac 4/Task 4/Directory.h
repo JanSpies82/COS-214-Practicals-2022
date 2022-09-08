@@ -5,6 +5,7 @@
 class File;
 class NodeIterator;
 class IteratorManager;
+class State;
 class Directory : public Node
 {
 public:
@@ -30,6 +31,9 @@ public:
     void visit();
     void resetVisit();
     bool isVisited();
+    void removeAllChildren();
+    State *getState();
+    virtual void setState(State *state)=0;
 
 protected:
     std::vector<Node *> *children;

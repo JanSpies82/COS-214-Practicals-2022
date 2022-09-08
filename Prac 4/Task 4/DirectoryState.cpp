@@ -4,21 +4,25 @@ using namespace std;
 
 DirectoryState::DirectoryState(Directory *n) : State(n)
 {
-    children = new vector<State*>();
-    for (int t=0; t<n->getChildrenCount(); t++)
+    if (n->isSynchronous() && n->getName() != "root")
+        type = "Synchronous Directory";
+    else if (!n->isSynchronous() && n->getName() != "root")
+        type = "Asynchronous Directory";
+    children = new vector<State *>();
+    for (int t = 0; t < n->getChildrenCount(); t++)
     {
-        children->push_back(n->getChild(t)->getState()->clone());
+        children->push_back(n->getChild(t)->getState());
     }
 }
 
 DirectoryState::DirectoryState()
 {
-    children = new vector<State*>();
+    children = new vector<State *>();
 }
 
 DirectoryState::~DirectoryState()
 {
-    for (int t=0; t<children->size(); t++)
+    for (int t = 0; t < children->size(); t++)
     {
         delete children->at(t);
     }
@@ -28,11 +32,10 @@ DirectoryState::~DirectoryState()
 State *DirectoryState::clone()
 {
     DirectoryState *s = new DirectoryState();
-    s->children = new vector<State*>();
-    for (int t=0; t<children->size(); t++)
+    s->children = new vector<State *>();
+    for (int t = 0; t < children->size(); t++)
     {
         s->children->push_back(children->at(t)->clone());
     }
     return s;
 }
-

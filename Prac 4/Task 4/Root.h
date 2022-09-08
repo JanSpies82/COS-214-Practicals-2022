@@ -10,11 +10,11 @@ public:
     ~Root();
     void createSnapshot();
     void restoreSnapshot();
-    void listBackup();
-    void deleteSnapshot();
     void clearAll();
     void addChild(Node *child);
-   Node *access(std::string name);
+    Node *access(std::string name);
+    State *getState();
+    void setState(State *state);
 
 private:
     Backup *backup;

@@ -15,5 +15,6 @@ public:
     bool listDirectory();
     bool listFile();
     bool isEmpty();
+    void setState(State *state);
 };
 #endif
