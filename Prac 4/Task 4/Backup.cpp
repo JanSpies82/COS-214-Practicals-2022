@@ -20,7 +20,7 @@ void Backup::addSnapshot(Snapshot *snapshot)
 Snapshot *Backup::removeSnapshot()
 {
     if (snapshots->size() == 0)
-        __throw_runtime_error("no snapshots available");
+        __throw_runtime_error("No Snapshots available");
     Snapshot *snapshot = snapshots->back();
     snapshots->pop_back();
     return snapshot;

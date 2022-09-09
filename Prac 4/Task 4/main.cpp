@@ -2,7 +2,7 @@
 #include <string>
 #include <ctime>
 #include <stdexcept>
-#include <gtest/gtest.h>
+// #include <gtest/gtest.h>
 
 #include "Node.h"
 #include "File.h"
@@ -14,6 +14,7 @@
 #include "FileIterator.h"
 #include "DirectoryIterator.h"
 
+// #include "Root.cpp"
 #include "Root_unittest.cpp"
 
 using namespace std;
@@ -324,6 +325,55 @@ void testBasicIterators()
     delete root;
 }
 
+void testMementoMemoryLeak()
+{
+    Root *root = new Root();
+    Directory *d11 = new SynchronousDirectory("d11");
+    Directory *d12 = new AsynchronousDirectory("d12");
+    Directory *d21 = new AsynchronousDirectory("d21");
+    Directory *d31 = new AsynchronousDirectory("d31");
+    Directory *d32 = new AsynchronousDirectory("d32");
+
+    d21->addDirectory(d31);
+    d21->addDirectory(d32);
+
+    d11->addFile(new File("f21.txt"));
+    d11->addDirectory(d21);
+
+    d12->addFile(new File("f22.txt"));
+
+    root->addDirectory(d11);
+    root->addFile(new File("f11.txt"));
+    root->addFile(new File("f12.txt"));
+    root->addDirectory(d12);
+
+    root->createSnapshot();
+    root->removeAllChildren();
+
+    root->restoreSnapshot();
+    root->createSnapshot();
+
+    root->addFile(new File("newfile.txt"));
+    root->getChild(0)->addDirectory(new SynchronousDirectory("newdir"));
+
+    root->restoreSnapshot();
+
+    root->removeAllChildren();
+    root->createSnapshot();
+
+    root->addFile(new File("n1.txt"));
+    root->addFile(new File("n2.txt"));
+    root->addFile(new File("n3.txt"));
+    root->addDirectory(new SynchronousDirectory("newdir"));
+    root->addDirectory(new SynchronousDirectory("newdir2"));
+    root->getChild(3)->addDirectory(new SynchronousDirectory("newdir3"));
+    root->getChild(3)->addDirectory(new SynchronousDirectory("newdir4"));
+    root->getChild(4)->addFile(new File("n4.txt"));
+    root->getChild(4)->addFile(new File("n5.txt"));
+
+    delete root;
+}
+
 void runTests()
 {
     //* Task 2 tests
@@ -332,14 +382,14 @@ void runTests()
     // testSynchronousDirectory();
 
     //* Task 3 tests
-    testDirectoryTask3();
+    // testDirectoryTask3();
     // testBasicIterators();
+    testMementoMemoryLeak();
 }
 int main(int argc, char **argv)
 {
-    runTests();
-
-    // testing::InitGoogleTest(&argc, argv);
-    // return RUN_ALL_TESTS();
-    return 0;
+    // runTests();
+    // return 0;
+    testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }

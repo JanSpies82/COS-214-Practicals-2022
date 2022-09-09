@@ -13,6 +13,11 @@ Root::Root() : Directory("root", true)
 
 Root::~Root()
 {
+    for (int i = 0; i < children->size(); i++)
+    {
+        delete children->at(i);
+    }
+    delete children;
     delete backup;
 }
 

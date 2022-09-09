@@ -154,11 +154,12 @@ State *Directory::getState()
     return new DirectoryState(this);
 }
 
-void Directory::removeAllChildren(){
+void Directory::removeAllChildren()
+{
     for (int i = 0; i < children->size(); i++)
     {
-        Node *child = children->at(i);
-        children->erase(children->begin() + i);
-        delete child;
+        delete children->at(i);
     }
+    delete children;
+    children = new vector<Node *>();
 }
