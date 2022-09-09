@@ -10,6 +10,7 @@ main
 *.fdb_latexmk
 *.fls
 *.synctex.gz
+*.synctex(busy)
 CMakeFiles
 cmake_install.cmake 
 CMakeCache.txt
