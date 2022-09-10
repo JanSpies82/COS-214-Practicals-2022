@@ -14,5 +14,6 @@ DirectoryObserver::~DirectoryObserver()
 void DirectoryObserver::update()
 {
     cout << "DirectoryObserver: The subject " << subject->getName() << " has been updated." << endl;
-    subject->getParent()->notify();
+    if (subject->getParent() != NULL)
+        subject->getParent()->notify();
 }

@@ -4,6 +4,7 @@
 #include "SynchronousDirectory.h"
 #include "AsynchronousDirectory.h"
 #include "File.h"
+#include "Antivirus.h"
 #include "gtest/gtest.h"
 
 class RootTest : public testing::Test
@@ -41,6 +42,13 @@ public:
     Directory *d21;
     Directory *d31;
     Directory *d32;
+
+    const std::string RED = "\x1B[31m";
+    const std::string GREEN = "\x1B[32m";
+    const std::string YELLOW = "\x1B[33m";
+    const std::string BLUE = "\x1B[34m";
+    const std::string CYAN = "\x1B[36m";
+    const std::string RESET = "\x1B[0m";
 };
 namespace
 {
@@ -237,5 +245,26 @@ namespace
         {
             FAIL();
         }
+    }
+}
+
+namespace
+{
+    TEST_F(RootTest, TestObserver)
+    {
+        std::cout << RED << "TEST STARTS HERE" << RESET << std::endl;
+        std::cout << CYAN << "Removing f22.txt" << RESET << std::endl;
+        root->getChild(3)->removeFile("f22.txt");
+
+        std::cout << CYAN << "Removing d31" << RESET << std::endl;
+        ((Directory *)((Directory *)root->getChild(0))->getChild(1))->removeDirectory("d31");
+
+        std::cout << CYAN << "Adding nf.txt" << RESET << std::endl;
+        root->getChild(3)->addFile(new File("nf.txt"));
+
+        std::cout << CYAN << "Adding newdir" << RESET << std::endl;
+        ((Directory *)((Directory *)root->getChild(0))->getChild(1))->addDirectory(new AsynchronousDirectory("newdir"));
+
+        std::cout << RED << "TEST ENDS HERE" << RESET << std::endl;
     }
 }

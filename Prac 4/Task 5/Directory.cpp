@@ -23,6 +23,7 @@ void Directory::addChild(Node *child)
     children->push_back(child);
     child->setParent(this);
     this->lastModified = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()).count();
+    notify();
 }
 
 void Directory::removeChild(string name)
@@ -35,6 +36,7 @@ void Directory::removeChild(string name)
             children->erase(children->begin() + i);
             this->lastModified = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()).count();
             delete child;
+            notify();
             return;
         }
     }
@@ -162,4 +164,5 @@ void Directory::removeAllChildren()
     }
     delete children;
     children = new vector<Node *>();
+    notify();
 }

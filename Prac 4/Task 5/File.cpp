@@ -10,6 +10,7 @@ File::File() : Node()
 {
     contents = "";
     extension = "";
+    observer = new FileObserver(this);
 }
 
 File::File(string name, Node *parent) : Node(name, false, "File", parent)
@@ -38,6 +39,7 @@ string File::getContents()
 void File::setContents(string contents)
 {
     this->contents = contents;
+    notify();
 }
 
 string File::getExtension()
@@ -55,16 +57,19 @@ void File::setExtension(string extension)
     }
     if (extension != "")
         name += "." + extension;
+    notify();
 }
 
 void File::appendContents(string contents)
 {
     this->contents += contents;
+    notify();
 }
 
 void File::prependContents(string contents)
 {
     this->contents = contents + this->contents;
+    notify();
 }
 
 string File::determineExtension(string name)

@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/mnt/c/Users/janco/OneDrive - University of Pretoria/Modules/COS 214/Practicals/Prac 4/Task 4"
+CMAKE_SOURCE_DIR = "/mnt/c/Users/janco/OneDrive - University of Pretoria/Modules/COS 214/Practicals/Prac 4/Task 5"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/mnt/c/Users/janco/OneDrive - University of Pretoria/Modules/COS 214/Practicals/Prac 4/Task 4"
+CMAKE_BINARY_DIR = "/mnt/c/Users/janco/OneDrive - University of Pretoria/Modules/COS 214/Practicals/Prac 4/Task 5"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/janco/OneDrive - University of Pretoria/Modules/COS 214/Practicals/Prac 4/Task 4/CMakeFiles" "/mnt/c/Users/janco/OneDrive - University of Pretoria/Modules/COS 214/Practicals/Prac 4/Task 4/CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/janco/OneDrive - University of Pretoria/Modules/COS 214/Practicals/Prac 4/Task 5/CMakeFiles" "/mnt/c/Users/janco/OneDrive - University of Pretoria/Modules/COS 214/Practicals/Prac 4/Task 5/CMakeFiles/progress.marks"
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/janco/OneDrive - University of Pretoria/Modules/COS 214/Practicals/Prac 4/Task 4/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/janco/OneDrive - University of Pretoria/Modules/COS 214/Practicals/Prac 4/Task 5/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -122,6 +122,33 @@ main: cmake_check_build_system
 main/fast:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
 .PHONY : main/fast
+
+Antivirus.o: Antivirus.cpp.o
+
+.PHONY : Antivirus.o
+
+# target to build an object file
+Antivirus.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Antivirus.cpp.o
+.PHONY : Antivirus.cpp.o
+
+Antivirus.i: Antivirus.cpp.i
+
+.PHONY : Antivirus.i
+
+# target to preprocess a source file
+Antivirus.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Antivirus.cpp.i
+.PHONY : Antivirus.cpp.i
+
+Antivirus.s: Antivirus.cpp.s
+
+.PHONY : Antivirus.s
+
+# target to generate assembly for a file
+Antivirus.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Antivirus.cpp.s
+.PHONY : Antivirus.cpp.s
 
 AsynchronousDirectory.o: AsynchronousDirectory.cpp.o
 
@@ -258,6 +285,33 @@ DirectoryIteratorFactory.cpp.s:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/DirectoryIteratorFactory.cpp.s
 .PHONY : DirectoryIteratorFactory.cpp.s
 
+DirectoryObserver.o: DirectoryObserver.cpp.o
+
+.PHONY : DirectoryObserver.o
+
+# target to build an object file
+DirectoryObserver.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/DirectoryObserver.cpp.o
+.PHONY : DirectoryObserver.cpp.o
+
+DirectoryObserver.i: DirectoryObserver.cpp.i
+
+.PHONY : DirectoryObserver.i
+
+# target to preprocess a source file
+DirectoryObserver.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/DirectoryObserver.cpp.i
+.PHONY : DirectoryObserver.cpp.i
+
+DirectoryObserver.s: DirectoryObserver.cpp.s
+
+.PHONY : DirectoryObserver.s
+
+# target to generate assembly for a file
+DirectoryObserver.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/DirectoryObserver.cpp.s
+.PHONY : DirectoryObserver.cpp.s
+
 DirectoryState.o: DirectoryState.cpp.o
 
 .PHONY : DirectoryState.o
@@ -365,6 +419,33 @@ FileIteratorFactory.s: FileIteratorFactory.cpp.s
 FileIteratorFactory.cpp.s:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/FileIteratorFactory.cpp.s
 .PHONY : FileIteratorFactory.cpp.s
+
+FileObserver.o: FileObserver.cpp.o
+
+.PHONY : FileObserver.o
+
+# target to build an object file
+FileObserver.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/FileObserver.cpp.o
+.PHONY : FileObserver.cpp.o
+
+FileObserver.i: FileObserver.cpp.i
+
+.PHONY : FileObserver.i
+
+# target to preprocess a source file
+FileObserver.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/FileObserver.cpp.i
+.PHONY : FileObserver.cpp.i
+
+FileObserver.s: FileObserver.cpp.s
+
+.PHONY : FileObserver.s
+
+# target to generate assembly for a file
+FileObserver.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/FileObserver.cpp.s
+.PHONY : FileObserver.cpp.s
 
 FileState.o: FileState.cpp.o
 
@@ -500,6 +581,33 @@ NodeIterator.s: NodeIterator.cpp.s
 NodeIterator.cpp.s:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/NodeIterator.cpp.s
 .PHONY : NodeIterator.cpp.s
+
+Observer.o: Observer.cpp.o
+
+.PHONY : Observer.o
+
+# target to build an object file
+Observer.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Observer.cpp.o
+.PHONY : Observer.cpp.o
+
+Observer.i: Observer.cpp.i
+
+.PHONY : Observer.i
+
+# target to preprocess a source file
+Observer.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Observer.cpp.i
+.PHONY : Observer.cpp.i
+
+Observer.s: Observer.cpp.s
+
+.PHONY : Observer.s
+
+# target to generate assembly for a file
+Observer.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Observer.cpp.s
+.PHONY : Observer.cpp.s
 
 Root.o: Root.cpp.o
 
@@ -672,6 +780,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... main"
+	@echo "... Antivirus.o"
+	@echo "... Antivirus.i"
+	@echo "... Antivirus.s"
 	@echo "... AsynchronousDirectory.o"
 	@echo "... AsynchronousDirectory.i"
 	@echo "... AsynchronousDirectory.s"
@@ -687,6 +798,9 @@ help:
 	@echo "... DirectoryIteratorFactory.o"
 	@echo "... DirectoryIteratorFactory.i"
 	@echo "... DirectoryIteratorFactory.s"
+	@echo "... DirectoryObserver.o"
+	@echo "... DirectoryObserver.i"
+	@echo "... DirectoryObserver.s"
 	@echo "... DirectoryState.o"
 	@echo "... DirectoryState.i"
 	@echo "... DirectoryState.s"
@@ -699,6 +813,9 @@ help:
 	@echo "... FileIteratorFactory.o"
 	@echo "... FileIteratorFactory.i"
 	@echo "... FileIteratorFactory.s"
+	@echo "... FileObserver.o"
+	@echo "... FileObserver.i"
+	@echo "... FileObserver.s"
 	@echo "... FileState.o"
 	@echo "... FileState.i"
 	@echo "... FileState.s"
@@ -714,6 +831,9 @@ help:
 	@echo "... NodeIterator.o"
 	@echo "... NodeIterator.i"
 	@echo "... NodeIterator.s"
+	@echo "... Observer.o"
+	@echo "... Observer.i"
+	@echo "... Observer.s"
 	@echo "... Root.o"
 	@echo "... Root.i"
 	@echo "... Root.s"
