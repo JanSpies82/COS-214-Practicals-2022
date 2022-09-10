@@ -2,9 +2,11 @@
 #include "File.h"
 #include "SynchronousDirectory.h"
 #include "DirectoryState.h"
+#include "DirectoryObserver.h"
 using namespace std;
 AsynchronousDirectory::AsynchronousDirectory(string name) : Directory(name, false)
 {
+    observer = new DirectoryObserver(this);
 }
 
 AsynchronousDirectory::~AsynchronousDirectory()
@@ -14,6 +16,7 @@ AsynchronousDirectory::~AsynchronousDirectory()
         delete children->at(i);
     }
     delete children;
+    delete observer;
 }
 
 void AsynchronousDirectory::addChild(Node *child)

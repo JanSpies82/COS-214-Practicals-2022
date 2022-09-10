@@ -3,6 +3,7 @@
 #include "Directory.h"
 #include "IteratorManager.h"
 #include "FileState.h"
+#include "FileObserver.h"
 using namespace std;
 
 File::File() : Node()
@@ -15,10 +16,12 @@ File::File(string name, Node *parent) : Node(name, false, "File", parent)
 {
     contents = "";
     extension = determineExtension(name);
+    observer = new FileObserver(this);
 }
 
 File::~File()
 {
+    delete observer;
 }
 
 void File::setName(string name)

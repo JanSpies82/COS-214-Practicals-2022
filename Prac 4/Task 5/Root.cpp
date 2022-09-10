@@ -4,11 +4,13 @@
 #include "SynchronousDirectory.h"
 #include "AsynchronousDirectory.h"
 #include "File.h"
+#include "Antivirus.h"
 using namespace std;
 
 Root::Root() : Directory("root", true)
 {
     backup = new Backup();
+    observer = new Antivirus(this);
 }
 
 Root::~Root()
@@ -19,6 +21,7 @@ Root::~Root()
     }
     delete children;
     delete backup;
+    delete observer;
 }
 
 void Root::createSnapshot()

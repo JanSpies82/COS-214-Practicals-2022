@@ -1,4 +1,5 @@
 #include "Node.h"
+#include "Observer.h"
 using namespace std;
 
 Node::Node()
@@ -69,4 +70,9 @@ void Node::setParent(Node *parent)
 bool Node::isVisited()
 {
     return visited;
+}
+
+void Node::notify()
+{
+    observer->update();
 }
