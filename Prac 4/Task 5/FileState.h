@@ -15,5 +15,6 @@ protected:
     FileState();
     std::string contents;
     std::string extension;
+    int numChildren();
 };
 #endif

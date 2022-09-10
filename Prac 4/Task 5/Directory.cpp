@@ -160,9 +160,9 @@ void Directory::removeAllChildren()
 {
     for (int i = 0; i < children->size(); i++)
     {
-        delete children->at(i);
+        removeChild(children->at(i)->getName());
     }
     delete children;
     children = new vector<Node *>();
-    notify();
+    // notify();
 }

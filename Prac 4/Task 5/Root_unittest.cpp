@@ -50,6 +50,7 @@ public:
     const std::string CYAN = "\x1B[36m";
     const std::string RESET = "\x1B[0m";
 };
+
 namespace
 {
     TEST_F(RootTest, TestConstructor)
@@ -84,7 +85,6 @@ namespace
         EXPECT_EQ(0, d32->getChildrenCount());
 
         root->removeChild("d11");
-
         EXPECT_EQ(3, root->getChildrenCount());
 
         root->removeChild("d12");

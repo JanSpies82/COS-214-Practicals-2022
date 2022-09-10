@@ -12,6 +12,7 @@ DirectoryState::DirectoryState(Directory *n) : State(n)
     for (int t = 0; t < n->getChildrenCount(); t++)
     {
         children->push_back(n->getChild(t)->getState());
+        children->at(t)->parent = this;
     }
 }
 
@@ -38,4 +39,14 @@ State *DirectoryState::clone()
         s->children->push_back(children->at(t)->clone());
     }
     return s;
+}
+
+int DirectoryState::numChildren()
+{
+    int count = children->size();
+    for (int t = 0; t < children->size(); t++)
+    {
+        count += children->at(t)->numChildren();
+    }
+    return count;
 }

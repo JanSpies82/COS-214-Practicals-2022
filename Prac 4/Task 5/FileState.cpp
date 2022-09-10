@@ -24,3 +24,8 @@ State *FileState::clone()
     s->extension = extension;
     return s;
 }
+
+int FileState::numChildren()
+{
+    return 0;
+}

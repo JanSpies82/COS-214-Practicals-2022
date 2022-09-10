@@ -1,4 +1,5 @@
 #include "State.h"
+#include "DirectoryState.h"
 using namespace std;
 
 State::State(Node *n)
@@ -6,6 +7,7 @@ State::State(Node *n)
     name = n->getName();
     lastModified = n->getLastModified();
     synchronous = n->isSynchronous();
+    parent = NULL;
 }
 
 State::~State()
@@ -51,3 +53,7 @@ string State::getType()
     return type;
 }
 
+DirectoryState *State::getParent()
+{
+    return parent;
+}

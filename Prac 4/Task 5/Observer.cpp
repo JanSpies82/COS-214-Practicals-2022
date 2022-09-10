@@ -11,4 +11,3 @@ Observer::~Observer()
 {
     delete state;
 }
-

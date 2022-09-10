@@ -9,6 +9,7 @@ class DirectoryState : public State
     friend class SynchronousDirectory;
     friend class AsynchronousDirectory;
     friend class Root;
+    friend class Antivirus;
 
 public:
     ~DirectoryState();
@@ -17,6 +18,7 @@ public:
 protected:
     DirectoryState(Directory *n);
     DirectoryState();
+    int numChildren();
     std::vector<State *> *children;
 };
 #endif

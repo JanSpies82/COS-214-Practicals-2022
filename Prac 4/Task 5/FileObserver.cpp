@@ -13,7 +13,9 @@ FileObserver::~FileObserver()
 
 void FileObserver::update()
 {
-    cout << "FileObserver: The subject " << subject->getName() << " has been updated." << endl;
+    // cout << "FileObserver: The subject " << subject->getName() << " has been updated." << endl;
+    delete state;
+    state = subject->getState();
     if (subject->getParent() != NULL)
         subject->getParent()->notify();
 }
