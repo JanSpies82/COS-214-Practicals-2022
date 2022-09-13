@@ -150,6 +150,33 @@ Antivirus.cpp.s:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Antivirus.cpp.s
 .PHONY : Antivirus.cpp.s
 
+AsyncDir_addChildTest.o: AsyncDir_addChildTest.cpp.o
+
+.PHONY : AsyncDir_addChildTest.o
+
+# target to build an object file
+AsyncDir_addChildTest.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/AsyncDir_addChildTest.cpp.o
+.PHONY : AsyncDir_addChildTest.cpp.o
+
+AsyncDir_addChildTest.i: AsyncDir_addChildTest.cpp.i
+
+.PHONY : AsyncDir_addChildTest.i
+
+# target to preprocess a source file
+AsyncDir_addChildTest.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/AsyncDir_addChildTest.cpp.i
+.PHONY : AsyncDir_addChildTest.cpp.i
+
+AsyncDir_addChildTest.s: AsyncDir_addChildTest.cpp.s
+
+.PHONY : AsyncDir_addChildTest.s
+
+# target to generate assembly for a file
+AsyncDir_addChildTest.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/AsyncDir_addChildTest.cpp.s
+.PHONY : AsyncDir_addChildTest.cpp.s
+
 AsynchronousDirectory.o: AsynchronousDirectory.cpp.o
 
 .PHONY : AsynchronousDirectory.o
@@ -636,33 +663,6 @@ Root.cpp.s:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Root.cpp.s
 .PHONY : Root.cpp.s
 
-Root_unittest.o: Root_unittest.cpp.o
-
-.PHONY : Root_unittest.o
-
-# target to build an object file
-Root_unittest.cpp.o:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Root_unittest.cpp.o
-.PHONY : Root_unittest.cpp.o
-
-Root_unittest.i: Root_unittest.cpp.i
-
-.PHONY : Root_unittest.i
-
-# target to preprocess a source file
-Root_unittest.cpp.i:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Root_unittest.cpp.i
-.PHONY : Root_unittest.cpp.i
-
-Root_unittest.s: Root_unittest.cpp.s
-
-.PHONY : Root_unittest.s
-
-# target to generate assembly for a file
-Root_unittest.cpp.s:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Root_unittest.cpp.s
-.PHONY : Root_unittest.cpp.s
-
 Snapshot.o: Snapshot.cpp.o
 
 .PHONY : Snapshot.o
@@ -783,6 +783,9 @@ help:
 	@echo "... Antivirus.o"
 	@echo "... Antivirus.i"
 	@echo "... Antivirus.s"
+	@echo "... AsyncDir_addChildTest.o"
+	@echo "... AsyncDir_addChildTest.i"
+	@echo "... AsyncDir_addChildTest.s"
 	@echo "... AsynchronousDirectory.o"
 	@echo "... AsynchronousDirectory.i"
 	@echo "... AsynchronousDirectory.s"
@@ -837,9 +840,6 @@ help:
 	@echo "... Root.o"
 	@echo "... Root.i"
 	@echo "... Root.s"
-	@echo "... Root_unittest.o"
-	@echo "... Root_unittest.i"
-	@echo "... Root_unittest.s"
 	@echo "... Snapshot.o"
 	@echo "... Snapshot.i"
 	@echo "... Snapshot.s"

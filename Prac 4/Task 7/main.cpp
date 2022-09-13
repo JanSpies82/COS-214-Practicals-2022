@@ -14,8 +14,8 @@
 #include "FileIterator.h"
 #include "DirectoryIterator.h"
 
-// #include "Root.cpp"
-#include "Root_unittest.cpp"
+#include "Root.h"
+#include "AsyncDir_addChildTest.cpp"
 
 using namespace std;
 
