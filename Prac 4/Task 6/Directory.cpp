@@ -111,18 +111,36 @@ void Directory::removeFile(std::string name)
 bool Directory::listDirectory()
 {
     bool hasDirectory = false;
+    string out = "";
     for (int i = 0; i < children->size(); i++)
         if (children->at(i)->getType() == "Directory")
+        {
             hasDirectory = true;
+            out += children->at(i)->getName() + "\n";
+        }
+    if (out == "")
+        out = this->getName() + " contains no sub-directories\n";
+    else
+        out = this->getName() + " sub-directories:\n" + out;
+    cout << out;
     return hasDirectory;
 }
 
 bool Directory::listFile()
 {
     bool hasFile = false;
+    string out = "";
     for (int i = 0; i < children->size(); i++)
         if (children->at(i)->getType() == "File")
+        {
             hasFile = true;
+            out += children->at(i)->getName() + "\n";
+        }
+    if (out == "")
+        out = this->getName() + " contains no files\n";
+    else
+        out = this->getName() + " files:\n" + out;
+    cout << out;
     return hasFile;
 }
 

@@ -14,8 +14,9 @@
 #include "FileIterator.h"
 #include "DirectoryIterator.h"
 
-// #include "Root.cpp"
-#include "Root_unittest.cpp"
+#include "Driver.h"
+#include "Root.h"
+
 
 using namespace std;
 
@@ -387,9 +388,20 @@ void runTests()
     testMementoMemoryLeak();
 }
 
+void driverDemo()
+{
+    Driver *d = new Driver();
+
+    while (d->isActive())
+        d->performAction();
+
+    delete d;
+}
+
 int main(int argc, char **argv)
 {
     // runTests();
+    driverDemo();
     return 0;
     // testing::InitGoogleTest(&argc, argv);
     // return RUN_ALL_TESTS();
