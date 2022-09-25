@@ -4,6 +4,8 @@
 #include "DirectoryState.h"
 using namespace std;
 
+const std::string BLUE = "\x1B[34m";
+
 Directory::Directory() : Node()
 {
     children = new vector<Node *>();
@@ -119,9 +121,9 @@ bool Directory::listDirectory()
             out += children->at(i)->getName() + "\n";
         }
     if (out == "")
-        out = this->getName() + " contains no sub-directories\n";
+        out = BLUE + this->getName()+ RESET + " contains no sub-directories\n";
     else
-        out = this->getName() + " sub-directories:\n" + out;
+        out = BLUE + this->getName() + RESET + " sub-directories:\n" + out;
     cout << out;
     return hasDirectory;
 }
@@ -137,9 +139,9 @@ bool Directory::listFile()
             out += children->at(i)->getName() + "\n";
         }
     if (out == "")
-        out = this->getName() + " contains no files\n";
+        out = BLUE + this->getName() + RESET + " contains no files\n";
     else
-        out = this->getName() + " files:\n" + out;
+        out = BLUE + this->getName() + RESET + " files:\n" + out;
     cout << out;
     return hasFile;
 }

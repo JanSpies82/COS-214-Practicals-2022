@@ -1,6 +1,9 @@
 #include "Driver.h"
 using namespace std;
 
+#include "File.h"
+#include "AsynchronousDirectory.h"
+#include "SynchronousDirectory.h"
 const std::string RED = "\x1B[31m";
 const std::string GREEN = "\x1B[32m";
 const std::string YELLOW = "\x1B[33m";
@@ -11,7 +14,14 @@ const std::string RESET = "\x1B[0m";
 Driver::Driver()
 {
     root = new Root();
+    current = root;
     active = true;
+
+    root->addChild(new AsynchronousDirectory("sub1"));
+    root->addChild(new AsynchronousDirectory("sub2"));
+    root->addChild(new File("file1"));
+    root->addChild(new File("file2"));
+    ((Directory *)root->getChild(0))->addChild(new AsynchronousDirectory("submore"));
 }
 
 Driver::~Driver()
@@ -26,45 +36,36 @@ bool Driver::isActive()
 
 void Driver::addNewDirec()
 {
-    cout << "Where would you like to add this new directory?" << endl;
-    cout << "[0] Here" << endl;
-    cout << "[1] In a sub-direcory" << endl;
-    int choice = -1;
-    Directory *d = root;
-    do
-    {
-        cout << "Choice: ";
-        cin >> choice;
-        if (!cin.good())
-        {
-            choice = -1;
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        }
-    } while (choice == -1 && choice < 2);
-    if (choice == 1)
-    {
-        bool endpoint = false;
-        string name;
-        while (d->listDirectory() && endpoint)
-        {
-            cout << "Enter the name of the sub-directory you would like to navigate to." << endl;
-            cout << "Name: ";
-            cin >> name;
+}
 
-            try
-            {
-                d = (Directory *)d->access(name);
-            }
-            catch (...)
-            {
-                cout << "That is an invalid name" << endl;
-                continue;
-            }
+void Driver::moveToDirec()
+{
+    bool endpoint = false;
+    bool ldir = current->listDirectory();
+    string name;
 
-            // TODO create looping mechanism to navigate to sub-folder where new thing is added. Maybe helper func?
-            // TODO maybe let user navigate to place first and then always add new thing there?
+    while (!endpoint && ldir)
+    {
+        cout << "Enter the name of the sub-directory you would like to navigate to or enter \"#\" to exit." << endl;
+        cout << "Name: " << YELLOW;
+        cin >> name;
+        cout << RESET;
+        if (name == "#")
+        {
+            endpoint = true;
+            continue;
         }
+
+        try
+        {
+            current = (Directory *)current->access(name);
+        }
+        catch (...)
+        {
+            cout << "That is an invalid name" << endl;
+            continue;
+        }
+        ldir = current->listDirectory();
     }
 }
 
@@ -75,12 +76,17 @@ void Driver::createHeader()
 
 int Driver::getOperation()
 {
+    cout << "You are currently in: " << BLUE << current->getName() << RESET << endl;
     cout << "Please choose an operation to perform:" << endl;
     cout << "[0] Add new Directory" << endl;
     cout << "[1] Add new File" << endl;
-    cout << "[2] Create new snapshot of the current system" << endl;
-    cout << "[3] Delete all snapshots" << endl;
-    cout << "[4] Restore a previous snapshot" << endl;
+    cout << "[2] Delete Directory" << endl;
+    cout << "[3] Delete File" << endl;
+    cout << "[4] Move to sub-directory" << endl;
+    cout << "[5] Move to root directory" << endl;
+    cout << "[6] Create new snapshot of the current system" << endl;
+    cout << "[7] Delete all snapshots" << endl;
+    cout << "[8] Restore a previous snapshot" << endl;
     cout << "[9] Quit" << endl;
     int ind = -1;
     do
@@ -93,7 +99,7 @@ int Driver::getOperation()
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
-    } while (ind == -1 || (ind > 4 && ind != 9));
+    } while (ind == -1 || (ind > 9));
     cout << RESET;
     return ind;
 }
@@ -114,6 +120,16 @@ void Driver::performAction()
     case 0:
     {
         addNewDirec();
+        break;
+    }
+    case 4:
+    {
+        moveToDirec();
+        break;
+    }
+    case 5:
+    {
+        current = root;
         break;
     }
 

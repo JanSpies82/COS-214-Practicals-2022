@@ -14,10 +14,15 @@ public:
     void performAction();
 
 private:
-    Root* root;
+    Root *root;
+    Directory *current;
     bool active;
     void createHeader();
     int getOperation();
     void addNewDirec();
+    void addNewFile();
+    void deleteDirec();
+    void deleteFile();
+    void moveToDirec();
 };
 #endif
