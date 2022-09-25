@@ -121,7 +121,7 @@ bool Directory::listDirectory()
             out += children->at(i)->getName() + "\n";
         }
     if (out == "")
-        out = BLUE + this->getName()+ RESET + " contains no sub-directories\n";
+        out = BLUE + this->getName() + RESET + " contains no sub-directories\n";
     else
         out = BLUE + this->getName() + RESET + " sub-directories:\n" + out;
     cout << out;
@@ -178,8 +178,9 @@ State *Directory::getState()
 
 void Directory::removeAllChildren()
 {
-    for (int i = 0; i < children->size(); i++)
-        removeChild(children->at(i)->getName());
+    while (children->size() > 0)
+        removeChild(children->at(0)->getName());
+
     delete children;
     children = new vector<Node *>();
 }

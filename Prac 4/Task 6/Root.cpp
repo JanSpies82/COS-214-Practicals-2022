@@ -33,7 +33,7 @@ void Root::createSnapshot()
 void Root::restoreSnapshot()
 {
     Snapshot *s = backup->removeSnapshot();
-    setState(s->getState());
+    this->setState(s->getState());
     delete s;
 }
 

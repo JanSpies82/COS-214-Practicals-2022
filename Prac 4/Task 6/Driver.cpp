@@ -36,6 +36,84 @@ bool Driver::isActive()
 
 void Driver::addNewDirec()
 {
+    cout << "Which type of directory would you like to add?" << endl;
+    cout << "[0] Synchronous" << endl;
+    cout << "[1] Asynchronous" << endl;
+    int choice = -1;
+    do
+    {
+        cout << "Choice: " << YELLOW;
+        cin >> choice;
+        cout << RESET;
+        if (!cin.good())
+        {
+            choice = -1;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+    } while (choice == -1 || choice < 0 || choice > 1);
+
+    string name;
+    cout << "Enter the name of the directory: " << YELLOW;
+    cin >> name;
+    cout << RESET;
+
+    try
+    {
+        if (choice == 0)
+        {
+            current->addChild(new SynchronousDirectory(name));
+        }
+        else
+        {
+            current->addChild(new AsynchronousDirectory(name));
+        }
+    }
+    catch (exception &e)
+    {
+        cout << RED << e.what() << RESET << endl;
+    }
+
+    cout << "Press enter to continue...";
+    cin.ignore();
+    cin.get();
+}
+
+void Driver::addNewFile()
+{
+    cout << "Enter the name of the file you would like to add." << endl;
+    cout << "Name: " << YELLOW;
+    string name = "";
+    cin >> name;
+    cout << RESET;
+    File *f = new File(name);
+    cout << "Enter the first line of text in " << name << "." << endl;
+    cout << YELLOW;
+    string contents = "";
+    cin >> contents;
+    cout << RESET;
+    f->appendContents(contents);
+    current->addChild(f);
+    cout << "Success. Press Enter to continue . . .";
+    cin.get();
+    cin.ignore();
+}
+
+void Driver::deleteDirec()
+{
+    if (current == root)
+    {
+        cout << RED << "You cannot delete the root directory!" << RESET << endl;
+        cout << "Press Enter to continue. . .";
+        cin.get();
+        cin.ignore();
+        return;
+    }
+    string name = current->getName();
+    current = (Directory *)current->getParent();
+    current->removeChild(name);
+    cin.get();
+    cin.ignore();
 }
 
 void Driver::moveToDirec()
@@ -87,7 +165,8 @@ int Driver::getOperation()
     cout << "[6] Create new snapshot of the current system" << endl;
     cout << "[7] Delete all snapshots" << endl;
     cout << "[8] Restore a previous snapshot" << endl;
-    cout << "[9] Quit" << endl;
+    cout << "[9] View contents of current directory" << endl;
+    cout << "[10] Quit" << endl;
     int ind = -1;
     do
     {
@@ -99,7 +178,7 @@ int Driver::getOperation()
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
-    } while (ind == -1 || (ind > 9));
+    } while (ind == -1 || (ind > 10));
     cout << RESET;
     return ind;
 }
@@ -111,7 +190,7 @@ void Driver::performAction()
     int op = getOperation();
     switch (op)
     {
-    case 9:
+    case 10:
     {
         active = false;
         return;
@@ -122,6 +201,16 @@ void Driver::performAction()
         addNewDirec();
         break;
     }
+    case 1:
+    {
+        addNewFile();
+        break;
+    }
+    case 2:
+    {
+        deleteDirec();
+        break;
+    }
     case 4:
     {
         moveToDirec();
@@ -130,6 +219,14 @@ void Driver::performAction()
     case 5:
     {
         current = root;
+        break;
+    }
+    case 9:
+    {
+        cout << current->print();
+        cout << "Press Enter to continue . . .";
+        cin.get();
+        cin.ignore();
         break;
     }
 
