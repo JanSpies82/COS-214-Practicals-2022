@@ -94,7 +94,8 @@ namespace
         EXPECT_EQ(3, d->getChildrenCount());
         d->addChild(new AsynchronousDirectory("d2"));
         EXPECT_EQ(4, d->getChildrenCount());
-        try {
+        try
+        {
             d->addChild(new SynchronousDirectory("d3"));
             FAIL();
         }
@@ -107,6 +108,27 @@ namespace
             FAIL();
         }
         EXPECT_EQ(4, d->getChildrenCount());
+        delete d;
+    }
+
+    TEST(AsynchronousDirectoryAddChildTest, testAddNull)
+    {
+        AsynchronousDirectory *d = new AsynchronousDirectory("d");
+        EXPECT_EQ(0, d->getChildrenCount());
+        try
+        {
+            d->addChild(NULL);
+            FAIL();
+        }
+        catch (std::invalid_argument &e)
+        {
+            EXPECT_EQ(e.what(), std::string("Cannot add a null node"));
+        }
+        catch (...)
+        {
+            FAIL();
+        }
+        EXPECT_EQ(0, d->getChildrenCount());
         delete d;
     }
 }

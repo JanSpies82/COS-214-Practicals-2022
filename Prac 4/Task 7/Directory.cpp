@@ -20,6 +20,8 @@ Directory::~Directory()
 
 void Directory::addChild(Node *child)
 {
+    if (child == NULL)
+        throw invalid_argument("Cannot add a null node");
     children->push_back(child);
     child->setParent(this);
     this->lastModified = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()).count();

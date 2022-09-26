@@ -23,6 +23,8 @@ SynchronousDirectory::~SynchronousDirectory()
 
 void SynchronousDirectory::addChild(Node *child)
 {
+    if (child == NULL)
+        __throw_invalid_argument("Cannot add a null node");
     if ((child->getType() != "File") && (!child->isSynchronous() && child->getType() != "Directory"))
         __throw_invalid_argument("Cannot add an asynchronous node to a synchronous directory");
     Directory::addChild(child);
@@ -103,6 +105,5 @@ void SynchronousDirectory::setState(State *state)
             f->setState(directoryState->children->at(i));
             this->addChild(f);
         }
-
     }
 }

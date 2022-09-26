@@ -192,6 +192,26 @@ followed by a screenshot of the produced output.
             EXPECT_EQ(4, d->getChildrenCount());
             delete d;
         }
+        TEST(AsynchronousDirectoryAddChildTest, testAddNull)
+    {
+        AsynchronousDirectory *d = new AsynchronousDirectory("d");
+        EXPECT_EQ(0, d->getChildrenCount());
+        try
+        {
+            d->addChild(NULL);
+            FAIL();
+        }
+        catch (std::invalid_argument &e)
+        {
+            EXPECT_EQ(e.what(), std::string("Cannot add a null node"));
+        }
+        catch (...)
+        {
+            FAIL();
+        }
+        EXPECT_EQ(0, d->getChildrenCount());
+        delete d;
+    }
     }
 \end{lstlisting}
 \includegraphics[width=0.85\textwidth]{Task7.png}
