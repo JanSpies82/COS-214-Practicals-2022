@@ -24,5 +24,8 @@ private:
     void deleteDirec();
     void deleteFile();
     void moveToDirec();
+    void addSnapshot();
+    void deleteSnapshots();
+    void restoreSnapshot();
 };
 #endif

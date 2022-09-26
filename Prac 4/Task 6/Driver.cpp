@@ -112,6 +112,36 @@ void Driver::deleteDirec()
     string name = current->getName();
     current = (Directory *)current->getParent();
     current->removeChild(name);
+    cout << "Press Enter to continue. . .";
+    cin.get();
+    cin.ignore();
+}
+
+void Driver::deleteFile()
+{
+    bool hasFile = current->listFile();
+    if (!hasFile)
+    {
+        cout << "Press Enter to continue. . .";
+        cin.get();
+        cin.ignore();
+        return;
+    }
+    string name = "";
+    cout << "Enter the name of the file you would like to delete." << endl;
+    cout << "Name: " << YELLOW;
+    cin >> name;
+    cout << RESET;
+
+    try
+    {
+        current->removeFile(name);
+    }
+    catch (exception &e)
+    {
+        cout << RED << e.what() << RESET << endl;
+    }
+    cout << "Press Enter to continue. . .";
     cin.get();
     cin.ignore();
 }
@@ -145,6 +175,55 @@ void Driver::moveToDirec()
         }
         ldir = current->listDirectory();
     }
+}
+
+void Driver::addSnapshot()
+{
+    try
+    {
+        root->createSnapshot();
+        cout << "Snapshot created successfully" << endl;
+    }
+    catch (exception &e)
+    {
+        cout << RED << e.what() << RESET << endl;
+    }
+    cout << "Press Enter to continue. . .";
+    cin.get();
+    cin.ignore();
+}
+
+void Driver::deleteSnapshots()
+{
+    try
+    {
+        root->clearAll();
+        cout << "Snapshots deleted successfully" << endl;
+    }
+    catch (exception &e)
+    {
+        cout << RED << e.what() << RESET << endl;
+    }
+    cout << "Press Enter to continue. . .";
+    cin.get();
+    cin.ignore();
+}
+
+void Driver::restoreSnapshot()
+{
+    try
+    {
+        root->restoreSnapshot();
+        current = root;
+        cout << "Snapshot restored successfully" << endl;
+    }
+    catch (exception &e)
+    {
+        cout << RED << e.what() << RESET << endl;
+    }
+    cout << "Press Enter to continue. . .";
+    cin.get();
+    cin.ignore();
 }
 
 void Driver::createHeader()
@@ -211,6 +290,11 @@ void Driver::performAction()
         deleteDirec();
         break;
     }
+    case 3:
+    {
+        deleteFile();
+        break;
+    }
     case 4:
     {
         moveToDirec();
@@ -221,6 +305,21 @@ void Driver::performAction()
         current = root;
         break;
     }
+    case 6:
+    {
+        addSnapshot();
+        break;
+    }
+    case 7:
+    {
+        deleteSnapshots();
+        break;
+    }
+    case 8:
+    {
+        restoreSnapshot();
+        break;
+    }
     case 9:
     {
         cout << current->print();
@@ -229,7 +328,6 @@ void Driver::performAction()
         cin.ignore();
         break;
     }
-
     default:
         break;
     }
